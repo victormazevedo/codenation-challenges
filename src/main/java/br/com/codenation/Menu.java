@@ -7,7 +7,11 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static void menu() {
+    public static void main(String[] args) {
+        menuOptions();
+    }
+
+    private static void menu() {
         System.out.println("\tGERENCIADOR DE TIMES DE FUTEBOL\t");
         System.out.println("Digite a opção desejada: ");
         System.out.println("1 - Incluir Time");
@@ -26,7 +30,7 @@ public class Menu {
         System.out.println("0 - Sair");
     }
 
-    public static void main(String[] args) {
+    private static void menuOptions() {
         DesafioMeuTimeApplication desafioMeuTimeApplication = new DesafioMeuTimeApplication();
         int opcao;
         Scanner input = new Scanner(System.in);
@@ -54,7 +58,6 @@ public class Menu {
 
                     System.out.println("Digite a cor do uniforme secundário: ");
                     String corUniformeSecundario = input.nextLine();
-
                     desafioMeuTimeApplication.incluirTime(id,nome,localDate,corUniformePrincipal,corUniformeSecundario);
                     break;
 
@@ -85,8 +88,16 @@ public class Menu {
 
                     desafioMeuTimeApplication.incluirJogador(id,idTime,nome,localDate,nivelHabilidade,salario);
                     break;
+
+                case 3:
+                    System.out.println("Digite o id do jogador que será capitão: ");
+                    id = input.nextLong();
+                    input.nextLine();
+                    desafioMeuTimeApplication.definirCapitao(id);
             }
         }while (opcao!=0);
     }
+
+
 
 }

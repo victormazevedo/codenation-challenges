@@ -7,6 +7,7 @@ import java.util.*;
 import br.com.codenation.desafio.annotation.Desafio;
 import br.com.codenation.desafio.app.MeuTimeInterface;
 import br.com.codenation.desafio.exceptions.IdentificadorUtilizadoException;
+import br.com.codenation.desafio.exceptions.JogadorNaoEncontradoException;
 import br.com.codenation.desafio.exceptions.TimeNaoEncontradoException;
 import br.com.codenation.domain.Jogador;
 import br.com.codenation.domain.Time;
@@ -53,8 +54,11 @@ public class DesafioMeuTimeApplication implements MeuTimeInterface {
 
 			jogadores.put(id,jogador);//inserindo na hashmap
 			time.getJogadores().add(jogador);//inserindo o jogador dentro da classe jogador
-		} catch (Exception e){
+
+		} catch (IdentificadorUtilizadoException ie){
 			System.out.println("Id do jogador já existente!");
+		} catch (TimeNaoEncontradoException te){
+			System.out.println("Id do time não encontrado!");
 		}
 
 		System.out.println(Collections.singletonList(times));
@@ -63,7 +67,17 @@ public class DesafioMeuTimeApplication implements MeuTimeInterface {
 
 	@Desafio("definirCapitao")
 	public void definirCapitao(Long idJogador) {
-		throw new UnsupportedOperationException();
+
+		try {
+			Jogador jogador = buscarJogador(idJogador);
+
+			buscarTime(jogador.getIdTime()).setIdJogadorCapitao(idJogador);
+		}catch (JogadorNaoEncontradoException je) {
+			System.out.println("Id do jogador não encontrado!");
+		}
+
+		System.out.println(Collections.singletonList(times));
+		System.out.println(Collections.singletonList(jogadores));//testando
 	}
 
 	@Desafio("buscarCapitaoDoTime")
@@ -126,6 +140,13 @@ public class DesafioMeuTimeApplication implements MeuTimeInterface {
 			throw new TimeNaoEncontradoException("Time não encontrado!");
 
 		return times.get(idTime);
+	}
+
+	private Jogador buscarJogador(Long idJogador){
+		if(!jogadores.containsKey(idJogador))
+			throw new JogadorNaoEncontradoException("Jogador não encontrado!");
+
+		return jogadores.get(idJogador);
 	}
 
 }

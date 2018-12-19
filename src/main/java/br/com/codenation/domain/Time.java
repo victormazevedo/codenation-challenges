@@ -1,6 +1,7 @@
 package br.com.codenation.domain;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -11,7 +12,8 @@ public class Time {
     private LocalDate dataCriacao;
     private String corUniformePrincipal;
     private String corUniformeSecundario;
-    private List<Jogador> jogadores;
+    private List<Jogador> jogadores = new ArrayList<>();
+    private Long idJogadorCapitao;
 
     public Time(Long id, String nome, LocalDate dataCriacao, String corUniformePrincipal, String corUniformeSecundario) {
         this.id = id;
@@ -21,13 +23,14 @@ public class Time {
         this.corUniformeSecundario = corUniformeSecundario;
     }
 
-    public Time(Long id, String nome, LocalDate dataCriacao, String corUniformePrincipal, String corUniformeSecundario, List<Jogador> jogadores) {
+    public Time(Long id, String nome, LocalDate dataCriacao, String corUniformePrincipal, String corUniformeSecundario, List<Jogador> jogadores, Long idJogadorCapitao) {
         this.id = id;
         this.nome = nome;
         this.dataCriacao = dataCriacao;
         this.corUniformePrincipal = corUniformePrincipal;
         this.corUniformeSecundario = corUniformeSecundario;
         this.jogadores = jogadores;
+        this.idJogadorCapitao = idJogadorCapitao;
     }
 
     public Long getId() {
@@ -78,6 +81,14 @@ public class Time {
         this.jogadores = jogadores;
     }
 
+    public Long getIdJogadorCapitao() {
+        return idJogadorCapitao;
+    }
+
+    public void setIdJogadorCapitao(Long idJogadorCapitao) {
+        this.idJogadorCapitao = idJogadorCapitao;
+    }
+
     @Override
     public String toString() {
         return "Time{" +
@@ -87,6 +98,7 @@ public class Time {
                 ", corUniformePrincipal='" + corUniformePrincipal + '\'' +
                 ", corUniformeSecundario='" + corUniformeSecundario + '\'' +
                 ", jogadores=" + jogadores +
+                ", idJogadorCapitao=" + idJogadorCapitao +
                 '}';
     }
 }
