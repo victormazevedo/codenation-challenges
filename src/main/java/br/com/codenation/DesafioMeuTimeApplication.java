@@ -7,6 +7,7 @@ import java.util.*;
 import br.com.codenation.desafio.annotation.Desafio;
 import br.com.codenation.desafio.app.MeuTimeInterface;
 import br.com.codenation.desafio.exceptions.IdentificadorUtilizadoException;
+import br.com.codenation.desafio.exceptions.TimeNaoEncontradoException;
 import br.com.codenation.domain.Jogador;
 import br.com.codenation.domain.Time;
 
@@ -17,26 +18,47 @@ public class DesafioMeuTimeApplication implements MeuTimeInterface {
 
 	@Desafio("incluirTime")
 	public void incluirTime(Long id, String nome, LocalDate dataCriacao, String corUniformePrincipal, String corUniformeSecundario) {
-	    try {
-            if(times.containsKey(id))
-                throw new IdentificadorUtilizadoException("Id já existente!");
-        } catch (IdentificadorUtilizadoException e){
-	        System.out.println("Id Já existente!");
-        }
 
-	    times.put(id, new Time(
-	            id,
-                nome,
-                dataCriacao,
-                corUniformePrincipal,
-                corUniformeSecundario));
+		try {
+            if(times.containsKey(id))
+                throw new IdentificadorUtilizadoException();
+			times.put(id, new Time(
+					id,
+					nome,
+					dataCriacao,
+					corUniformePrincipal,
+					corUniformeSecundario));
+        } catch (Exception e){
+	        System.out.println("Id do Time já existente!");
+        }
 
 	    System.out.println(Collections.singletonList(times));//testando
 	}
 
 	@Desafio("incluirJogador")
 	public void incluirJogador(Long id, Long idTime, String nome, LocalDate dataNascimento, Integer nivelHabilidade, BigDecimal salario) {
-		throw new UnsupportedOperationException();
+
+		try {
+			if(jogadores.containsKey(id))
+				throw new IdentificadorUtilizadoException();
+			Time time = buscarTime(idTime);//buscando o time para verificar se o mesmo existe
+
+			Jogador jogador = new Jogador( //carregando o objeto jogador com as variáveis inseridas
+					id,
+					idTime,
+					nome,
+					dataNascimento,
+					nivelHabilidade,
+					salario);
+
+			jogadores.put(id,jogador);//inserindo na hashmap
+			time.getJogadores().add(jogador);//inserindo o jogador dentro da classe jogador
+		} catch (Exception e){
+			System.out.println("Id do jogador já existente!");
+		}
+
+		System.out.println(Collections.singletonList(times));
+		System.out.println(Collections.singletonList(jogadores));//testando
 	}
 
 	@Desafio("definirCapitao")
@@ -97,6 +119,13 @@ public class DesafioMeuTimeApplication implements MeuTimeInterface {
 	@Desafio("buscarCorCamisaTimeDeFora")
 	public String buscarCorCamisaTimeDeFora(Long timeDaCasa, Long timeDeFora) {
 		throw new UnsupportedOperationException();
+	}
+
+	private Time buscarTime(Long idTime){
+		if(!times.containsKey(idTime))
+			throw new TimeNaoEncontradoException("Time não encontrado!");
+
+		return times.get(idTime);
 	}
 
 }

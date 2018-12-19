@@ -1,5 +1,6 @@
 package br.com.codenation;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -55,7 +56,35 @@ public class Menu {
                     String corUniformeSecundario = input.nextLine();
 
                     desafioMeuTimeApplication.incluirTime(id,nome,localDate,corUniformePrincipal,corUniformeSecundario);
+                    break;
 
+                case 2:
+                    System.out.println("Digite o ID do jogador: ");
+                    id = input.nextLong();
+                    input.nextLine();
+
+                    System.out.println("Digite o ID do time: ");
+                    Long idTime = input.nextLong();
+                    input.nextLine();
+
+                    System.out.println("Digite o nome do jogador: ");
+                    nome = input.nextLine();
+
+                    System.out.println("Digite a data de nascimento do jogador ");
+                    dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    String dataNascimento = input.next();
+                    localDate = LocalDate.parse(dataNascimento,dateTimeFormatter);
+                    input.nextLine();
+
+                    System.out.println("Digite o nível de habilidade (0 a 100) ");
+                    Integer nivelHabilidade = input.nextInt();
+                    input.nextLine();
+
+                    System.out.println("Digite o salário do jogador: ");
+                    BigDecimal salario = input.nextBigDecimal();
+
+                    desafioMeuTimeApplication.incluirJogador(id,idTime,nome,localDate,nivelHabilidade,salario);
+                    break;
             }
         }while (opcao!=0);
     }

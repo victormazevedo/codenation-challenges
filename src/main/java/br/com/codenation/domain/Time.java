@@ -1,6 +1,8 @@
 package br.com.codenation.domain;
 
 import java.time.LocalDate;
+import java.util.List;
+
 
 public class Time {
 
@@ -9,10 +11,7 @@ public class Time {
     private LocalDate dataCriacao;
     private String corUniformePrincipal;
     private String corUniformeSecundario;
-
-//    public Time() {
-//
-//    }
+    private List<Jogador> jogadores;
 
     public Time(Long id, String nome, LocalDate dataCriacao, String corUniformePrincipal, String corUniformeSecundario) {
         this.id = id;
@@ -20,6 +19,15 @@ public class Time {
         this.dataCriacao = dataCriacao;
         this.corUniformePrincipal = corUniformePrincipal;
         this.corUniformeSecundario = corUniformeSecundario;
+    }
+
+    public Time(Long id, String nome, LocalDate dataCriacao, String corUniformePrincipal, String corUniformeSecundario, List<Jogador> jogadores) {
+        this.id = id;
+        this.nome = nome;
+        this.dataCriacao = dataCriacao;
+        this.corUniformePrincipal = corUniformePrincipal;
+        this.corUniformeSecundario = corUniformeSecundario;
+        this.jogadores = jogadores;
     }
 
     public Long getId() {
@@ -62,6 +70,14 @@ public class Time {
         this.corUniformeSecundario = corUniformeSecundario;
     }
 
+    public List<Jogador> getJogadores() {
+        return jogadores;
+    }
+
+    public void setJogadores(List<Jogador> jogadores) {
+        this.jogadores = jogadores;
+    }
+
     @Override
     public String toString() {
         return "Time{" +
@@ -70,6 +86,7 @@ public class Time {
                 ", dataCriacao=" + dataCriacao +
                 ", corUniformePrincipal='" + corUniformePrincipal + '\'' +
                 ", corUniformeSecundario='" + corUniformeSecundario + '\'' +
+                ", jogadores=" + jogadores +
                 '}';
     }
 }
