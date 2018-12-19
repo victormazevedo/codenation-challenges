@@ -94,6 +94,14 @@ public class Menu {
                     id = input.nextLong();
                     input.nextLine();
                     desafioMeuTimeApplication.definirCapitao(id);
+                    break;
+
+                case 4:
+                    System.out.println("Digite o id do time: ");
+                    id = input.nextLong();
+                    input.nextLine();
+                    desafioMeuTimeApplication.buscarCapitaoDoTime(id);
+                    break;
             }
         }while (opcao!=0);
     }

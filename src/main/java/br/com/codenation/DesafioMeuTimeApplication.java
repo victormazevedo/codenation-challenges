@@ -6,6 +6,7 @@ import java.util.*;
 
 import br.com.codenation.desafio.annotation.Desafio;
 import br.com.codenation.desafio.app.MeuTimeInterface;
+import br.com.codenation.desafio.exceptions.CapitaoNaoInformadoException;
 import br.com.codenation.desafio.exceptions.IdentificadorUtilizadoException;
 import br.com.codenation.desafio.exceptions.JogadorNaoEncontradoException;
 import br.com.codenation.desafio.exceptions.TimeNaoEncontradoException;
@@ -29,7 +30,8 @@ public class DesafioMeuTimeApplication implements MeuTimeInterface {
 					dataCriacao,
 					corUniformePrincipal,
 					corUniformeSecundario));
-        } catch (Exception e){
+        }
+		catch (Exception e){
 	        System.out.println("Id do Time já existente!");
         }
 
@@ -55,9 +57,11 @@ public class DesafioMeuTimeApplication implements MeuTimeInterface {
 			jogadores.put(id,jogador);//inserindo na hashmap
 			time.getJogadores().add(jogador);//inserindo o jogador dentro da classe jogador
 
-		} catch (IdentificadorUtilizadoException ie){
+		}
+		catch (IdentificadorUtilizadoException ie){
 			System.out.println("Id do jogador já existente!");
-		} catch (TimeNaoEncontradoException te){
+		}
+		catch (TimeNaoEncontradoException te){
 			System.out.println("Id do time não encontrado!");
 		}
 
@@ -72,7 +76,8 @@ public class DesafioMeuTimeApplication implements MeuTimeInterface {
 			Jogador jogador = buscarJogador(idJogador);
 
 			buscarTime(jogador.getIdTime()).setIdJogadorCapitao(idJogador);
-		}catch (JogadorNaoEncontradoException je) {
+		}
+		catch (JogadorNaoEncontradoException je) {
 			System.out.println("Id do jogador não encontrado!");
 		}
 
@@ -82,7 +87,24 @@ public class DesafioMeuTimeApplication implements MeuTimeInterface {
 
 	@Desafio("buscarCapitaoDoTime")
 	public Long buscarCapitaoDoTime(Long idTime) {
-		throw new UnsupportedOperationException();
+
+		Long idCapitao = 0L;
+		try {
+			Time time = buscarTime(idTime);
+
+			if(time.getIdJogadorCapitao() == null)
+				throw new CapitaoNaoInformadoException();
+
+			idCapitao = time.getIdJogadorCapitao();
+		}
+		catch (TimeNaoEncontradoException te){
+			System.out.println("Id do time não encontrado!");
+		}
+		catch (CapitaoNaoInformadoException ce) {
+			System.out.println("O time informado não possui capitão");
+		}
+
+		return idCapitao;
 	}
 
 	@Desafio("buscarNomeJogador")
