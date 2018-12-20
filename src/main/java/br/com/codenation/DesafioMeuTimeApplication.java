@@ -3,6 +3,7 @@ package br.com.codenation;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import br.com.codenation.desafio.annotation.Desafio;
 import br.com.codenation.desafio.app.MeuTimeInterface;
@@ -103,23 +104,52 @@ public class DesafioMeuTimeApplication implements MeuTimeInterface {
 		catch (CapitaoNaoInformadoException ce) {
 			System.out.println("O time informado não possui capitão");
 		}
-
 		return idCapitao;
 	}
 
 	@Desafio("buscarNomeJogador")
 	public String buscarNomeJogador(Long idJogador) {
-		throw new UnsupportedOperationException();
+
+		String nomeJogador = "";
+		try {
+			nomeJogador = buscarJogador(idJogador).getNome();
+		}
+		catch (JogadorNaoEncontradoException je){
+			System.out.println("Jogador não encontrado");
+		}
+		return nomeJogador;
 	}
 
 	@Desafio("buscarNomeTime")
 	public String buscarNomeTime(Long idTime) {
-		throw new UnsupportedOperationException();
+
+		String nomeTime = "";
+		try {
+			nomeTime = buscarTime(idTime).getNome();
+		}
+		catch (JogadorNaoEncontradoException je){
+			System.out.println("Jogador não encontrado");
+		}
+		return nomeTime;
 	}
 
 	@Desafio("buscarJogadoresDoTime")
 	public List<Long> buscarJogadoresDoTime(Long idTime) {
-		throw new UnsupportedOperationException();
+
+		List<Long> listId = new ArrayList<>();
+		try {
+			Time time = buscarTime(idTime);
+
+			listId = time.getJogadores()
+					.stream()
+					.map(Jogador::getId)
+					.collect(Collectors.toList());
+		}
+		catch (TimeNaoEncontradoException te) {
+			System.out.println("O time informado não possui capitão");
+		}
+
+		return listId;
 	}
 
 	@Desafio("buscarMelhorJogadorDoTime")

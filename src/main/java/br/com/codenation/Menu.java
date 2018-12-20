@@ -102,6 +102,27 @@ public class Menu {
                     input.nextLine();
                     desafioMeuTimeApplication.buscarCapitaoDoTime(id);
                     break;
+
+                case 5:
+                    System.out.println("Digite o id do jogador: ");
+                    id = input.nextLong();
+                    input.nextLine();
+                    desafioMeuTimeApplication.buscarNomeJogador(id);
+                    break;
+
+                case 6:
+                    System.out.println("Digite o id do time: ");
+                    id = input.nextLong();
+                    input.nextLine();
+                    desafioMeuTimeApplication.buscarNomeTime(id);
+                    break;
+
+                case 7:
+                    System.out.println("Digite o id do time: ");
+                    id = input.nextLong();
+                    input.nextLine();
+                    desafioMeuTimeApplication.buscarJogadoresDoTime(id);
+                    break;
             }
         }while (opcao!=0);
     }

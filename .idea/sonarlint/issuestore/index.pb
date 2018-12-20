@@ -9,3 +9,8 @@ Y
 )src/main/java/br/com/codenation/Menu.java,c/5/c522c2f66569375a4ae727c1648bcfadf0f1fd91
 `
 0src/main/java/br/com/codenation/domain/Time.java,f/d/fd7d3ab9d96e6f4ea160973228e17d32664c849d
+:
+
+stdout.txt,6/8/68ad3077ff5a452a1c6af2d3070fc26a224fb69e
+<
+build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
