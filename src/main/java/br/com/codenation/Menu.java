@@ -20,13 +20,14 @@ public class Menu {
         System.out.println("4 - Buscar Capitão do Time");
         System.out.println("5 - Buscar Nome Jogador");
         System.out.println("6 - Buscar Nome Time");
-        System.out.println("7 - Buscar Maior Salário");
-        System.out.println("8 - Buscar Salário do Jogador");
-        System.out.println("9 - Buscar Jogadores do Time");
-        System.out.println("10 - Buscar Melhor Jogador do Time");
-        System.out.println("11 - Buscar Jogador Mais Velho");
-        System.out.println("12 - Buscar Times");
+        System.out.println("7 - Buscar Jogadores do Time");
+        System.out.println("8 - Buscar Melhor Jogador do Time");
+        System.out.println("9 - Buscar Jogador Mais Velho");
+        System.out.println("10 - Buscar Times");
+        System.out.println("11 - Buscar Maior Salário");
+        System.out.println("12 - Buscar Salário do Jogador");
         System.out.println("13 - Buscar Top Jogadores");
+        System.out.println("14 - Buscar Cor da Camiseta do Time de Fora");
         System.out.println("0 - Sair");
     }
 
