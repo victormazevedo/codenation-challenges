@@ -156,24 +156,8 @@ public class DesafioMeuTimeApplication implements MeuTimeInterface {
 	@Desafio("buscarMelhorJogadorDoTime")
 	public Long buscarMelhorJogadorDoTime(Long idTime) {
 
-		List <Long> listaIdsJogadoresDoTime = buscarJogadoresDoTime(idTime); //definindo a lista de jogadores do time
-
-		Jogador melhorJogador = new Jogador();
-		List<Jogador> listaJogadores = new ArrayList<>();
-		try {
-			for (Long id : listaIdsJogadoresDoTime) {//para cada id na lista de jogadores
-				Jogador jogador = buscarJogador(id);//buscar o id do jogador relacionado
-				listaJogadores.add(jogador);//adicionar o jogador encontrado na lista
-			}
-			melhorJogador = listaJogadores.stream().max(Comparator.comparing(Jogador::getNivelHabilidade)).get();
-
-		}
-		catch (NoSuchElementException nse){
-			System.out.println("Time não encontado!");
-		}
-
-		return melhorJogador.getId();
-	}
+        return buscarMaior(idTime, Comparator.comparing(Jogador::getNivelHabilidade));
+    }
 
 	@Desafio("buscarJogadorMaisVelho")
 	public Long buscarJogadorMaisVelho(Long idTime) {
@@ -207,12 +191,13 @@ public class DesafioMeuTimeApplication implements MeuTimeInterface {
 
 	@Desafio("buscarJogadorMaiorSalario")
 	public Long buscarJogadorMaiorSalario(Long idTime) {
-		throw new UnsupportedOperationException();
+        return buscarMaior(idTime, Comparator.comparing(Jogador::getSalario));
 	}
 
-	@Desafio("buscarSalarioDoJogador")
+    @Desafio("buscarSalarioDoJogador")
 	public BigDecimal buscarSalarioDoJogador(Long idJogador) {
-		throw new UnsupportedOperationException();
+	    System.out.println(buscarJogador(idJogador).getSalario());
+	    return buscarJogador(idJogador).getSalario();
 	}
 
 	@Desafio("buscarTopJogadores")
@@ -238,5 +223,24 @@ public class DesafioMeuTimeApplication implements MeuTimeInterface {
 
 		return jogadores.get(idJogador);
 	}
+
+    private Long buscarMaior(Long idTime, Comparator<Jogador> comparing) {
+        List<Long> listaIdsJogadoresDoTime = buscarJogadoresDoTime(idTime); //definindo a lista de jogadores do time
+
+        Jogador maior = new Jogador();
+        List<Jogador> listaJogadores = new ArrayList<>();
+        try {
+            for (Long id : listaIdsJogadoresDoTime) {//para cada id na lista de jogadores
+                Jogador jogador = buscarJogador(id);//buscar o id do jogador relacionado
+                listaJogadores.add(jogador);//adicionar o jogador encontrado na lista
+            }
+            maior = listaJogadores.stream().max(comparing).get();
+        }
+        catch (NoSuchElementException nse){
+            System.out.println("Time não encontado!");
+        }
+        System.out.println(maior.getId());
+        return maior.getId();
+    }
 
 }

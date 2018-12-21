@@ -143,6 +143,20 @@ public class Menu {
                     System.out.println("TIMES");
                     desafioMeuTimeApplication.buscarTimes();
                     break;
+
+                case 11:
+                    System.out.println("Digite o id do time: ");
+                    id = input.nextLong();
+                    input.nextLine();
+                    desafioMeuTimeApplication.buscarJogadorMaiorSalario(id);
+                    break;
+
+                case 12:
+                    System.out.println("Digite o id do jogador: ");
+                    id = input.nextLong();
+                    input.nextLine();
+                    desafioMeuTimeApplication.buscarSalarioDoJogador(id);
+                    break;
             }
         }while (opcao!=0);
     }
