@@ -124,6 +124,25 @@ public class Menu {
                     input.nextLine();
                     desafioMeuTimeApplication.buscarJogadoresDoTime(id);
                     break;
+
+                case 8:
+                    System.out.println("Digite o id do time: ");
+                    id = input.nextLong();
+                    input.nextLine();
+                    desafioMeuTimeApplication.buscarMelhorJogadorDoTime(id);
+                    break;
+
+                case 9:
+                    System.out.println("Digite o id do time: ");
+                    id = input.nextLong();
+                    input.nextLine();
+                    desafioMeuTimeApplication.buscarJogadorMaisVelho(id);
+                    break;
+
+                case 10:
+                    System.out.println("TIMES");
+                    desafioMeuTimeApplication.buscarTimes();
+                    break;
             }
         }while (opcao!=0);
     }

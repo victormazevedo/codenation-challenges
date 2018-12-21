@@ -19,6 +19,7 @@ public class DesafioMeuTimeApplication implements MeuTimeInterface {
     private Map<Long, Time> times = new HashMap<>();
     private Map<Long, Jogador> jogadores = new HashMap<>();
 
+
 	@Desafio("incluirTime")
 	public void incluirTime(Long id, String nome, LocalDate dataCriacao, String corUniformePrincipal, String corUniformeSecundario) {
 
@@ -146,7 +147,7 @@ public class DesafioMeuTimeApplication implements MeuTimeInterface {
 					.collect(Collectors.toList());
 		}
 		catch (TimeNaoEncontradoException te) {
-			System.out.println("O time informado não possui capitão");
+			System.out.println("O ID informado não foi encontrado.");
 		}
 
 		return listId;
@@ -154,17 +155,54 @@ public class DesafioMeuTimeApplication implements MeuTimeInterface {
 
 	@Desafio("buscarMelhorJogadorDoTime")
 	public Long buscarMelhorJogadorDoTime(Long idTime) {
-		throw new UnsupportedOperationException();
+
+		List <Long> listaIdsJogadoresDoTime = buscarJogadoresDoTime(idTime); //definindo a lista de jogadores do time
+
+		Jogador melhorJogador = new Jogador();
+		List<Jogador> listaJogadores = new ArrayList<>();
+		try {
+			for (Long id : listaIdsJogadoresDoTime) {//para cada id na lista de jogadores
+				Jogador jogador = buscarJogador(id);//buscar o id do jogador relacionado
+				listaJogadores.add(jogador);//adicionar o jogador encontrado na lista
+			}
+			melhorJogador = listaJogadores.stream().max(Comparator.comparing(Jogador::getNivelHabilidade)).get();
+
+		}
+		catch (NoSuchElementException nse){
+			System.out.println("Time não encontado!");
+		}
+
+		return melhorJogador.getId();
 	}
 
 	@Desafio("buscarJogadorMaisVelho")
 	public Long buscarJogadorMaisVelho(Long idTime) {
-		throw new UnsupportedOperationException();
+
+		Jogador jogadorMaisVelho = null;
+
+			List<Long> listaIdsJogadoresDoTime = buscarJogadoresDoTime(idTime);
+
+			for(Long id : listaIdsJogadoresDoTime) {
+				Jogador jogador = buscarJogador(id);
+
+				if (jogadorMaisVelho == null)
+					jogadorMaisVelho = jogador;
+				else {
+					if (jogadorMaisVelho.getDataNascimento().isAfter(jogador.getDataNascimento()))
+						jogadorMaisVelho = jogador;
+				}
+			}
+        System.out.println(jogadorMaisVelho.getId());
+        return jogadorMaisVelho.getId();
 	}
 
 	@Desafio("buscarTimes")
 	public List<Long> buscarTimes() {
-		throw new UnsupportedOperationException();
+		if (times.isEmpty())
+		    return new ArrayList<Long>();
+
+		System.out.println(new ArrayList<Long>(times.keySet()));
+		return new ArrayList<Long>(times.keySet());
 	}
 
 	@Desafio("buscarJogadorMaiorSalario")

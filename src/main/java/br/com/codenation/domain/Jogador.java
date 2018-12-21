@@ -12,6 +12,9 @@ public class Jogador {
     private Integer nivelHabilidade;
     private BigDecimal salario;
 
+    public Jogador() {
+    }
+
     public Jogador(Long id, Long idTime, String nome, LocalDate dataNascimento, Integer nivelHabilidade, BigDecimal salario) {
         this.id = id;
         this.idTime = idTime;
