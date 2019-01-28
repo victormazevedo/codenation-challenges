@@ -157,6 +157,13 @@ public class Menu {
                     input.nextLine();
                     desafioMeuTimeApplication.buscarSalarioDoJogador(id);
                     break;
+
+                case 13:
+                    System.out.println("Jogadores TOP");
+                    Integer top  = input.nextInt();
+                    input.nextLine();
+                    desafioMeuTimeApplication.buscarTopJogadores(top);
+                    break;
             }
         }while (opcao!=0);
     }

@@ -1,10 +1,1 @@
-Starting a Gradle Daemon (subsequent builds will be faster)
-:compileJava
-:processResources NO-SOURCE
-:classes
-:run
-Quantidade de desafios esperados: 14. Encontrados: 14.
-Desafio pronto para ser enviado. Nenhum erro encontrado.
-
-BUILD SUCCESSFUL in 3s
-2 actionable tasks: 2 executed
+{"score": 100.00}

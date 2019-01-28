@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d8442bc-546b-456e-9a86-e8086c69d7c8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/a/4a575fb9039fa3ef31f39f3234fcd4833549033b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/a/4a575fb9039fa3ef31f39f3234fcd4833549033b" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/5/c522c2f66569375a4ae727c1648bcfadf0f1fd91" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/5/c522c2f66569375a4ae727c1648bcfadf0f1fd91" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/codenation/DesafioMeuTimeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/codenation/DesafioMeuTimeApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/codenation/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/codenation/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stdout.txt" beforeDir="false" afterPath="$PROJECT_DIR$/stdout.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -57,39 +61,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SECOND">
-              <first_editor relative-caret-position="442">
-                <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/codenation/domain/Time.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="91" column="13" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2290#2291#0" expanded="true" />
-                <element signature="e#2329#2330#0" expanded="true" />
-                <element signature="e#2391#2392#0" expanded="true" />
-                <element signature="e#2447#2448#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/com/codenation/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="156" column="37" lean-forward="true" selection-start-line="156" selection-start-column="37" selection-end-line="156" selection-end-column="37" />
+            <state relative-caret-position="34">
+              <caret line="76" column="56" selection-start-line="76" selection-start-column="56" selection-end-line="76" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -100,11 +76,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/com/codenation/DesafioMeuTimeApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="199" column="52" lean-forward="true" selection-start-line="199" selection-start-column="52" selection-end-line="199" selection-end-column="52" />
+            <state relative-caret-position="442">
+              <caret line="50" column="60" selection-start-line="50" selection-start-column="60" selection-end-line="50" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5846#5847#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,8 +138,8 @@
         <option value="$PROJECT_DIR$/src/main/java/br/com/codenation/Teste.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/codenation/domain/Time.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/codenation/domain/Jogador.java" />
-        <option value="$PROJECT_DIR$/src/main/java/br/com/codenation/DesafioMeuTimeApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/codenation/Menu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/codenation/DesafioMeuTimeApplication.java" />
       </list>
     </option>
   </component>
@@ -180,6 +155,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -187,58 +164,17 @@
               <item name="java-1" type="b2602c69:ProjectViewProjectNode" />
               <item name="java-1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
-            <path>
-              <item name="java-1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java-1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="libs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java-1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java-1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java-1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java-1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="java-1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java-1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java-1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java-1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="codenation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java-1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java-1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="codenation" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545339725442" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548695292920" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -319,12 +255,19 @@
       <workItem from="1545226689957" duration="13665000" />
       <workItem from="1545308922146" duration="25205000" />
       <workItem from="1545345542235" duration="6668000" />
-      <workItem from="1545392997494" duration="4636000" />
+      <workItem from="1545392997494" duration="9691000" />
+      <workItem from="1545828084988" duration="3260000" />
+      <workItem from="1545997394028" duration="61000" />
+      <workItem from="1545998785714" duration="30000" />
+      <workItem from="1546868782671" duration="11998000" />
+      <workItem from="1546899961574" duration="1956000" />
+      <workItem from="1546903767015" duration="1920000" />
+      <workItem from="1547232648063" duration="1509000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94797000" />
+    <option name="totallyTimeSpent" value="120586000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -339,7 +282,7 @@
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23159018" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25026682" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -348,13 +291,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32827735" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869988" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32826087" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39782608" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32934782" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32900432" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32827735" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32826087" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32900432" />
       <window_info anchor="bottom" id="SonarLint" order="11" />
@@ -422,45 +365,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/desafio-java-1.jar!/br/com/codenation/desafio/testes/Generics.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/desafio-java-1.jar!/br/com/codenation/desafio/testes/Desafio.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/libs/desafio-java-1.jar!/br/com/codenation/DesafioApplicationRunner.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/desafio-java-1.jar!/br/com/codenation/DesafioMeuTimeApplication.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="18" column="65" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/desafio-java-1.jar!/br/com/codenation/TestadorDeDesafios.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/desafio-java-1.jar!/br/com/codenation/Testador.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -497,6 +405,79 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/codenation/domain/Time.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1105">
+          <caret line="91" column="13" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2290#2291#0" expanded="true" />
+            <element signature="e#2329#2330#0" expanded="true" />
+            <element signature="e#2391#2392#0" expanded="true" />
+            <element signature="e#2447#2448#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/desafio-java-1.jar!/br/com/codenation/Testador.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/desafio-java-1.jar!/br/com/codenation/DesafioMeuTimeApplication.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="18" column="65" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/desafio-java-1.jar!/br/com/codenation/TestadorDeDesafios.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/desafio-java-1.jar!/br/com/codenation/desafio/testes/Desafio.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/desafio-java-1.jar!/br/com/codenation/desafio/testes/SuiteTests.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/desafio-java-1.jar!/br/com/codenation/desafio/testes/Generics.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SECOND">
+          <first_editor relative-caret-position="442">
+            <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar!/java/time/LocalDate.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="808">
+          <caret line="666" column="5" selection-start-line="666" selection-start-column="5" selection-end-line="666" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$PROJECT_DIR$/libs/desafio-java-1.jar!/br/com/codenation/desafio/app/MeuTimeInterface.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -516,45 +497,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SECOND">
-          <first_editor relative-caret-position="442">
-            <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/codenation/domain/Time.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="91" column="13" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2290#2291#0" expanded="true" />
-            <element signature="e#2329#2330#0" expanded="true" />
-            <element signature="e#2391#2392#0" expanded="true" />
-            <element signature="e#2447#2448#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/codenation/DesafioMeuTimeApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="199" column="52" lean-forward="true" selection-start-line="199" selection-start-column="52" selection-end-line="199" selection-end-column="52" />
+        <state relative-caret-position="442">
+          <caret line="50" column="60" selection-start-line="50" selection-start-column="60" selection-end-line="50" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5846#5847#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/codenation/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="156" column="37" lean-forward="true" selection-start-line="156" selection-start-column="37" selection-end-line="156" selection-end-column="37" />
+        <state relative-caret-position="34">
+          <caret line="76" column="56" selection-start-line="76" selection-start-column="56" selection-end-line="76" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

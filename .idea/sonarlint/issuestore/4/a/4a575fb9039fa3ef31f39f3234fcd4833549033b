@@ -1,4 +1,4 @@
 
-Ssquid:S1143Θ"5Remove this return statement from this finally block.(ΩάΨ'8ƒΈ¨ρό,
-[squid:S3655¨"7Call "Optional#isPresent()" before accessing the value.(ρ•†ώÿÿÿÿ8²‰οό,
-rsquid:S2259Η"NA "NullPointerException" could be thrown; "jogadorMaisVelho" is nullable here.(Ο©ω ψÿÿÿÿ8ƒΈ¨ρό,
+vsquid:S2293}"YReplace the type specification in this constructor call with the diamond operator ("<>").(‹›ρN8Λ¶Εύ,
+qsquid:S2259v"NA "NullPointerException" could be thrown; "jogadorMaisVelho" is nullable here.(Ο©ω ψÿÿÿÿ8ΧΎιύ,
+wsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(›€γγ8Λ¶Εύ,
