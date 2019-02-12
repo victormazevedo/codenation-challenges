@@ -6,5 +6,10 @@ public class MainTeste {
         Main main = new Main();
 
         main.q1();
+        main.q2();
+        main.q3();
+        main.q4();
+        main.q5();
+        main.q6();
     }
 }
