@@ -8,6 +8,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import br.com.movile.cliente.model.Cliente;
 import br.com.movile.estabelecimento.model.Estabelecimento;
@@ -15,25 +17,37 @@ import br.com.movile.motoboy.model.MotoBoy;
 import br.com.movile.produto.model.Produto;
 
 public class Carga {
+	
+	public static void main(String[] args) {
+		Carga carga = new Carga();
+		
+		carga.cliente();
+		carga.motoboy();
+		carga.estabelecimentoPorMunicipio();
+		carga.produtosPorEstabelecimento();
 
+		Set<String> collect = carga.produtos.stream().map(x -> x.getId()).collect(Collectors.toSet());
+		System.out.println(collect.size());
+		Set<Long> collect2 = carga.motoboy.stream().map(x -> x.getId()).collect(Collectors.toSet());
+		System.out.println(collect2.size());
+		Set<String> collect3 = carga.estabelecimentos.stream().map(x -> x.getId()).collect(Collectors.toSet());
+		System.out.println(collect3.size());
+		Set<Long> collect4 = carga.clientes.stream().map(x -> x.getId()).collect(Collectors.toSet());
+		System.out.println(collect4.size());
+		
+	}
+	
 	Path caminho = null;
 	List<String> allLines;
 	List<Cliente> clientes;
 	List<MotoBoy> motoboy;
 	List<Estabelecimento> estabelecimentos;
-	List<Produto> produtos;
+	List<Produto> produtos;	
+
 	private static final char DEFAULT_SEPARATOR = ',';
 	private static final char DEFAULT_QUOTE = '"';
 
-	public static void main(String[] args) {
-
-		Carga carga = new Carga();
-		carga.cliente();
-		carga.motoboy();
-		carga.estabelecimentoPorMunicipio();
-		carga.produtosPorEstabelecimento();
-	}
-
+	
 	public void cliente() {
 		caminho = Paths.get(System.getProperty("user.home") + "\\codenation\\mapfood\\clientes.csv");
 
@@ -43,7 +57,7 @@ public class Carga {
 			allLines.stream().skip(1).forEach(x -> {
 
 				List<String> parseLine = parseLine(x, DEFAULT_SEPARATOR, DEFAULT_QUOTE);
-				
+
 				long id = Long.parseLong(parseLine.get(0).replaceAll(",", ""));
 				double longitude = Double.parseDouble(parseLine.get(1));
 				double latitude = Double.parseDouble(parseLine.get(2));
@@ -51,8 +65,6 @@ public class Carga {
 				clientes.add(new Cliente(id, longitude, latitude));
 			});
 
-			clientes.forEach(System.out::println);
-			
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -67,7 +79,7 @@ public class Carga {
 			allLines.stream().skip(1).forEach(x -> {
 
 				List<String> parseLine = parseLine(x, DEFAULT_SEPARATOR, DEFAULT_QUOTE);
-				
+
 				long id = Long.parseLong(parseLine.get(0).replaceAll(",", ""));
 				double longitude = Double.parseDouble(parseLine.get(1));
 				double latitude = Double.parseDouble(parseLine.get(2));
@@ -94,19 +106,31 @@ public class Carga {
 			allLines = Files.readAllLines(caminho, StandardCharsets.UTF_8);
 
 			allLines.stream().skip(1).forEach(x -> {
-				
 				List<String> parseLine = parseLine(x, DEFAULT_SEPARATOR, DEFAULT_QUOTE);
 
-				String id = parseLine.get(0);
-				String nomeRestaurante = parseLine.get(1);
-				String cidade = parseLine.get(2);
-				double longitude = Double.parseDouble(parseLine.get(3));
-				double latitude = Double.parseDouble(parseLine.get(4));
-				String descricao = parseLine.get(5);
-
 				
-				estabelecimentos.add(new Estabelecimento(id, nomeRestaurante, cidade, longitude, latitude, descricao));
-			});			
+					if(parseLine.size() ==1) {
+						String li = "\"" .concat(parseLine.get(0)).split(",")[0].concat("\"");
+						String[] split = parseLine.get(0).split(",");
+						split[0] = li;
+						StringBuilder builder = new StringBuilder();
+						for (String string : split) {
+							builder.append(string.concat(","));
+						}
+						parseLine.clear();
+						parseLine = parseLine(builder.toString(), DEFAULT_SEPARATOR, DEFAULT_QUOTE);		
+					}
+					
+					String id = parseLine.get(0);
+					String nomeRestaurante = parseLine.get(1);
+					String cidade = parseLine.get(2);
+					double longitude = Double.parseDouble(parseLine.get(3));
+					double latitude = Double.parseDouble(parseLine.get(4));
+					String descricao = parseLine.get(5).replaceAll(";", "");
+
+					estabelecimentos
+							.add(new Estabelecimento(id, nomeRestaurante, cidade, longitude, latitude, descricao));
+			});
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -127,18 +151,17 @@ public class Carga {
 			allLines.stream().skip(1).forEach(x -> {
 
 				List<String> parseLine = parseLine(x, DEFAULT_SEPARATOR, DEFAULT_QUOTE);
-				
-				String id = parseLine.get(0);
-				String descricao = parseLine.get(1);
+
+				String id = parseLine.get(1);
+				String descricao = parseLine.get(0);
 				String restauranteId = parseLine.get(2);
 				String restaurante = parseLine.get(3);
 				String classificacao = parseLine.get(4);
 				BigDecimal precoUnitario = new BigDecimal(parseLine.get(5));
 				String cidade = parseLine.get(6);
-				
+
 				produtos.add(
 						new Produto(id, descricao, restauranteId, restaurante, classificacao, precoUnitario, cidade));
-
 			});
 
 		} catch (IOException e) {
@@ -232,6 +255,40 @@ public class Carga {
 		result.add(curVal.toString());
 
 		return result;
+	}
+
+
+
+	public Path getCaminho() {
+		return caminho;
+	}
+
+	public List<String> getAllLines() {
+		return allLines;
+	}
+
+	public List<Cliente> getClientes() {
+		return clientes;
+	}
+
+	public List<MotoBoy> getMotoboy() {
+		return motoboy;
+	}
+
+	public List<Estabelecimento> getEstabelecimentos() {
+		return estabelecimentos;
+	}
+
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public static char getDefaultSeparator() {
+		return DEFAULT_SEPARATOR;
+	}
+
+	public static char getDefaultQuote() {
+		return DEFAULT_QUOTE;
 	}
 
 }

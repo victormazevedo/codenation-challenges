@@ -2,12 +2,27 @@ package br.com.movile.produto.model;
 
 import java.math.BigDecimal;
 
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.util.Assert;
 
-public class Produto {
-
+@Document(collection = "produto")
+public class Produto{
+	
 	public Produto(String id, String descricao, String restauranteId, String restaurante, String classificacao,
 			BigDecimal precoUnitario, String cidade) {
+		
+		
+		Assert.hasText(id, "Id do produto não pode ser vazio");
+		Assert.hasText(descricao, "Favor informar uma descrição !");
+		Assert.hasText(restauranteId, "Id do restaurante não pode ser vazio !");
+		Assert.hasText(restaurante, "Nome não pode ser vazio !");
+		Assert.hasText(classificacao, "A classificação do produto não pode ser vazia !");
+		Assert.isTrue(BigDecimal.ZERO.compareTo(precoUnitario) < 0, "Preços não podem ser menor que zero !");
+		Assert.hasText(cidade, "A cidade não podfe ser vazia !");
+		
+		
 		this.id = id;
 		this.descricao = descricao;
 		this.restauranteId = restauranteId;
@@ -19,6 +34,7 @@ public class Produto {
 	
 	
 	@Id
+	@UniqueElements
 	private String id;
 	private String descricao;
 	private String restauranteId;
@@ -38,58 +54,27 @@ public class Produto {
 		return id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
 	public String getDescricao() {
 		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
 	}
 
 	public String getRestauranteId() {
 		return restauranteId;
 	}
 
-	public void setRestauranteId(String restauranteId) {
-		this.restauranteId = restauranteId;
-	}
-
 	public String getRestaurante() {
 		return restaurante;
-	}
-
-	public void setRestaurante(String restaurante) {
-		this.restaurante = restaurante;
 	}
 
 	public String getClassificacao() {
 		return classificacao;
 	}
 
-	public void setClassificacao(String classificacao) {
-		this.classificacao = classificacao;
-	}
-
 	public BigDecimal getPrecoUnitario() {
 		return precoUnitario;
-	}
-
-	public void setPrecoUnitario(BigDecimal precoUnitario) {
-		this.precoUnitario = precoUnitario;
 	}
 
 	public String getCidade() {
 		return cidade;
 	}
-
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-	
-	
-	
 }
