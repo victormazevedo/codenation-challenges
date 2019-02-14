@@ -8,8 +8,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import br.com.movile.cliente.model.Cliente;
 import br.com.movile.estabelecimento.model.Estabelecimento;
@@ -17,37 +15,22 @@ import br.com.movile.motoboy.model.MotoBoy;
 import br.com.movile.produto.model.Produto;
 
 public class Carga {
-	
+
 	public static void main(String[] args) {
 		Carga carga = new Carga();
-		
-		carga.cliente();
-		carga.motoboy();
-		carga.estabelecimentoPorMunicipio();
-		carga.produtosPorEstabelecimento();
-
-		Set<String> collect = carga.produtos.stream().map(x -> x.getId()).collect(Collectors.toSet());
-		System.out.println(collect.size());
-		Set<Long> collect2 = carga.motoboy.stream().map(x -> x.getId()).collect(Collectors.toSet());
-		System.out.println(collect2.size());
-		Set<String> collect3 = carga.estabelecimentos.stream().map(x -> x.getId()).collect(Collectors.toSet());
-		System.out.println(collect3.size());
-		Set<Long> collect4 = carga.clientes.stream().map(x -> x.getId()).collect(Collectors.toSet());
-		System.out.println(collect4.size());
-		
+		carga.cargaGeral();
 	}
-	
+
 	Path caminho = null;
 	List<String> allLines;
 	List<Cliente> clientes;
 	List<MotoBoy> motoboy;
 	List<Estabelecimento> estabelecimentos;
-	List<Produto> produtos;	
+	List<Produto> produtos;
 
 	private static final char DEFAULT_SEPARATOR = ',';
 	private static final char DEFAULT_QUOTE = '"';
 
-	
 	public void cliente() {
 		caminho = Paths.get(System.getProperty("user.home") + "\\codenation\\mapfood\\clientes.csv");
 
@@ -108,30 +91,36 @@ public class Carga {
 			allLines.stream().skip(1).forEach(x -> {
 				List<String> parseLine = parseLine(x, DEFAULT_SEPARATOR, DEFAULT_QUOTE);
 
-				
-					if(parseLine.size() ==1) {
-						String li = "\"" .concat(parseLine.get(0)).split(",")[0].concat("\"");
-						String[] split = parseLine.get(0).split(",");
-						split[0] = li;
-						StringBuilder builder = new StringBuilder();
-						for (String string : split) {
-							builder.append(string.concat(","));
-						}
-						parseLine.clear();
-						parseLine = parseLine(builder.toString(), DEFAULT_SEPARATOR, DEFAULT_QUOTE);		
+				if (parseLine.size() == 1) {
+					String li = "\"".concat(parseLine.get(0)).split(",")[0].concat("\"");
+					String[] split = parseLine.get(0).split(",");
+					split[0] = li;
+					StringBuilder builder = new StringBuilder();
+					for (String string : split) {
+						builder.append(string.concat(","));
 					}
-					
-					String id = parseLine.get(0);
-					String nomeRestaurante = parseLine.get(1);
-					String cidade = parseLine.get(2);
-					double longitude = Double.parseDouble(parseLine.get(3));
-					double latitude = Double.parseDouble(parseLine.get(4));
-					String descricao = parseLine.get(5).replaceAll(";", "");
+					parseLine.clear();
+					parseLine = parseLine(builder.toString(), DEFAULT_SEPARATOR, DEFAULT_QUOTE);
+				}
 
-					estabelecimentos
-							.add(new Estabelecimento(id, nomeRestaurante, cidade, longitude, latitude, descricao));
+				String id = parseLine.get(0);
+				String nomeRestaurante = parseLine.get(1);
+				String cidade = parseLine.get(2);
+				double longitude = Double.parseDouble(parseLine.get(3));
+				double latitude = Double.parseDouble(parseLine.get(4));
+				String descricao = parseLine.get(5).replaceAll(";", "");
+
+				estabelecimentos.add(new Estabelecimento(id, nomeRestaurante, cidade, longitude, latitude, descricao));
 			});
 
+			produtosPorEstabelecimento();
+			produtos.stream().forEach(x -> {
+				estabelecimentos.stream().forEach(j -> {
+					if(x.getRestauranteId().equals(j.getId()))
+						j.getProdutos().add(x);
+				});
+			});	
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (NumberFormatException e) {
@@ -257,8 +246,12 @@ public class Carga {
 		return result;
 	}
 
-
-
+	public void cargaGeral() {
+		cliente();
+		motoboy();
+		estabelecimentoPorMunicipio();
+	}
+	
 	public Path getCaminho() {
 		return caminho;
 	}

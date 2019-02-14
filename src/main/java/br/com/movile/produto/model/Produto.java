@@ -2,7 +2,6 @@ package br.com.movile.produto.model;
 
 import java.math.BigDecimal;
 
-import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.util.Assert;
@@ -34,7 +33,6 @@ public class Produto{
 	
 	
 	@Id
-	@UniqueElements
 	private String id;
 	private String descricao;
 	private String restauranteId;

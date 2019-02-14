@@ -1,7 +1,12 @@
 package br.com.movile.estabelecimento.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import br.com.movile.produto.model.Produto;
 
 @Document(collection = "estabelecimento")
 public class Estabelecimento {
@@ -14,6 +19,7 @@ public class Estabelecimento {
 		this.longitude = longitude;
 		this.latitude = latitude;
 		this.descricao = descricao;
+		this.produtos = new ArrayList<>();
 	}
 	
 	@Id
@@ -23,6 +29,7 @@ public class Estabelecimento {
 	private double longitude;
 	private double latitude;
 	private String descricao;
+	private List<Produto> produtos;
 	
 	@Override
 	public String toString() {
@@ -52,7 +59,10 @@ public class Estabelecimento {
 
 	public String getDescricao() {
 		return descricao;
+	}
+
+	public List<Produto> getProdutos() {
+		return produtos;
 	}	
-	
 	
 }

@@ -10,4 +10,3 @@ public class MapfoodApplication {
 		SpringApplication.run(MapfoodApplication.class, args);
 	}	
 }
-
