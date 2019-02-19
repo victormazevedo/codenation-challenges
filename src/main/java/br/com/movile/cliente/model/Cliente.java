@@ -9,8 +9,6 @@ import lombok.Getter;
 @Document(collection = "cliente")
 @Getter
 public class Cliente {
-
-	
 	
 	public Cliente(long id, double longitude, double latitude) {
 		this.id = id;

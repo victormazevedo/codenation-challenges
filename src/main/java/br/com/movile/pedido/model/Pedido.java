@@ -16,10 +16,14 @@ public class Pedido {
 	private long id;
 	private List<Produto> produtos;
 	private double valor;
+	private double latitude;
+	private double longitude;
 	
-	public Pedido(long id, List<Produto> produtos, double valor) {
+	public Pedido(long id, List<Produto> produtos, double valor, double latitude, double longitude) {
 		this.id = id;
 		this.produtos = produtos;
 		this.valor = valor;
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 }

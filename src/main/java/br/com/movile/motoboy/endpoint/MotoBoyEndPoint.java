@@ -19,7 +19,7 @@ public class MotoBoyEndPoint {
 	}
 	
 	@GetMapping
-	public ResponseEntity<?> listAll(){		
+	public ResponseEntity<?> listAll(){
 		return new ResponseEntity<>(motoBoyDAO.findAll(), HttpStatus.OK);
 	}
 	

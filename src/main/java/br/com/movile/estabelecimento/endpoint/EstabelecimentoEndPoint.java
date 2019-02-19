@@ -30,12 +30,13 @@ public class EstabelecimentoEndPoint {
 	}
 
 	@GetMapping(path = "/{id}/produtos")
+
 	public ResponseEntity<?> findProdutosByIdEstabelecimento(@PathVariable("id") String id) {
 		Optional<Estabelecimento> estabelecimento = estabelecimentoDAO.findById(id);
 		if (!estabelecimento.isPresent()) {
-			return new ResponseEntity<>("Não foi encontrado nenhum restaurante !", HttpStatus.OK);
+			return new ResponseEntity<>("Não foi encontrado nenhum restaurante !", HttpStatus.NO_CONTENT);
 		} else if (estabelecimento.get().getProdutos().isEmpty()) {
-			return new ResponseEntity<>("Nenhum item foi encontrado !", HttpStatus.OK);
+			return new ResponseEntity<>("Nenhum item foi encontrado !", HttpStatus.NO_CONTENT);
 		} else {
 			return new ResponseEntity<>(estabelecimento.get().getProdutos(), HttpStatus.OK);
 		}

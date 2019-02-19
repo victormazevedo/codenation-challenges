@@ -19,7 +19,7 @@ public class ClienteEndPoint {
 	}
 	
 	@GetMapping
-	public ResponseEntity<?> listAll(){		
+	public ResponseEntity<?> listAll(){
 		return new ResponseEntity<>(clienteDAO.findAll(), HttpStatus.OK);
 	}
 }
