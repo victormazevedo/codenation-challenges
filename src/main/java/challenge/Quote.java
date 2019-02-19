@@ -1,29 +1,49 @@
 package challenge;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "SCRIPTS")
 public class Quote {
 
-	public Integer getId() {
-		return null;
-	}
+    @Id
+    private Integer id;
+    private String actor;
+    private String detail;
 
-	public void setId(Integer id) {
+    public Quote(Integer id, String actor, String detail) {
+        this.id = id;
+        this.actor = actor;
+        this.detail = detail;
+    }
 
-	}
+    public Quote() {
+    }
 
-	public String getActor() {
-		return null;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	public void setActor(String actor) {
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	}
+    public String getActor() {
+        return this.actor;
+    }
 
-	public String getQuote() {
-		return null;
-	}
+    public void setActor(String actor) {
+        this.actor = actor;
+    }
 
-	public void setQuote(String quote) {
+    public String getQuote() {
+        return this.detail;
+    }
 
-	}
+    public void setQuote(String quote) {
+        this.detail = quote;
+    }
 
 }
