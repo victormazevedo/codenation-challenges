@@ -1,0 +1,24 @@
+version: '3'
+networks:
+  producao-local:
+    driver: bridge
+services:
+    mapfood:
+      build:
+        dockerfile: ./dockerfiles/tomcat.dockerfile
+        context: .
+      image: tomcat
+      container_name: mapfood
+      ports:
+        - "8080:8080"
+      networks:
+        - producao-local
+      volumes: 
+        - ./deploy:/usr/local/tomcat/webapps
+
+    mongodb:
+      image: mongo
+      networks:
+        - producao-local
+      ports:
+      - 27017:27017
