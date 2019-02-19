@@ -37,6 +37,7 @@ public class Carga {
 		try {
 			allLines = Files.readAllLines(caminho, StandardCharsets.UTF_8);
 			clientes = new ArrayList<>();
+			
 			allLines.stream().skip(1).forEach(x -> {
 
 				List<String> parseLine = parseLine(x, DEFAULT_SEPARATOR, DEFAULT_QUOTE);

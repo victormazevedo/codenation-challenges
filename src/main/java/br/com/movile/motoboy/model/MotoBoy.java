@@ -3,7 +3,10 @@ package br.com.movile.motoboy.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.Getter;
+
 @Document(collection = "motoboy")
+@Getter
 public class MotoBoy {
 
 	public MotoBoy(long id, double longitude, double latitude) {
@@ -21,19 +24,4 @@ public class MotoBoy {
 	public String toString() {
 		return "O MotoBoy possui o id : " + id + ", com longitude : " + longitude + ", e latitude : " + latitude;
 	}
-
-	public long getId() {
-		return id;
-	}
-
-	public double getLongitude() {
-		return longitude;
-	}
-
-	public double getLatitude() {
-		return latitude;
-	}
-	
-	
-	
 }

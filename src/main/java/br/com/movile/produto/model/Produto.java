@@ -2,11 +2,13 @@ package br.com.movile.produto.model;
 
 import java.math.BigDecimal;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.util.Assert;
 
+import lombok.Getter;
+
 @Document(collection = "produto")
+@Getter
 public class Produto{
 	
 	public Produto(String id, String descricao, String restauranteId, String restaurante, String classificacao,
@@ -32,7 +34,6 @@ public class Produto{
 	}
 	
 	
-	@Id
 	private String id;
 	private String descricao;
 	private String restauranteId;
@@ -46,33 +47,5 @@ public class Produto{
 		return "Produto [id=" + id + ", descricao=" + descricao + ", restauranteId=" + restauranteId + ", restaurante="
 				+ restaurante + ", classificacao=" + classificacao + ", precoUnitario=" + precoUnitario + ", cidade="
 				+ cidade + "]";
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public String getRestauranteId() {
-		return restauranteId;
-	}
-
-	public String getRestaurante() {
-		return restaurante;
-	}
-
-	public String getClassificacao() {
-		return classificacao;
-	}
-
-	public BigDecimal getPrecoUnitario() {
-		return precoUnitario;
-	}
-
-	public String getCidade() {
-		return cidade;
 	}
 }

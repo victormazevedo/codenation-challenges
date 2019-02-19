@@ -7,8 +7,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import br.com.movile.produto.model.Produto;
+import lombok.Getter;
 
 @Document(collection = "estabelecimento")
+@Getter
 public class Estabelecimento {
 	
 	public Estabelecimento(String id, String nomeRestaurante, String cidade, double longitude, double latitude,
@@ -36,33 +38,4 @@ public class Estabelecimento {
 		return "Estabelecimento [id=" + id + ", nomeRestaurante=" + nomeRestaurante + ", cidade=" + cidade
 				+ ", longitude=" + longitude + ", latitude=" + latitude + ", descricao=" + descricao + "]";
 	}
-
-	public String getId() {
-		return id;
-	}
-
-	public String getNomeRestaurante() {
-		return nomeRestaurante;
-	}
-
-	public String getCidade() {
-		return cidade;
-	}
-
-	public double getLongitude() {
-		return longitude;
-	}
-
-	public double getLatitude() {
-		return latitude;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public List<Produto> getProdutos() {
-		return produtos;
-	}	
-	
 }
