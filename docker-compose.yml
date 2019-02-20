@@ -7,12 +7,14 @@ services:
       build: 
         dockerfile: ./mongo.dockerfile
         context: .
-      image: mongo
+      image: italopb/mongo
       container_name: mongodb
       networks:
         - producao-local
       ports:
         - 27017:27017
+      
+
     
     mapfood:
         build:
