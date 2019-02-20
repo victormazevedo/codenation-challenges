@@ -4,6 +4,9 @@ networks:
     driver: bridge
 services:
     mongodb:
+      build: 
+        dockerfile: ./mongo.dockerfile
+        context: .
       image: mongo
       container_name: mongodb
       networks:
@@ -13,13 +16,13 @@ services:
     
     mapfood:
         build:
-          dockerfile: ./target/tomcat.dockerfile
+          dockerfile: ./tomcat.dockerfile
           context: .
-        image: tomcat:latest
+        image: italopb/tomcat
         container_name: mapfood
         networks:
           - producao-local
         ports:
           - "8080:8080"
         depends_on: 
-          - "mongodb"     
+          - "mongodb"
