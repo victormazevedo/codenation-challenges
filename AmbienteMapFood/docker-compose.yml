@@ -14,7 +14,7 @@ services:
       networks:
         - producao-local
       volumes: 
-        - ./target/mapfood-0.0.1-SNAPSHOT.war:/usr/local/tomcat/webapps
+        - ../target/mapfood-0.0.1-SNAPSHOT.war:/usr/local/tomcat/webapps
 
     mongodb:
       image: mongo
