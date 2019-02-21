@@ -10,7 +10,7 @@ execute o seguinte comando na pasta raíz do projeto:
 ```aidl
 docker-compose up
 ```
-Este comando fará com que o MongoDB e a Aplicação MapFood sejam rodaos. Em seguida acesse:
+Este comando fará com que o MongoDB e a Aplicação MapFood sejam rodados. Em seguida acesse:
 
 [Carga](http://localhost:8080/mapfood/carga)
 
