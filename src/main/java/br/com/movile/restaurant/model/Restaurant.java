@@ -1,6 +1,7 @@
 package br.com.movile.restaurant.model;
 
 import br.com.movile.item.model.Item;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -19,6 +20,8 @@ public class Restaurant {
 	private double longitude;
 	private double latitude;
 	private String dishDescription;
+
+	@JsonIgnore
 	private List<Item> items;
 
 	public Restaurant(String id, String name, String addressCity, double longitude, double latitude, String dishDescription) {
@@ -29,6 +32,8 @@ public class Restaurant {
 		this.latitude = latitude;
 		this.dishDescription = dishDescription;
 	}
+
+	public Restaurant() {};
 
 	@Override
 	public String toString() {
