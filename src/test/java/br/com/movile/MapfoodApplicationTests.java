@@ -1,16 +1,13 @@
 package br.com.movile;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-
-
 @SpringBootTest
-public class MapfoodApplicationTests {
+class MapfoodApplicationTests {
 
 	@Test
-	public void contextLoads() {
+	void contextLoads() {
 	}
 
 }
