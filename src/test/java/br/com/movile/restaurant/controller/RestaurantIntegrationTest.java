@@ -1,51 +1,59 @@
 package br.com.movile.restaurant.controller;
 
+
 import br.com.movile.restaurant.model.Restaurant;
 import br.com.movile.restaurant.repository.RestaurantRepository;
-import org.junit.Test;
+
+
+import io.restassured.RestAssured;
+import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.BDDMockito.given;
-import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.http.HttpStatus;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 
-@RunWith(SpringRunner.class)
+import static io.restassured.RestAssured.given;
+
+
+
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class RestaurantIntegrationTest {
 
-    @MockBean
+    @Autowired
     private RestaurantRepository restaurantRepository;
 
-    @Autowired
-    private TestRestTemplate restTemplate;
+    @LocalServerPort
+    int port;
 
-     @Test
-    public void getRestaurants()  {
+    @BeforeEach
+    public void setUp() {
+        RestAssured.port = port;
+    }
 
-         //Response
-         List<Restaurant> listOfRetaurants = new ArrayList<>();
-         listOfRetaurants.add(new Restaurant("admin", "McDonalds", "rua 123" , 10.35 , 11,"Muito bom lanche"));
 
-         //given
-         given(restaurantRepository.findAll()).willReturn(listOfRetaurants);
+    @Test
+    public void getRestaurants(@Autowired MongoTemplate mongoTemplate)  {
+        restaurantRepository.save(new Restaurant( "1", "McDonalds", "Rua 123", 50.00, 50.00, "Lanches"));
 
-         //execute
-         ResponseEntity<Restaurant[]> listOfallRestaurantsResponse = restTemplate.getForEntity("/restaurants", Restaurant[].class);
-
-         //assert
-        assertAll(
-                () -> assertEquals(HttpStatus.OK, listOfallRestaurantsResponse.getStatusCode()),
-                () -> assertEquals(Arrays.asList(listOfallRestaurantsResponse.getBody()).size() , 1)
-            );
+        given()
+                .accept("application/json")
+                .when()
+                .get("mapfood/restaurant")
+                .then()
+                .statusCode(HttpStatus.OK.value())
+                .body("id", Matchers.equalTo("1"))
+                .body("name", Matchers.equalTo("McDonalds"))
+                .body("addressCity", Matchers.equalTo("Rua 123"))
+                .body("longitude", Matchers.equalTo(50.f))
+                .body("latitude", Matchers.equalTo( 50.f))
+                .body("dishDescription", Matchers.equalTo( "Lanches"));
     }
 
 }

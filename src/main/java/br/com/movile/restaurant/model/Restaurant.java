@@ -21,8 +21,6 @@ public class Restaurant {
 	private double latitude;
 	private String dishDescription;
 
-	@JsonIgnore
-	private List<Item> items;
 
 	public Restaurant(String id, String name, String addressCity, double longitude, double latitude, String dishDescription) {
 		this.id = id;
