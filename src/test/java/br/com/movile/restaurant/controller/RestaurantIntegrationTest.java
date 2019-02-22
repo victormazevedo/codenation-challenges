@@ -45,7 +45,7 @@ public class RestaurantIntegrationTest {
         given()
                 .accept("application/json")
                 .when()
-                .get("mapfood/restaurant")
+                .get("mapfood/restaurants")
                 .then()
                 .statusCode(HttpStatus.OK.value())
                 .body("id", Matchers.equalTo("1"))
