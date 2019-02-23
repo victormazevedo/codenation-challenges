@@ -8,6 +8,7 @@ import io.restassured.RestAssured;
 import io.restassured.mapper.TypeRef;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,15 +30,16 @@ class RestaurantIntegrationTest {
     private int port;
 
     @BeforeEach
-    void setUp() {
+    void setUp(@Autowired final RestaurantRepository restaurantRepository) {
         RestAssured.port = port;
+        restaurantRepository.save(new Restaurant("1", "McDonalds", "Rua 123", 50.00, 50.00, "Lanches"));
     }
 
-
     @Test
-    void getRestaurants(@Autowired final RestaurantRepository restaurantRepository)  {
-        restaurantRepository.save(new Restaurant( "1", "McDonalds", "Rua 123", 50.00, 50.00, "Lanches"));
+    void shouldFindAllRestaurants ()  {
+        //GIVEN setUp
 
+        //WHEN
         List<Restaurant> restaurants = given()
                 .accept("application/json")
                 .when()
@@ -54,6 +56,29 @@ class RestaurantIntegrationTest {
                 () -> Assertions.assertEquals(50.00d, restaurants.get(0).getLongitude()),
                 () -> Assertions.assertEquals(50.00d, restaurants.get(0).getLatitude()),
                 () -> Assertions.assertEquals("Lanches", restaurants.get(0).getDishDescription())
+        );
+    }
+    @Test
+    void shouldFindOneRestaurant ()  {
+        //GIVEN setUp
+
+        //WHEN
+        Restaurant restaurant = given()
+                .accept("application/json")
+                .when()
+                .get("mapfood/restaurants/1")
+                .then()
+                .extract()
+                .as(Restaurant.class);
+
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals("1", restaurant.getId()),
+                () -> Assertions.assertEquals("McDonalds", restaurant.getName()),
+                () -> Assertions.assertEquals("Rua 123", restaurant.getAddressCity()),
+                () -> Assertions.assertEquals(50.00d, restaurant.getLongitude()),
+                () -> Assertions.assertEquals(50.00d, restaurant.getLatitude()),
+                () -> Assertions.assertEquals("Lanches", restaurant.getDishDescription())
         );
     }
 
