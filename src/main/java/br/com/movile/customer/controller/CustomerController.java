@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,32 +14,34 @@ import java.util.Optional;
 @RequestMapping("customers")
 public class CustomerController {
 
+
+    private final CustomerService customerService;
+
     @Autowired
-    private CustomerService customerService;
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
 
     @GetMapping
-    public List<Customer> getListCustomers(){
-        return customerService.getListCustomers();
+    public List<Customer> findAll(){
+        return customerService.findAll();
     }
 
     @GetMapping("{id}")
-    public Optional<Customer> getCustomer(@PathVariable("id") String id) throws Exception {
-        return customerService.getCustomer(id);
+    public Customer findById(@PathVariable("id") String id) throws Exception {
+        return customerService.findById(id);
     }
 
-    //TODO: Exception de Customer jah existente
-    //TODO: Verificar cliente existente sem contar o ID.
-    //TODO: Ao criar Cliente id automatico.
     @PostMapping()
-    public ResponseEntity<Customer> insertCustomer(@RequestBody Customer customer) throws Exception {
+    public ResponseEntity<Customer> insert(@RequestBody Customer customer){
+        customerService.inset(customer);
+        return ResponseEntity.status(201).build();
+    }
 
-        if(customerService.getCustomer(customer.getId()).isPresent()){
-
-            return ResponseEntity.badRequest().build();
-        }else{
-            Customer newCustomer = customerService.insetCustomer(customer);
-            return ResponseEntity.ok(newCustomer);
-        }
+    @PutMapping()
+    public  ResponseEntity<Customer> update(@RequestBody Customer customer) {
+        customerService.update(customer);
+        return ResponseEntity.status(202).build();
     }
 
 }
