@@ -1,12 +1,11 @@
 package br.com.movile.restaurant.controller;
 
+import br.com.movile.exception.model.ElementAlreadyExistException;
 import br.com.movile.restaurant.model.Restaurant;
 import br.com.movile.restaurant.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,15 +20,26 @@ public class RestaurantController {
         this.restaurantService = restaurantService;
     }
 
-
+    //Retrieval
     @GetMapping
     public List<Restaurant> findAll() {
         return restaurantService.getRestaurants();
     }
-
+    //Retrieval
     @GetMapping("/{id}")
     public Restaurant findById(@PathVariable String id) {
         return restaurantService.findById(id);
     }
+
+    //Create
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void insert(@RequestBody Restaurant restaurant ) throws ElementAlreadyExistException {
+            restaurantService.insert(restaurant);
+    }
+
+    //Update
+
+    //Delete
 
 }
