@@ -1,14 +1,13 @@
 package br.com.movile.item.model;
 
-import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-@Getter
 @Document(collection = "item")
-public class Item {
+public class Item implements Serializable {
 
     @Id
     private String id;
@@ -18,6 +17,34 @@ public class Item {
     private String classification;
     private BigDecimal unitPrice;
     private String addressCity;
+
+    public String getId() {
+        return id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getRestaurant() {
+        return restaurant;
+    }
+
+    public String getRestaurantId() {
+        return restaurantId;
+    }
+
+    public String getClassification() {
+        return classification;
+    }
+
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
+    }
+
+    public String getAddressCity() {
+        return addressCity;
+    }
 
     public Item(String id, String description, String restaurant, String restaurantId,
                 String classification, BigDecimal unitPrice, String addressCity) {
