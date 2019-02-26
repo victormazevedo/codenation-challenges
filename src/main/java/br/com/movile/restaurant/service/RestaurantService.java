@@ -40,4 +40,11 @@ public class RestaurantService {
 
         restaurantRepository.save(restaurant);
     }
+
+    public void deleteById(String id) {
+        restaurantRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Restaurante não encontrado para delete"));
+
+        restaurantRepository.deleteById(id);
+    }
 }

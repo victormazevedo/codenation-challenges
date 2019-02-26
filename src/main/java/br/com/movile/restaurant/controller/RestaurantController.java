@@ -25,20 +25,20 @@ public class RestaurantController {
     public List<Restaurant> findAll() {
         return restaurantService.getRestaurants();
     }
-    //Retrieval
+
     @GetMapping("/{id}")
     public Restaurant findById(@PathVariable String id) {
         return restaurantService.findById(id);
     }
 
-    //Create
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void insert(@RequestBody Restaurant restaurant ) throws ElementAlreadyExistException {
             restaurantService.insert(restaurant);
     }
 
-    //Update
+
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void save (@PathVariable("id") String id , @RequestBody Restaurant restaurant ){
@@ -46,7 +46,11 @@ public class RestaurantController {
         restaurantService.save(restaurant);
     }
 
-
     //Delete
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void deleteById (@PathVariable("id") String id){
+        restaurantService.deleteById(id);
+    }
 
 }

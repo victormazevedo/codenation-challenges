@@ -17,7 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
-import java.util.NoSuchElementException;
+
 
 import static org.hamcrest.CoreMatchers.*;
 
@@ -37,6 +37,7 @@ class RestaurantIntegrationTest {
     @BeforeEach
     void setUp() {
         RestAssured.port = port;
+        restaurantRepository.deleteAll();
         restaurantRepository.save(new Restaurant("1", "McDonalds", "Rua 123", 50.00, 50.00, "Lanches"));
     }
 
@@ -144,4 +145,23 @@ class RestaurantIntegrationTest {
 
     }
 
+    @Test
+    void shouldDeleteRestaurant (){
+        given()
+                .accept("application/json")
+                .when()
+                .delete("mapfood/restaurants/1")
+                .then()
+                .statusCode(HttpStatus.ACCEPTED.value());
+    }
+    @Test
+    void shouldNotDeleteRestaurantThatNotExist (){
+        given()
+                .accept("application/json")
+                .when()
+                .delete("mapfood/restaurants/2")
+                .then()
+                .statusCode(HttpStatus.BAD_REQUEST.value());
+
+    }
 }
