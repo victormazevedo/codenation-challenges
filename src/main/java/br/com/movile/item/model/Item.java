@@ -1,13 +1,12 @@
 package br.com.movile.item.model;
 
+import java.math.BigDecimal;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-
 @Document(collection = "item")
-public class Item implements Serializable {
+public class Item {
 
     @Id
     private String id;
