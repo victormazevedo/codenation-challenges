@@ -59,7 +59,7 @@ public class ItemController {
     }
     
     @DeleteMapping
-    public  ResponseEntity<?> delete(@RequestBody Item item) {
+    public  ResponseEntity<Item> delete(@RequestBody Item item) {
         itemService.delete(item);
         return ResponseEntity.ok().build();
     }
