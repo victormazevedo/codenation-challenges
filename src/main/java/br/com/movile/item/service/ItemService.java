@@ -51,5 +51,11 @@ public class ItemService {
         return itemRepository.save(item);
     }
 
+    public void delete(Item item){
+    	if(!itemRepository.existsById(item.getId()))
+    		throw new NoSuchElementException("Item não encontrado");
+        itemRepository.delete(item);
+    }
+
 
 }

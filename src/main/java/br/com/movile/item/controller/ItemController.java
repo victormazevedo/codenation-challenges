@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,16 +46,22 @@ public class ItemController {
     }
 
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Item> insert(@RequestBody Item item){
         itemService.inset(item);
         return ResponseEntity.status(201).build();
     }
 
-    @PutMapping()
-    public  ResponseEntity<Item> update(@RequestBody Item customer) {
-        itemService.update(customer);
+    @PutMapping
+    public  ResponseEntity<Item> update(@RequestBody Item item) {
+        itemService.update(item);
         return ResponseEntity.status(202).build();
+    }
+    
+    @DeleteMapping
+    public  ResponseEntity<?> delete(@RequestBody Item item) {
+        itemService.delete(item);
+        return ResponseEntity.ok().build();
     }
 
 }
