@@ -33,4 +33,11 @@ public class RestaurantService {
             restaurantRepository.insert(restaurant);
         }
     }
+
+    public void save(Restaurant restaurant) {
+        restaurantRepository.findById(restaurant.getId())
+                .orElseThrow(() -> new NoSuchElementException("Restaurante não encontrado para update"));
+
+        restaurantRepository.save(restaurant);
+    }
 }

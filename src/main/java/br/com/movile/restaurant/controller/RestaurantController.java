@@ -39,6 +39,13 @@ public class RestaurantController {
     }
 
     //Update
+    @PutMapping("{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void save (@PathVariable("id") String id , @RequestBody Restaurant restaurant ){
+        restaurant.setId(id);
+        restaurantService.save(restaurant);
+    }
+
 
     //Delete
 

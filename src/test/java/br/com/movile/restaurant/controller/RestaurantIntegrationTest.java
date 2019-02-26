@@ -17,6 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+
 import static org.hamcrest.CoreMatchers.*;
 
 import static io.restassured.RestAssured.given;
@@ -30,17 +32,17 @@ class RestaurantIntegrationTest {
     @LocalServerPort
     private int port;
 
+    @Autowired
+    private RestaurantRepository restaurantRepository;
     @BeforeEach
-    void setUp(@Autowired final RestaurantRepository restaurantRepository) {
+    void setUp() {
         RestAssured.port = port;
         restaurantRepository.save(new Restaurant("1", "McDonalds", "Rua 123", 50.00, 50.00, "Lanches"));
     }
 
     @Test
     void shouldFindAllRestaurants ()  {
-        //GIVEN setUp
 
-        //WHEN
         List<Restaurant> restaurants = given()
                 .accept("application/json")
                 .when()
@@ -48,7 +50,7 @@ class RestaurantIntegrationTest {
                 .then()
                 .extract()
                 .as(new TypeRef<List<Restaurant>>() {});
-        //ASSERT
+
         Assertions.assertEquals(1, restaurants.size());
         Assertions.assertAll(
                 () -> Assertions.assertEquals("1", restaurants.get(0).getId()),
@@ -62,8 +64,7 @@ class RestaurantIntegrationTest {
 
     @Test
     void shouldFindOneRestaurant ()  {
-        //GIVEN setUp
-        //WHEN
+
         Restaurant restaurant = given()
                 .accept("application/json")
                 .when()
@@ -71,7 +72,7 @@ class RestaurantIntegrationTest {
                 .then()
                 .extract()
                 .as(Restaurant.class);
-        //ASSERT
+
         Assertions.assertAll(
                 () -> Assertions.assertEquals("1", restaurant.getId()),
                 () -> Assertions.assertEquals("McDonalds", restaurant.getName()),
@@ -84,8 +85,6 @@ class RestaurantIntegrationTest {
 
     @Test
     void shouldReturnExceptionIfFindOneNotFindRestaurant(){
-        //GIVEN setUp
-        //WHEN
          given()
                 .accept("application/json")
                 .when()
@@ -98,14 +97,51 @@ class RestaurantIntegrationTest {
     @Test
     void shouldInsertNewRestaurant (){
         given()
-                .accept("application/json")
+                .contentType("application/json")
                 .body(new Restaurant("3", "BK", "Rua", 50.00, 50.00, "Sanduba"))
                 .when()
                 .post("mapfood/restaurants")
                 .then()
                 .statusCode(HttpStatus.CREATED.value());
     }
+    @Test
+    void shouldNotInsertThatAlreadyExists (){
+        given()
+                .contentType("application/json")
+                .body(new Restaurant("1", "BK", "Rua", 50.00, 50.00, "Sanduba"))
+                .when()
+                .post("mapfood/restaurants")
+                .then()
+                .statusCode(HttpStatus.BAD_REQUEST.value())
+                .body("message", equalTo("Restaurante já existe na base de dados"));
+    }
 
 
+    @Test
+    void shouldUpdateRestaurant (){
+        Restaurant restaurantToBeUpdated = new Restaurant("1", "BK", "Rua", 50.00, 50.00, "Sanduba");
+        given()
+                .contentType("application/json")
+                .body(restaurantToBeUpdated)
+                .when()
+                .put("mapfood/restaurants/1")
+                .then()
+                .statusCode(HttpStatus.ACCEPTED.value());
+
+        Assertions.assertEquals(restaurantToBeUpdated.toString(), restaurantRepository.findById("1").get().toString() );
+    }
+    @Test
+    void shouldNotUpdateRestaurantThatNotExists (){
+        Restaurant restaurantNotToBeUpdated = new Restaurant("2", "BK", "Rua", 50.00, 50.00, "Sanduba");
+        given()
+                .contentType("application/json")
+                .body(restaurantNotToBeUpdated)
+                .when()
+                .put("mapfood/restaurants/2")
+                .then()
+                .statusCode(HttpStatus.BAD_REQUEST.value())
+                .body("message", equalTo("Restaurante não encontrado para update"));
+
+    }
 
 }
