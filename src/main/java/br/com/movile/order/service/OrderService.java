@@ -6,6 +6,7 @@ import br.com.movile.item.repository.ItemRepository;
 import br.com.movile.order.model.Order;
 import br.com.movile.order.repository.OrderRepository;
 import br.com.movile.restaurant.repository.RestaurantRepository;
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,5 +52,13 @@ public class OrderService {
             throw new NoSuchElementException("Restaurante inválido e/ou não encontrado!");
         }
         return orderRepository.save(order);
+    }
+
+    public Order getOrder(ObjectId orderId) {
+        Order order = orderRepository.findById(orderId);
+        if (order == null) {
+            throw new NoSuchElementException("Id do pedido incorreto!");
+        }
+        return order;
     }
 }
