@@ -1,6 +1,7 @@
 package br.com.movile.motoboy.controller;
 
-import br.com.movile.motoboy.model.MotoBoy;
+
+import br.com.movile.motoboy.model.Motoboy;
 import br.com.movile.motoboy.service.MotoboyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,12 +24,12 @@ public class MotoboyController {
     }
 
     @GetMapping("/{id}")
-    public MotoBoy findById (@PathVariable String id){
+    public Motoboy findById (@PathVariable String id){
         return motoboyService.findById(id);
     }
 
     @GetMapping
-    public List<MotoBoy> findAll (){
+    public List<Motoboy> findAll (){
         return motoboyService.findAll();
     }
 

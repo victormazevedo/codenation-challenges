@@ -1,7 +1,8 @@
 package br.com.movile.motoboy.service;
 
-import br.com.movile.motoboy.model.MotoBoy;
-import br.com.movile.motoboy.repository.MotoBoyRepository;
+
+import br.com.movile.motoboy.model.Motoboy;
+
 import br.com.movile.motoboy.repository.MotoboyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,17 +14,17 @@ import java.util.NoSuchElementException;
 public class MotoboyService {
 
 
-    private  final MotoBoyRepository motoboyRepository;
+    private  final MotoboyRepository motoboyRepository;
     @Autowired
-    public MotoboyService(MotoBoyRepository motoboyRepository) {
+    public MotoboyService(MotoboyRepository motoboyRepository) {
         this.motoboyRepository = motoboyRepository;
     }
 
-    public MotoBoy findById(String id) {
+    public Motoboy findById(String id) {
         return motoboyRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Motoboy nao encontrado"));
     }
 
-    public List<MotoBoy> findAll(){
+    public List<Motoboy> findAll(){
         return motoboyRepository.findAll();
     }
 }
