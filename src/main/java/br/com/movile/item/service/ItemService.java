@@ -30,7 +30,7 @@ public class ItemService {
 
 
     public List<Item> findAllLimitPrice(BigDecimal limitPrice){
-    	List<Item> listItemLimitPrice = mongoTemplate.find(Query.query(Criteria.where("unitPrice").lt(limitPrice)), Item.class);
+    	List<Item> listItemLimitPrice = mongoTemplate.find(Query.query(Criteria.where("unitPrice").lte(limitPrice)), Item.class);
         return listItemLimitPrice;
     }
 

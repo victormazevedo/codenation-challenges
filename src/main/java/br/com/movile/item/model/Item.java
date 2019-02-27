@@ -45,6 +45,10 @@ public class Item {
 		return addressCity;
 	}
 
+	public Item() {
+		super();
+	}
+
 	public Item(ItemBuilder builder) {
 		this.id = builder.id;
 		this.description = builder.description;
