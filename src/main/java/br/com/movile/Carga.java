@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.movile.customer.model.Customer;
-import br.com.movile.motoboy.model.Motoboy;
+import br.com.movile.motoboy.model.MotoBoy;
 import br.com.movile.restaurant.model.Restaurant;
 import br.com.movile.item.model.Item;
 
@@ -24,7 +24,7 @@ public class Carga {
 	Path caminho = null;
 	List<String> allLines;
 	List<Customer> clientes;
-	List<Motoboy> motoboy;
+	List<MotoBoy> motoboy;
 	List<Restaurant> estabelecimentos;
 	List<Item> produtos;
 
@@ -68,7 +68,7 @@ public class Carga {
 				double longitude = Double.parseDouble(parseLine.get(1));
 				double latitude = Double.parseDouble(parseLine.get(2));
 
-				motoboy.add(new Motoboy(id, longitude, latitude));
+				motoboy.add(new MotoBoy(id, longitude, latitude));
 			});
 
 		} catch (Exception e1) {
@@ -265,7 +265,7 @@ public class Carga {
 		return clientes;
 	}
 
-	public List<Motoboy> getMotoboy() {
+	public List<MotoBoy> getMotoboy() {
 		return motoboy;
 	}
 
