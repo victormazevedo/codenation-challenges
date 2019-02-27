@@ -1,9 +1,11 @@
 package br.com.movile.motoboy;
 
 
-import br.com.movile.motoboy.repository.MotoBoyRepository;
+import br.com.movile.motoboy.model.Motoboy;
+import br.com.movile.motoboy.repository.MotoboyRepository;
 import br.com.movile.restaurant.model.Restaurant;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -19,11 +21,15 @@ class MotoboyIntegrationTests {
     private int port;
 
     @Autowired
-    private MotoBoyRepository motoBoyRepository;
+    private MotoboyRepository motoBoyRepository;
     @BeforeEach
     void setUp() {
         RestAssured.port = port;
-        restaurantRepository.deleteAll();
-        restaurantRepository.save(new Restaurant("1", "McDonalds", "Rua 123", 50.00, 50.00, "Lanches"));
+        motoBoyRepository.deleteAll();
+        motoBoyRepository.save(new Motoboy("id", 50.00, 50.00));
     }
+
+
+
+
 }

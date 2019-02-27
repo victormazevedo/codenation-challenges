@@ -27,4 +27,20 @@ public class MotoboyService {
     public List<Motoboy> findAll(){
         return motoboyRepository.findAll();
     }
+
+    public void insert(Motoboy motoboy) throws Exception {
+        try{
+            Motoboy checkIfMotoBoyExists =  findById(motoboy.getId());
+            throw new Exception("Tentou inserir motoBoy ja existte");
+
+        }catch (Exception e ){
+            motoboyRepository.insert(motoboy);
+        }
+    }
+
+    public void save(Motoboy motoboy) {
+        Motoboy retrieveMotoboyToBeUpdated = findById(motoboy.getId());
+        motoboyRepository.save(motoboy);
+
+    }
 }

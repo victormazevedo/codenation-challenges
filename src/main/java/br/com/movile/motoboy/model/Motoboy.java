@@ -14,7 +14,15 @@ public class Motoboy {
 	private double longitude;
 	private double latitude;
 
-	public Motoboy(String id, double longitude, double latitude) {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Motoboy(String id, double longitude, double latitude) {
 		this.id = id;
 		this.longitude = longitude;
 		this.latitude = latitude;
