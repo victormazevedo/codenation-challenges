@@ -8,8 +8,11 @@ import br.com.movile.order.repository.OrderRepository;
 import br.com.movile.restaurant.repository.RestaurantRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class OrderService {
@@ -33,14 +36,15 @@ public class OrderService {
         Optional customer = customerRepository.findById(order.getCustomer().getId());
         Optional restaurant = restaurantRepository.findById(order.getRestaurant().getId());
 
-        for (Item item : order.getItems()) {
-            if (!itemRepository.findById(item.getId()).isPresent()) {
-                throw new NoSuchElementException("Item de ID: " + item.getId() + " e nome: " + item.getDescription() + " não encontrado!");
-            }
+        List<String> ids = order.getItems().stream().map(Item::getId).collect(Collectors.toList());
+        Iterable<Item> findAllById = itemRepository.findAllById(ids);
+
+        if (findAllById == null || StreamSupport.stream(findAllById.spliterator(), false).count() != ids.size()) {
+            throw new NoSuchElementException("Item(s) inválido(s) ou não encontrado(s)!");
         }
 
         if (!customer.isPresent() || order.getCustomer().getId().equals("null")) {
-            throw new NoSuchElementException("Restaurante inválido e/ou não encontrado!");
+            throw new NoSuchElementException("Usuário inválido e/ou não encontrado!");
         }
 
         if (!restaurant.isPresent() || order.getRestaurant().getId().equals("null")) {
