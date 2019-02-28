@@ -40,13 +40,13 @@ public class MotoboyService {
     }
 
     public void save(Motoboy motoboy) {
-        Motoboy retrieveMotoboyToBeUpdated = findById(motoboy.getId());
+        findById(motoboy.getId());
         motoboyRepository.save(motoboy);
 
     }
 
     public void delete(String id) {
-        Motoboy retrieveMotoboyToBeDeleted = findById(id);
+        findById(id);
         motoboyRepository.deleteById(id);
     }
 }

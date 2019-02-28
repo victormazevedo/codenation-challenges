@@ -1,5 +1,6 @@
 package br.com.movile.motoboy.model;
 
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,28 +11,22 @@ import lombok.Getter;
 public class Motoboy {
 
 	@Id
+    @Getter
+    @Setter
 	private String id;
+
+	@Getter
+    @Setter
 	private double longitude;
+
+    @Getter
+    @Setter
 	private double latitude;
+
+    @Getter
+    @Setter
     private boolean busy;
 
-    public boolean isBusy() {
-        return busy;
-    }
-
-    public void setBusy(boolean busy) {
-        this.busy = busy;
-    }
-
-
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public Motoboy(String id, double longitude, double latitude, boolean busy) {
 		this.id = id;

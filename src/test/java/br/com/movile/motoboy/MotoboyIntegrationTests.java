@@ -93,6 +93,8 @@ class MotoboyIntegrationTests {
                 .then()
                 .statusCode(HttpStatus.CREATED.value());
 
+        Assertions.assertEquals(2, motoBoyRepository.findAll().size());
+
     }
     @Test
     void shouldNotInsertMotoboyThatAlreadyExists () {
@@ -142,6 +144,8 @@ class MotoboyIntegrationTests {
                 .delete("mapfood/motoboys/id")
                 .then()
                 .statusCode(HttpStatus.ACCEPTED.value());
+
+        Assertions.assertEquals(0, motoBoyRepository.findAll().size());
     }
 
     @Test
