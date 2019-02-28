@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MapfoodApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MapfoodApplication.class, args);
-	}	
+    public static void main(String[] args) {
+        SpringApplication.run(MapfoodApplication.class, args);
+    }
 }

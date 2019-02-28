@@ -115,13 +115,7 @@ public class Carga {
 			});
 
 			produtosPorEstabelecimento();
-			produtos.stream().forEach(x -> {
-				estabelecimentos.stream().forEach(j -> {
-					if(x.getRestaurantId().equals(j.getId()))
-						j.getItems().add(x);
-				});
-			});	
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (NumberFormatException e) {
