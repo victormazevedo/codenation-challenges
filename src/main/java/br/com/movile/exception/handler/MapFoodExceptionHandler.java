@@ -1,6 +1,7 @@
 package br.com.movile.exception.handler;
 
 import br.com.movile.exception.model.CustomerTooFarException;
+import br.com.movile.exception.model.ElementAlreadyExistException;
 import br.com.movile.exception.model.NoMotoboyAvailableException;
 import br.com.movile.exception.model.dto.MapFoodException;
 import org.springframework.http.HttpStatus;
@@ -37,7 +38,8 @@ public class MapFoodExceptionHandler {
             ConstraintViolationException.class,
             MethodArgumentNotValidException.class,
             MissingServletRequestParameterException.class,
-            NoSuchElementException.class})
+            NoSuchElementException.class,
+            ElementAlreadyExistException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     MapFoodException validationExceptionHandler(Exception exception) {

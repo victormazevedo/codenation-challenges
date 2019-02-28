@@ -27,6 +27,7 @@ public class Motoboy {
 		this.longitude = longitude;
 		this.latitude = latitude;
 	}
+	public Motoboy (){}
 
 	@Override
 	public String toString() {

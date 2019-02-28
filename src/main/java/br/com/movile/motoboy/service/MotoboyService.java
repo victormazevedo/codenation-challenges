@@ -1,6 +1,7 @@
 package br.com.movile.motoboy.service;
 
 
+import br.com.movile.exception.model.ElementAlreadyExistException;
 import br.com.movile.motoboy.model.Motoboy;
 
 import br.com.movile.motoboy.repository.MotoboyRepository;
@@ -31,7 +32,7 @@ public class MotoboyService {
     public void insert(Motoboy motoboy) throws Exception {
         try{
             Motoboy checkIfMotoBoyExists =  findById(motoboy.getId());
-            throw new Exception("Tentou inserir motoBoy ja existte");
+            throw new ElementAlreadyExistException("Tentou inserir motoBoy ja existte");
 
         }catch (Exception e ){
             motoboyRepository.insert(motoboy);
