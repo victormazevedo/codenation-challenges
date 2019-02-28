@@ -134,5 +134,25 @@ class MotoboyIntegrationTests {
                 .body("message", equalTo("Motoboy nao encontrado"));
     }
 
+    @Test
+    void shouldDeleteMotoboy (){
+        given()
+                .accept("application/json")
+                .when()
+                .delete("mapfood/motoboys/id")
+                .then()
+                .statusCode(HttpStatus.ACCEPTED.value());
+    }
+
+    @Test
+    void shouldNotDeleteMotoboyThatNotExists(){
+        given()
+                .accept("application/json")
+                .when()
+                .delete("mapfood/motoboys/id1")
+                .then()
+                .statusCode(HttpStatus.BAD_REQUEST.value())
+                .body("message", equalTo("Motoboy nao encontrado"));
+    }
 
 }

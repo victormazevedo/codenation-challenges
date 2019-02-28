@@ -44,4 +44,9 @@ public class MotoboyService {
         motoboyRepository.save(motoboy);
 
     }
+
+    public void delete(String id) {
+        Motoboy retrieveMotoboyToBeDeleted = findById(id);
+        motoboyRepository.deleteById(id);
+    }
 }

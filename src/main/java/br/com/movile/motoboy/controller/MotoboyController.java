@@ -44,6 +44,13 @@ public class MotoboyController {
         motoboyService.save(motoboy);
     }
 
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void delete (@PathVariable String id){
+        motoboyService.delete(id);
+    }
+
+
 
 
 }
