@@ -32,9 +32,9 @@ public class MotoboyService {
     public void insert(Motoboy motoboy) throws Exception {
         try{
             Motoboy checkIfMotoBoyExists =  findById(motoboy.getId());
-            throw new ElementAlreadyExistException("Tentou inserir motoBoy ja existte");
+            throw new ElementAlreadyExistException("Motoboy ja existe na base de dados");
 
-        }catch (Exception e ){
+        }catch (NoSuchElementException e ){
             motoboyRepository.insert(motoboy);
         }
     }

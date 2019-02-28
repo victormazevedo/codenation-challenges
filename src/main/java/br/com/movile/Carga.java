@@ -68,7 +68,7 @@ public class Carga {
 				double longitude = Double.parseDouble(parseLine.get(1));
 				double latitude = Double.parseDouble(parseLine.get(2));
 
-				motoboy.add(new Motoboy(id, longitude, latitude));
+				motoboy.add(new Motoboy(id, longitude, latitude, false));
 			});
 
 		} catch (Exception e1) {

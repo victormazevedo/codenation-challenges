@@ -3,7 +3,6 @@ package br.com.movile.motoboy;
 
 import br.com.movile.motoboy.model.Motoboy;
 import br.com.movile.motoboy.repository.MotoboyRepository;
-import br.com.movile.restaurant.model.Restaurant;
 import io.restassured.RestAssured;
 import io.restassured.mapper.TypeRef;
 import org.junit.jupiter.api.Assertions;
@@ -35,7 +34,7 @@ class MotoboyIntegrationTests {
     void setUp() {
         RestAssured.port = port;
         motoBoyRepository.deleteAll();
-        motoBoyRepository.save(new Motoboy("id", 50.00, 50.00));
+        motoBoyRepository.save(new Motoboy("id", 50.00, 50.00, false));
     }
 
     @Test
@@ -51,7 +50,8 @@ class MotoboyIntegrationTests {
         Assertions.assertAll(
                 () -> Assertions.assertEquals("id", motoboy.getId()),
                 () -> Assertions.assertEquals(50.00, motoboy.getLatitude()),
-                () -> Assertions.assertEquals(50.00, motoboy.getLongitude())
+                () -> Assertions.assertEquals(50.00, motoboy.getLongitude()),
+                () -> Assertions.assertEquals(false, motoboy.isBusy())
         );
     }
     @Test
@@ -78,7 +78,61 @@ class MotoboyIntegrationTests {
         Assertions.assertAll(
                 () -> Assertions.assertEquals("id", motoboys.get(0).getId()),
                 () -> Assertions.assertEquals(50.00, motoboys.get(0).getLatitude()),
-                () -> Assertions.assertEquals(50.00, motoboys.get(0).getLongitude())
+                () -> Assertions.assertEquals(50.00, motoboys.get(0).getLongitude()),
+                () -> Assertions.assertEquals(false, motoboys.get(0).isBusy())
         );
     }
+
+    @Test
+    void shouldInsertMotoBoy (){
+        given()
+                .contentType("application/json")
+                .body(new Motoboy("id1", 50.00, 50.00, false))
+                .when()
+                .post("/mapfood/motoboys")
+                .then()
+                .statusCode(HttpStatus.CREATED.value());
+
+    }
+    @Test
+    void shouldNotInsertMotoboyThatAlreadyExists () {
+        given()
+                .contentType("application/json")
+                .body(new Motoboy("id", 50.00, 50.00, false))
+                .when()
+                .post("/mapfood/motoboys")
+                .then()
+                .statusCode(HttpStatus.BAD_REQUEST.value())
+                .body("message", equalTo("Motoboy ja existe na base de dados"));
+
+    }
+
+    @Test
+    void shouldUpdateMotoboy (){
+        Motoboy newStateOfMotoboy = new Motoboy("id", 50.00, 50.00, true);
+        given()
+                .contentType("application/json")
+                .body(newStateOfMotoboy)
+                .when()
+                .put("/mapfood/motoboys/id")
+                .then()
+                .statusCode(HttpStatus.ACCEPTED.value());
+
+        Assertions.assertEquals(newStateOfMotoboy.toString() ,motoBoyRepository.findById("id").get().toString());
+    }
+
+    @Test
+    void shouldNotUpdateMotoboyThatNotExists (){
+        Motoboy newStateOfMotoboy = new Motoboy("id1", 50.00, 50.00, true);
+        given()
+                .contentType("application/json")
+                .body(newStateOfMotoboy)
+                .when()
+                .put("/mapfood/motoboys/id1")
+                .then()
+                .statusCode(HttpStatus.BAD_REQUEST.value())
+                .body("message", equalTo("Motoboy nao encontrado"));
+    }
+
+
 }
