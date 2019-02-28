@@ -104,6 +104,8 @@ class RestaurantIntegrationTest {
                 .post("mapfood/restaurants")
                 .then()
                 .statusCode(HttpStatus.CREATED.value());
+
+        Assertions.assertEquals(2, restaurantRepository.findAll().size());
     }
     @Test
     void shouldNotInsertThatAlreadyExists (){
@@ -153,6 +155,8 @@ class RestaurantIntegrationTest {
                 .delete("mapfood/restaurants/1")
                 .then()
                 .statusCode(HttpStatus.ACCEPTED.value());
+
+        Assertions.assertEquals(0, restaurantRepository.findAll().size());
     }
     @Test
     void shouldNotDeleteRestaurantThatNotExist (){
