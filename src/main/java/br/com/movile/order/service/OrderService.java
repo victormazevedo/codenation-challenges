@@ -54,11 +54,13 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public Order getOrder(ObjectId orderId) {
-        Order order = orderRepository.findById(orderId);
-        if (order == null) {
-            throw new NoSuchElementException("Id do pedido incorreto!");
+    public Order getOrder(String orderId) {
+        try {
+            new ObjectId(orderId);
+        } catch (IllegalArgumentException ile) {
+            throw new IllegalArgumentException("ObjectId fora do padrão!", ile);
         }
-        return order;
+        return orderRepository.findById(orderId).orElseThrow(() ->
+                new NoSuchElementException("Pedido não encontrado!"));
     }
 }
