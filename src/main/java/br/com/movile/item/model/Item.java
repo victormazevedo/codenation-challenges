@@ -1,7 +1,6 @@
 package br.com.movile.item.model;
 
-import java.math.BigDecimal;
-
+import org.bson.types.Decimal128;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,100 +13,74 @@ public class Item {
 	private String restaurant;
 	private String restaurantId;
 	private String classification;
-	private BigDecimal unitPrice;
+	private Decimal128 unitPrice;
 	private String addressCity;
+
+	public Item(String id, String description, String restaurant, String restaurantId, String classification,
+			Decimal128 unitPrice, String addressCity) {
+		this.id = id;
+		this.description = description;
+		this.restaurant = restaurant;
+		this.restaurantId = restaurantId;
+		this.classification = classification;
+		this.unitPrice = unitPrice;
+		this.addressCity = addressCity;
+	}
 
 	public String getId() {
 		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getDescription() {
 		return description;
 	}
 
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public String getRestaurant() {
 		return restaurant;
+	}
+
+	public void setRestaurant(String restaurant) {
+		this.restaurant = restaurant;
 	}
 
 	public String getRestaurantId() {
 		return restaurantId;
 	}
 
+	public void setRestaurantId(String restaurantId) {
+		this.restaurantId = restaurantId;
+	}
+
 	public String getClassification() {
 		return classification;
 	}
 
-	public BigDecimal getUnitPrice() {
+	public void setClassification(String classification) {
+		this.classification = classification;
+	}
+
+	public Decimal128 getUnitPrice() {
 		return unitPrice;
+	}
+
+	public void setUnitPrice(Decimal128 unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 
 	public String getAddressCity() {
 		return addressCity;
 	}
 
-	public Item() {
-		super();
-	}
-
-	public Item(ItemBuilder builder) {
-		this.id = builder.id;
-		this.description = builder.description;
-		this.restaurant = builder.restaurant;
-		this.restaurantId = builder.restaurantId;
-		this.classification = builder.classification;
-		this.unitPrice = builder.unitPrice;
-		this.addressCity = builder.addressCity;
-	}
-
-	public static class ItemBuilder {
-
-		private String id;
-		private String description;
-		private String restaurant;
-		private String restaurantId;
-		private String classification;
-		private BigDecimal unitPrice;
-		private String addressCity;
-
-		public ItemBuilder setId(String id) {
-			this.id = id;
-			return this;
-		}
-
-		public ItemBuilder setDescription(String description) {
-			this.description = description;
-			return this;
-		}
-
-		public ItemBuilder setRestaurant(String restaurant) {
-			this.restaurant = restaurant;
-			return this;
-		}
-
-		public ItemBuilder setRestaurantId(String restaurantId) {
-			this.restaurantId = restaurantId;
-			return this;
-		}
-
-		public ItemBuilder setClassification(String classification) {
-			this.classification = classification;
-			return this;
-		}
-
-		public ItemBuilder setUnitPrice(BigDecimal unitPrice) {
-			this.unitPrice = unitPrice;
-			return this;
-		}
-
-		public ItemBuilder setAddressCity(String addressCity) {
-			this.addressCity = addressCity;
-			return this;
-		}
-
-		public Item builder() {
-			return new Item(this);
-		}
-
+	public void setAddressCity(String addressCity) {
+		this.addressCity = addressCity;
 	}
 
 	@Override

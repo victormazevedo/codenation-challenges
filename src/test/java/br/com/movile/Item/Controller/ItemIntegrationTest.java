@@ -1,9 +1,5 @@
 package br.com.movile.Item.Controller;
 
-import java.math.BigDecimal;
-import java.util.List;
-
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,10 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import br.com.movile.item.model.Item;
 import br.com.movile.item.repository.ItemRepository;
 import io.restassured.RestAssured;
-import io.restassured.mapper.TypeRef;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -31,12 +25,11 @@ public class ItemIntegrationTest {
 	void setUp() {
 		RestAssured.port = port;
 		itemRepository.deleteAll();
-		Item.ItemBuilder itemBuilder = new Item.ItemBuilder();
-		BigDecimal bigDecimal = new BigDecimal("4.5");
-		Item item = itemBuilder.setId("1").setDescription("Chocolate").setClassification("Doce")
-				.setUnitPrice(bigDecimal).setAddressCity("PORTO ALEGRE").setRestaurant("NUMERO UM")
-				.setRestaurantId("1234").builder();
-		itemRepository.save(item);
+		//Item item = new Item("id", "Chocolate", "Casa da Tia", "123", "Doces", 3.3, "PROTO ALEGRE");
+		
+	//	Item item = new Item();
+		
+		//itemRepository.save(item);
 	}
 
 	@Test

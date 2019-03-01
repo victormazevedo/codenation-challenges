@@ -1,13 +1,11 @@
 package br.com.movile.item.service;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.bson.types.Decimal128;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import br.com.movile.item.model.Item;
@@ -29,9 +27,10 @@ public class ItemService {
     }
 
 
-    public List<Item> findAllLimitPrice(BigDecimal limitPrice){
-    	List<Item> listItemLimitPrice = mongoTemplate.find(Query.query(Criteria.where("unitPrice").lte(limitPrice)), Item.class);
-        return listItemLimitPrice;
+    public List<Item> findAllLimitPrice(Decimal128 limitPrice){
+    	//Decimal128 limitPriceResq = Decimal128.parse(limitPrice);
+    	//List<Item> listItemLimitPrice = mongoTemplate.find(Query.query(Criteria.where("unitPrice").lte(limitPrice)), Item.class);
+        return itemRepository.findByUnitPriceLessThan(limitPrice);
     }
 
 

@@ -3,6 +3,7 @@ package br.com.movile.item.controller;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.bson.types.Decimal128;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -40,8 +41,9 @@ public class ItemController {
         return itemService.findById(id);
     }
 
+    //TODO: Verificar Item preco, nao funciona somente com Decimal128, sera necessario uma conversao
     @GetMapping("/price/{limitPrice}")
-    public List<Item> findAllLimitPrice(@PathVariable BigDecimal limitPrice){
+    public List<Item> findAllLimitPrice(@PathVariable Decimal128 limitPrice){
         return itemService.findAllLimitPrice(limitPrice);
     }
 
