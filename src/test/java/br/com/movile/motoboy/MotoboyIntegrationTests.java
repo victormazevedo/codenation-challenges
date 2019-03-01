@@ -133,7 +133,7 @@ class MotoboyIntegrationTests {
                 .put("/mapfood/motoboys/id1")
                 .then()
                 .statusCode(HttpStatus.BAD_REQUEST.value())
-                .body("message", equalTo("Motoboy nao encontrado"));
+                .body("message", equalTo("Motoboy não encontrado para update"));
     }
 
     @Test
@@ -156,7 +156,7 @@ class MotoboyIntegrationTests {
                 .delete("mapfood/motoboys/id1")
                 .then()
                 .statusCode(HttpStatus.BAD_REQUEST.value())
-                .body("message", equalTo("Motoboy nao encontrado"));
+                .body("message", equalTo("Motoboy não encontrado para delete"));
     }
 
 }

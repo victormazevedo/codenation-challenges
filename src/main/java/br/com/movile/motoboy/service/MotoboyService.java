@@ -40,13 +40,15 @@ public class MotoboyService {
     }
 
     public void save(Motoboy motoboy) {
-        findById(motoboy.getId());
+        motoboyRepository.findById(motoboy.getId())
+                .orElseThrow(() -> new NoSuchElementException("Motoboy não encontrado para update"));
         motoboyRepository.save(motoboy);
 
     }
 
     public void delete(String id) {
-        findById(id);
+        motoboyRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Motoboy não encontrado para delete"));
         motoboyRepository.deleteById(id);
     }
 }
