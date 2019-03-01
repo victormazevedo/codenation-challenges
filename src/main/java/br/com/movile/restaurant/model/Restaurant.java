@@ -2,6 +2,7 @@ package br.com.movile.restaurant.model;
 
 import br.com.movile.item.model.Item;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,11 +15,28 @@ import java.util.List;
 public class Restaurant implements Serializable {
 
 	@Id
+    @Getter
+    @Setter
 	private String id;
+
+	@Getter
+    @Setter
 	private String name;
+
+    @Getter
+    @Setter
 	private String addressCity;
+
+    @Getter
+    @Setter
 	private double longitude;
+
+    @Getter
+    @Setter
 	private double latitude;
+
+    @Getter
+    @Setter
 	private String dishDescription;
 
 
@@ -31,53 +49,6 @@ public class Restaurant implements Serializable {
 		this.dishDescription = dishDescription;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getAddressCity() {
-		return addressCity;
-	}
-
-	public void setAddressCity(String addressCity) {
-		this.addressCity = addressCity;
-	}
-
-	public double getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
-
-	public double getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
-	}
-
-	public String getDishDescription() {
-		return dishDescription;
-	}
-
-	public void setDishDescription(String dishDescription) {
-		this.dishDescription = dishDescription;
-	}
 
 	public Restaurant() {};
 
