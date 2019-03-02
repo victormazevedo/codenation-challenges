@@ -1,5 +1,7 @@
 package br.com.movile.item.model;
 
+import javax.validation.constraints.NotNull;
+
 import org.bson.types.Decimal128;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,11 +11,20 @@ public class Item {
 
 	@Id
 	private String id;
+	
+	@NotNull
 	private String description;
+	
 	private String restaurant;
+	
+	@NotNull
 	private String restaurantId;
+	
 	private String classification;
+	
+	@NotNull
 	private Decimal128 unitPrice;
+	
 	private String addressCity;
 
 	public Item(String id, String description, String restaurant, String restaurantId, String classification,

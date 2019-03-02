@@ -1,11 +1,12 @@
 package br.com.movile.item.controller;
 
-import java.math.BigDecimal;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.bson.types.Decimal128;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.movile.item.model.Item;
@@ -22,48 +24,68 @@ import br.com.movile.item.service.ItemService;
 @RequestMapping("items")
 public class ItemController {
 
-    @Autowired
-    private ItemService itemService;
+	private ItemService itemService;
 
-    @Autowired
-    public ItemController(ItemService itemService) {
-        this.itemService = itemService;
-    }
+	@Autowired
+	public ItemController(ItemService itemService) {
+		this.itemService = itemService;
+	}
 
-    @GetMapping
-    public List<Item> findAll(){
+	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
+	public List<Item> findAll() {
+		return itemService.findAll();
+	}
 
-        return itemService.findAll();
-    }
+	@GetMapping("/id/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public Item findById(@PathVariable("id") String id) throws Exception {
+		return itemService.findById(id);
+	}
 
-    @GetMapping("{id}")
-    public Item findById(@PathVariable("id") String id) throws Exception {
-        return itemService.findById(id);
-    }
+	@GetMapping("/descriptions/{description}")
+	@ResponseStatus(HttpStatus.OK)
+	public List<Item> findByDescription(@PathVariable("description") String description) {
+		return itemService.findByDescriptionLike(description);
+	}
+	
+	@GetMapping("/restaurants/{restaurant}")
+	@ResponseStatus(HttpStatus.OK)
+	public List<Item> findByRestaurant(@PathVariable("restaurant") String restaurant) {
+		return itemService.findByRestaurantLike(restaurant);
+	}
 
-    //TODO: Verificar Item preco, nao funciona somente com Decimal128, sera necessario uma conversao
-    @GetMapping("/price/{limitPrice}")
-    public List<Item> findAllLimitPrice(@PathVariable Decimal128 limitPrice){
-        return itemService.findAllLimitPrice(limitPrice);
-    }
+	
+	@GetMapping("/restaurant/{restaurantId}")
+	@ResponseStatus(HttpStatus.OK)
+	public List<Item> findByRestaurantId(@PathVariable("restaurantId") String restaurantId) {
+		return itemService.findByRestaurantId(restaurantId);
+	}
 
+	// TODO: Verificar Item preco, nao funciona somente com Decimal128, sera
+	// necessario uma conversao
+	@GetMapping("/prices/{limitPrice}")
+	@ResponseStatus(HttpStatus.OK)
+	public List<Item> findAllLimitPrice(@PathVariable Decimal128 limitPrice) {
+		return itemService.findAllLimitPrice(limitPrice);
+	}
 
-    @PostMapping
-    public ResponseEntity<Item> insert(@RequestBody Item item){
-        itemService.inset(item);
-        return ResponseEntity.status(201).build();
-    }
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	public Item insert(@Valid @RequestBody Item item) {
+		return itemService.inset(item);
+	}
 
-    @PutMapping
-    public  ResponseEntity<Item> update(@RequestBody Item item) {
-        itemService.update(item);
-        return ResponseEntity.status(202).build();
-    }
-    
-    @DeleteMapping
-    public  ResponseEntity<Item> delete(@RequestBody Item item) {
-        itemService.delete(item);
-        return ResponseEntity.ok().build();
-    }
+	@PutMapping
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	public Item update(@Valid @RequestBody Item item) {
+		return itemService.update(item);
+	}
+
+	@DeleteMapping
+	@ResponseStatus(HttpStatus.OK)
+	public void delete(@RequestBody Item item) {
+		itemService.delete(item);
+	}
 
 }
