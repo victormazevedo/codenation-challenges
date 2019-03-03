@@ -124,7 +124,7 @@ public class ItemIntegrationTest {
 	void shouldReturnExceptionIfFindOneNotFindItem() {
 
 		given().accept("application/json")
-			.when().get("mapfood/items/id/6")
+			.when().get("mapfood/items/id/2")
 			.then().statusCode(HttpStatus.SC_BAD_REQUEST)
 			.body("message", equalTo("Nenhum Item com o Id: 2 foi encontrado"));
 	}
