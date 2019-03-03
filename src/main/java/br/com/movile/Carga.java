@@ -1,14 +1,13 @@
 package br.com.movile;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.bson.types.Decimal128;
 
 import br.com.movile.customer.model.Customer;
 import br.com.movile.item.model.Item;
@@ -142,7 +141,7 @@ public class Carga {
 				String restauranteId = parseLine.get(3);
 				String restaurante = parseLine.get(2);
 				String classificacao = parseLine.get(4);
-				Decimal128 precoUnitario = Decimal128.parse(parseLine.get(5));
+				BigDecimal precoUnitario = new BigDecimal(parseLine.get(5));
 				String cidade = parseLine.get(6);
 
 				produtos.add(

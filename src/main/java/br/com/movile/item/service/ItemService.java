@@ -3,10 +3,10 @@ package br.com.movile.item.service;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.bson.types.Decimal128;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.movile.exception.model.dto.ElementAlreadyExistException;
 import br.com.movile.item.model.Item;
 import br.com.movile.item.repository.ItemRepository;
 
@@ -32,37 +32,34 @@ public class ItemService {
 			throw new NoSuchElementException("Nenhum item encontrato");
 		return itemRepository.findByRestaurantLike(restaurant);
 	}
-	
+
 	public List<Item> findByRestaurantId(String restaurantId) {
 		if (itemRepository.findByRestaurantId(restaurantId).isEmpty())
 			throw new NoSuchElementException("Nenhum item encontrato");
 		return itemRepository.findByRestaurantId(restaurantId);
 	}
 
-	public List<Item> findAllLimitPrice(Decimal128 limitPrice) {
-		return itemRepository.findByUnitPriceLessThan(limitPrice);
-	}
-
-	public Item findById(String id) throws Exception {
+	public Item findById(String id){
 		return itemRepository.findById(id)
 				.orElseThrow(() -> new NoSuchElementException("Nenhum Item com o Id: " + id + " foi encontrado"));
 	}
 
-	public Item inset(Item item) {
+	public Item inset(Item item) throws ElementAlreadyExistException {
+		if (itemRepository.existsById(item.getId()))
+			throw new ElementAlreadyExistException("Item já existe na base de dados");
 		return itemRepository.insert(item);
 	}
 
 	public Item update(Item item) {
-		if (!itemRepository.existsById(item.getId())) {
-			throw new NoSuchElementException("Item inexistente");
-		}
+		itemRepository.findById(item.getId()).orElseThrow(() -> new NoSuchElementException("Item inexistente"));
 		return itemRepository.save(item);
+
 	}
 
-	public void delete(Item item) {
-		if (!itemRepository.existsById(item.getId()))
+	public void delete(String id) {
+		if (!itemRepository.existsById(id))
 			throw new NoSuchElementException("Item não encontrado");
-		itemRepository.delete(item);
+		itemRepository.deleteById(id);
 	}
 
 }

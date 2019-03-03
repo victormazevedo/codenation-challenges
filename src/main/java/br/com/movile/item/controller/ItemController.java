@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.bson.types.Decimal128;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.movile.exception.model.dto.ElementAlreadyExistException;
 import br.com.movile.item.model.Item;
 import br.com.movile.item.service.ItemService;
 
@@ -39,7 +39,7 @@ public class ItemController {
 
 	@GetMapping("/id/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public Item findById(@PathVariable("id") String id) throws Exception {
+	public Item findById(@PathVariable("id") String id){
 		return itemService.findById(id);
 	}
 
@@ -62,17 +62,9 @@ public class ItemController {
 		return itemService.findByRestaurantId(restaurantId);
 	}
 
-	// TODO: Verificar Item preco, nao funciona somente com Decimal128, sera
-	// necessario uma conversao
-	@GetMapping("/prices/{limitPrice}")
-	@ResponseStatus(HttpStatus.OK)
-	public List<Item> findAllLimitPrice(@PathVariable Decimal128 limitPrice) {
-		return itemService.findAllLimitPrice(limitPrice);
-	}
-
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Item insert(@Valid @RequestBody Item item) {
+	public Item insert(@Valid @RequestBody Item item) throws ElementAlreadyExistException {
 		return itemService.inset(item);
 	}
 
@@ -82,10 +74,10 @@ public class ItemController {
 		return itemService.update(item);
 	}
 
-	@DeleteMapping
-	@ResponseStatus(HttpStatus.OK)
-	public void delete(@RequestBody Item item) {
-		itemService.delete(item);
+	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	public void delete(@PathVariable String id) {
+		itemService.delete(id);
 	}
 
 }

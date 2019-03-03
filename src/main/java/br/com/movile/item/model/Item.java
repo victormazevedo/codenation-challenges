@@ -1,8 +1,9 @@
 package br.com.movile.item.model;
 
+import java.math.BigDecimal;
+
 import javax.validation.constraints.NotNull;
 
-import org.bson.types.Decimal128;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -23,12 +24,12 @@ public class Item {
 	private String classification;
 	
 	@NotNull
-	private Decimal128 unitPrice;
+	private BigDecimal unitPrice;
 	
 	private String addressCity;
 
 	public Item(String id, String description, String restaurant, String restaurantId, String classification,
-			Decimal128 unitPrice, String addressCity) {
+			BigDecimal unitPrice, String addressCity) {
 		this.id = id;
 		this.description = description;
 		this.restaurant = restaurant;
@@ -78,11 +79,11 @@ public class Item {
 		this.classification = classification;
 	}
 
-	public Decimal128 getUnitPrice() {
+	public BigDecimal getUnitPrice() {
 		return unitPrice;
 	}
 
-	public void setUnitPrice(Decimal128 unitPrice) {
+	public void setUnitPrice(BigDecimal unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 
