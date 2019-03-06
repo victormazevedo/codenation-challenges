@@ -117,7 +117,7 @@ public class CustomerIntegrationTest {
 	                .put("mapfood/customers")
 	                .then()
 	                .statusCode(HttpStatus.SC_BAD_REQUEST)
-	                .body("message", equalTo("Cliente inexistent"));
+	                .body("message", equalTo("Cliente inexistente"));
 
 	    }
 	  
