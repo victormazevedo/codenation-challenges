@@ -15,8 +15,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static br.com.movile.order.model.OrderStatus.CANCELLED;
-import static br.com.movile.order.model.OrderStatus.PENDING;
+import static br.com.movile.order.model.OrderStatus.*;
 
 @Service
 public class OrderService {
@@ -55,7 +54,7 @@ public class OrderService {
             throw new NoSuchElementException("Restaurante inválido e/ou não encontrado!");
         }
 
-        order.setStatus(PENDING);
+        order.setStatus(OPENED);
 
         return orderRepository.save(order);
     }
