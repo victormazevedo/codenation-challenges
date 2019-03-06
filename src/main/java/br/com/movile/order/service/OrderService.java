@@ -4,6 +4,7 @@ import br.com.movile.customer.repository.CustomerRepository;
 import br.com.movile.item.model.Item;
 import br.com.movile.item.repository.ItemRepository;
 import br.com.movile.order.model.Order;
+import br.com.movile.order.model.OrderStatus;
 import br.com.movile.order.repository.OrderRepository;
 import br.com.movile.restaurant.repository.RestaurantRepository;
 import org.bson.types.ObjectId;
@@ -44,13 +45,16 @@ public class OrderService {
             throw new NoSuchElementException("Item(s) inválido(s) ou não encontrado(s)!");
         }
 
-        if (!customer.isPresent() || order.getCustomer().getId().equals("null")) {
+        if (!customer.isPresent()) {
             throw new NoSuchElementException("Usuário inválido e/ou não encontrado!");
         }
 
-        if (!restaurant.isPresent() || order.getRestaurant().getId().equals("null")) {
+        if (!restaurant.isPresent()) {
             throw new NoSuchElementException("Restaurante inválido e/ou não encontrado!");
         }
+
+        order.setStatus(OrderStatus.PENDING);
+
         return orderRepository.save(order);
     }
 
