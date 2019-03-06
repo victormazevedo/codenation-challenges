@@ -4,7 +4,6 @@ import br.com.movile.customer.repository.CustomerRepository;
 import br.com.movile.item.model.Item;
 import br.com.movile.item.repository.ItemRepository;
 import br.com.movile.order.model.Order;
-import br.com.movile.order.model.OrderStatus;
 import br.com.movile.order.repository.OrderRepository;
 import br.com.movile.restaurant.repository.RestaurantRepository;
 import org.bson.types.ObjectId;
@@ -15,6 +14,9 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
+
+import static br.com.movile.order.model.OrderStatus.CANCELLED;
+import static br.com.movile.order.model.OrderStatus.PENDING;
 
 @Service
 public class OrderService {
@@ -53,7 +55,7 @@ public class OrderService {
             throw new NoSuchElementException("Restaurante inválido e/ou não encontrado!");
         }
 
-        order.setStatus(OrderStatus.PENDING);
+        order.setStatus(PENDING);
 
         return orderRepository.save(order);
     }
@@ -66,5 +68,22 @@ public class OrderService {
         }
         return orderRepository.findById(orderId).orElseThrow(() ->
                 new NoSuchElementException("Pedido não encontrado!"));
+    }
+
+    public void delete(String orderId) {
+
+        Optional<Order> order = orderRepository.findById(orderId);
+
+        if (!order.isPresent()) {
+            throw new IllegalArgumentException("Pedido não encontrado!");
+        }
+
+        if (order.get().getStatus() == CANCELLED) {
+            throw new IllegalArgumentException("Pedido já cancelado!");
+        }
+
+        order.get().setStatus(CANCELLED);
+
+        orderRepository.save(order.get());
     }
 }
