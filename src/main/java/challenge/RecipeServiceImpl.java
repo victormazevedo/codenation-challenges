@@ -1,34 +1,51 @@
 package challenge;
 
-import java.util.List;
 import org.springframework.stereotype.Service;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class RecipeServiceImpl implements RecipeService {
 
+	private final RecipeRepository recipeRepository;
+
+	public RecipeServiceImpl(RecipeRepository recipeRepository) {
+		this.recipeRepository = recipeRepository;
+	}
+
 	@Override
 	public Recipe save(Recipe recipe) {
-		return null;
+		return recipeRepository.save(recipe);
 	}
 
 	@Override
 	public void update(String id, Recipe recipe) {
-
+		recipe.setId(id);
+		recipeRepository.save(recipe);
 	}
 
 	@Override
 	public void delete(String id) {
-
+		Optional<Recipe> recipe = recipeRepository.findById(id);
+		recipeRepository.delete(recipe.get());
 	}
 
 	@Override
 	public Recipe get(String id) {
-		return null;
+		Optional<Recipe> recipe = recipeRepository.findById(id);
+		return recipe.get();
 	}
 
 	@Override
 	public List<Recipe> listByIngredient(String ingredient) {
-		return null;
+		return recipeRepository.findAllByIngredients(ingredient)
+				.stream()
+				.sorted(Comparator.comparing(Recipe::getTitle))
+				.collect(Collectors.toList());
+
 	}
 
 	@Override

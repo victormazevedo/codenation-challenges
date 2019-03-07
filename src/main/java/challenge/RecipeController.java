@@ -1,31 +1,42 @@
 package challenge;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/")
 public class RecipeController {
 
-	@Autowired
-	private RecipeService service;
+	private final RecipeService service;
 
-	public Recipe save() {
-		return service.save(null);
+	public RecipeController(RecipeService service) {
+		this.service = service;
 	}
 
-	public void update() {
-		service.update(null, null);
+	@PostMapping("/recipe")
+	public Recipe save(@RequestBody Recipe recipe) {
+		return service.save(recipe);
 	}
 
-	public void delete() {
-		service.delete(null);
+	@PutMapping("/recipe/{id}")
+	public void update(@PathVariable String id, @RequestBody Recipe recipe) {
+		service.update(id, recipe);
 	}
 
-	public Recipe get() {
-		return service.get(null);
+	@DeleteMapping("/recipe/{id}")
+	public void delete(@PathVariable String id) {
+		service.delete(id);
 	}
 
-	public List<Recipe> listByIngredient() {
-		return service.listByIngredient(null);
+	@GetMapping("/recipe/{id}")
+	public Recipe get(@PathVariable String id) {
+		return service.get(id);
+	}
+
+	@GetMapping("/recipe/ingredient")
+	public List<Recipe> listByIngredient(@RequestParam String ingredient) {
+		return service.listByIngredient(ingredient);
 	}
 
 	public List<Recipe> search() {
