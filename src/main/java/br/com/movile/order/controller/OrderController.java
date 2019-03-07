@@ -3,7 +3,6 @@ package br.com.movile.order.controller;
 import br.com.movile.order.model.Order;
 import br.com.movile.order.service.OrderService;
 import org.bson.types.ObjectId;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,10 +15,19 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @ResponseBody
     @PostMapping
-    public ResponseEntity<Order> save(@RequestBody Order order) {
+    public Order save(@RequestBody Order order) {
         order.setId(ObjectId.get());
-        return ResponseEntity.ok(orderService.save(order));
+        return orderService.save(order);
+    }
+
+    @GetMapping("/{orderId}")
+    public Order getOrder(@PathVariable String orderId) {
+        return orderService.getOrder(orderId);
+    }
+
+    @DeleteMapping("/{orderId}")
+    public void cancel(@PathVariable String orderId) {
+        orderService.delete(orderId);
     }
 }
