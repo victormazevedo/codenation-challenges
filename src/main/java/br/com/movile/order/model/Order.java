@@ -6,6 +6,8 @@ import java.util.List;
 import br.com.movile.customer.model.Customer;
 import br.com.movile.item.model.Item;
 import br.com.movile.restaurant.model.Restaurant;
+import lombok.Setter;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,20 +18,23 @@ import lombok.Getter;
 public class Order {
 
 	@Id
-	private long id;
-	private List<Item> items;
+	@Setter
+	private ObjectId id;
+
 	private Customer customer;
-	private Restaurant restaurant;
 	private LocalDateTime date;
+	private Restaurant restaurant;
+	private List<Item> items;
+
 
 	@Override
 	public String toString() {
 		return "Order{" +
 				"id=" + id +
-				", items=" + items +
 				", customer=" + customer +
-				", restaurant=" + restaurant +
 				", date=" + date +
+				", restaurant=" + restaurant +
+				", items=" + items +
 				'}';
 	}
 }
