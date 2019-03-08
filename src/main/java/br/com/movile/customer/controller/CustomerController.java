@@ -44,7 +44,7 @@ public class CustomerController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public Customer insert(@RequestBody Customer customer) throws ElementAlreadyExistException{
+    public Customer insert(@RequestBody Customer customer){
         return customerService.inset(customer);
     }
 

@@ -26,9 +26,9 @@ public class CustomerService {
                 .orElseThrow(() -> new NoSuchElementException("Nenhum cliente com o Id: "+ id + " foi encontrado"));
     }
 
-    public Customer inset(Customer customer) throws ElementAlreadyExistException{
+    public Customer inset(Customer customer){
     	if (customerRepository.existsById(customer.getId()))
-			throw new ElementAlreadyExistException("Cliente já existe na base de dados");
+			throw new NoSuchElementException("Cliente já existe na base de dados");
         return customerRepository.insert(customer);
     }
 
