@@ -1,25 +1,44 @@
 package br.com.movile.restaurant.model;
 
 import br.com.movile.item.model.Item;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Getter;
 
+import java.io.Serializable;
 import java.util.List;
 
-@Getter
 @Document(collection = "restaurant")
-public class Restaurant {
+public class Restaurant implements Serializable {
 
 	@Id
+    @Getter
+    @Setter
 	private String id;
+
+	@Getter
+    @Setter
 	private String name;
+
+    @Getter
+    @Setter
 	private String addressCity;
+
+    @Getter
+    @Setter
 	private double longitude;
+
+    @Getter
+    @Setter
 	private double latitude;
+
+    @Getter
+    @Setter
 	private String dishDescription;
-	private List<Item> items;
+
 
 	public Restaurant(String id, String name, String addressCity, double longitude, double latitude, String dishDescription) {
 		this.id = id;
@@ -29,6 +48,9 @@ public class Restaurant {
 		this.latitude = latitude;
 		this.dishDescription = dishDescription;
 	}
+
+
+	public Restaurant() {};
 
 	@Override
 	public String toString() {

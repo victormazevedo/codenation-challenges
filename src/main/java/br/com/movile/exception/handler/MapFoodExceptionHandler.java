@@ -1,6 +1,7 @@
 package br.com.movile.exception.handler;
 
 import br.com.movile.exception.model.CustomerTooFarException;
+import br.com.movile.exception.model.ElementAlreadyExistException;
 import br.com.movile.exception.model.NoMotoboyAvailableException;
 import br.com.movile.exception.model.dto.ElementAlreadyExistException;
 import br.com.movile.exception.model.dto.MapFoodException;
