@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.movile.customer.model.Customer;
 import br.com.movile.customer.repository.CustomerRepository;
-import br.com.movile.exception.model.dto.ElementAlreadyExistException;
 
 @Service
 public class CustomerService {

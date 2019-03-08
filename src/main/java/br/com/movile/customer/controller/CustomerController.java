@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.movile.customer.model.Customer;
 import br.com.movile.customer.service.CustomerService;
-import br.com.movile.exception.model.dto.ElementAlreadyExistException;
 
 @RestController
 @RequestMapping("customers")
