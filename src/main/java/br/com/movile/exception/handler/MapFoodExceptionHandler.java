@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import br.com.movile.exception.model.CustomerTooFarException;
+import br.com.movile.exception.model.ElementAlreadyExistException;
 import br.com.movile.exception.model.NoMotoboyAvailableException;
-import br.com.movile.exception.model.dto.ElementAlreadyExistException;
 import br.com.movile.exception.model.dto.MapFoodException;
 
 @RestControllerAdvice
@@ -36,12 +36,15 @@ public class MapFoodExceptionHandler {
 		return buildMapFoodException(exception);
 	}
 
-	@ExceptionHandler({ ConstraintViolationException.class, MethodArgumentNotValidException.class,
-			MissingServletRequestParameterException.class, ElementAlreadyExistException.class,
-			NoSuchElementException.class })
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	@ResponseBody
-	MapFoodException validationExceptionHandler(Exception exception) {
+    @ExceptionHandler({
+            ConstraintViolationException.class,
+            MethodArgumentNotValidException.class,
+            MissingServletRequestParameterException.class,
+            ElementAlreadyExistException.class,
+            NoSuchElementException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    MapFoodException validationExceptionHandler(Exception exception) {
 
 		return buildMapFoodException(exception);
 	}
