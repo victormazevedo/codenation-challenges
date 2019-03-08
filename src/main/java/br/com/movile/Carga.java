@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.movile.customer.model.Customer;
+import br.com.movile.item.model.Item;
 import br.com.movile.motoboy.model.Motoboy;
 import br.com.movile.restaurant.model.Restaurant;
-import br.com.movile.item.model.Item;
 
 public class Carga {
 
@@ -138,8 +138,8 @@ public class Carga {
 
 				String id = parseLine.get(1);
 				String descricao = parseLine.get(0);
-				String restauranteId = parseLine.get(2);
-				String restaurante = parseLine.get(3);
+				String restauranteId = parseLine.get(3);
+				String restaurante = parseLine.get(2);
 				String classificacao = parseLine.get(4);
 				BigDecimal precoUnitario = new BigDecimal(parseLine.get(5));
 				String cidade = parseLine.get(6);
