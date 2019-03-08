@@ -1,12 +1,19 @@
 package br.com.movile.order.service;
 
+import br.com.movile.order.model.Order;
 import br.com.movile.order.repository.OrderRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class OrderService {
 
-    @Autowired
-    private OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
+
+    public OrderService(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
+    }
+
+    public Order save(Order order) {
+        return orderRepository.save(order);
+    }
 }
