@@ -3,11 +3,14 @@ package br.com.movile.customer.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
-@Document(collection = "customer")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Document(collection = "customer")
 public class Customer {
 
 	@Id
@@ -15,11 +18,5 @@ public class Customer {
 	private double longitude;
 	private double latitude;
 
-	public Customer(String id, double longitude, double latitude) {
-		super();
-		this.id = id;
-		this.longitude = longitude;
-		this.latitude = latitude;
-	}
 
 }
