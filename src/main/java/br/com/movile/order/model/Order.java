@@ -17,24 +17,27 @@ import lombok.Getter;
 @Getter
 public class Order {
 
-	@Id
-	@Setter
-	private ObjectId id;
+    @Id
+    @Setter
+    private ObjectId id;
 
-	private Customer customer;
-	private LocalDateTime date;
-	private Restaurant restaurant;
-	private List<Item> items;
+    private Customer customer;
+    private LocalDateTime date;
+    private Restaurant restaurant;
+    private List<Item> items;
+    @Setter
+    private OrderStatus status;
 
 
-	@Override
-	public String toString() {
-		return "Order{" +
-				"id=" + id +
-				", customer=" + customer +
-				", date=" + date +
-				", restaurant=" + restaurant +
-				", items=" + items +
-				'}';
-	}
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", date=" + date +
+                ", restaurant=" + restaurant +
+                ", items=" + items +
+                ", status=" + status +
+                '}';
+    }
 }

@@ -142,5 +142,4 @@ public class CustomerIntegrationTest {
 	                .then()
 	                .statusCode(HttpStatus.SC_BAD_REQUEST);
 	    }
-
 }

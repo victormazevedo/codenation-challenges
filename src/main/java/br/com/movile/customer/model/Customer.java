@@ -1,5 +1,6 @@
 package br.com.movile.customer.model;
 
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,6 +18,4 @@ public class Customer {
 	private String id;
 	private double longitude;
 	private double latitude;
-
-
 }
