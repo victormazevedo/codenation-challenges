@@ -1,9 +1,10 @@
 package br.com.movile.exception.handler;
 
-import br.com.movile.exception.model.CustomerTooFarException;
-import br.com.movile.exception.model.NoMotoboyAvailableException;
-import br.com.movile.exception.model.dto.ElementAlreadyExistException;
-import br.com.movile.exception.model.dto.MapFoodException;
+
+import java.util.NoSuchElementException;
+
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import javax.validation.ConstraintViolationException;
-import java.util.NoSuchElementException;
+import br.com.movile.exception.model.CustomerTooFarException;
+import br.com.movile.exception.model.NoMotoboyAvailableException;
+import br.com.movile.exception.model.dto.ElementAlreadyExistException;
+import br.com.movile.exception.model.dto.MapFoodException;
 
 @RestControllerAdvice
 public class MapFoodExceptionHandler {
