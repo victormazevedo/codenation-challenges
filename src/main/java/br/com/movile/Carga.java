@@ -9,6 +9,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.geo.Point;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
+
 import br.com.movile.customer.model.Customer;
 import br.com.movile.item.model.Item;
 import br.com.movile.motoboy.model.Motoboy;
@@ -107,11 +110,10 @@ public class Carga {
 				String id = parseLine.get(0);
 				String nomeRestaurante = parseLine.get(1);
 				String cidade = parseLine.get(2);
-				double longitude = Double.parseDouble(parseLine.get(3));
-				double latitude = Double.parseDouble(parseLine.get(4));
+				GeoJsonPoint localizacao = new GeoJsonPoint(new Point(Double.parseDouble(parseLine.get(3)), Double.parseDouble(parseLine.get(4))));
 				String descricao = parseLine.get(5).replaceAll(";", "");
 
-				estabelecimentos.add(new Restaurant(id, nomeRestaurante, cidade, longitude, latitude, descricao));
+				estabelecimentos.add(new Restaurant(id, nomeRestaurante, cidade, localizacao, descricao));
 			});
 
 			produtosPorEstabelecimento();
