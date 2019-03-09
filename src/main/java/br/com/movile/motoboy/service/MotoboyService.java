@@ -24,10 +24,10 @@ public class MotoboyService {
 
     private  final MotoboyRepository motoboyRepository;
     
-	private MongoOperations mongoOperations;
+	private final MongoOperations mongoOperations;
     
     @Autowired
-    public MotoboyService(MotoboyRepository motoboyRepository) {
+    public MotoboyService(MotoboyRepository motoboyRepository, MongoOperations mongoOperations) {
         this.motoboyRepository = motoboyRepository;
         this.mongoOperations = mongoOperations;
     }
