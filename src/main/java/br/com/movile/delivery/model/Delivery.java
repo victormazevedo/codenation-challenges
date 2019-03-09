@@ -12,7 +12,7 @@ import lombok.Getter;
 
 @Getter
 @Document(collection = "delivery")
-public class DeliveryModel {
+public class Delivery {
 
 	@Id
 	private String id;
