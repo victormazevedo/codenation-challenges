@@ -3,7 +3,6 @@ package br.com.movile.restaurant.controller;
 
 import br.com.movile.restaurant.model.Restaurant;
 import br.com.movile.restaurant.repository.RestaurantRepository;
-
 import io.restassured.RestAssured;
 import io.restassured.mapper.TypeRef;
 import org.junit.jupiter.api.Assertions;
@@ -13,36 +12,35 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
-
-import static org.hamcrest.CoreMatchers.*;
-
 import static io.restassured.RestAssured.given;
-
+import static org.hamcrest.CoreMatchers.equalTo;
 
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class RestaurantIntegrationTest {
-    
+
     @LocalServerPort
     private int port;
 
     @Autowired
     private RestaurantRepository restaurantRepository;
+
     @BeforeEach
     void setUp() {
         RestAssured.port = port;
         restaurantRepository.deleteAll();
-        restaurantRepository.save(new Restaurant("1", "McDonalds", "Rua 123", 50.00, 50.00, "Lanches"));
+        restaurantRepository.save(new Restaurant("1", "McDonalds", "Rua 123", new GeoJsonPoint(50.0, 50.0), "Lanches"));
     }
 
     @Test
-    void shouldFindAllRestaurants ()  {
+    void shouldFindAllRestaurants() {
 
         List<Restaurant> restaurants = given()
                 .accept("application/json")
@@ -50,21 +48,22 @@ class RestaurantIntegrationTest {
                 .get("mapfood/restaurants")
                 .then()
                 .extract()
-                .as(new TypeRef<List<Restaurant>>() {});
+                .as(new TypeRef<List<Restaurant>>() {
+                });
 
         Assertions.assertEquals(1, restaurants.size());
         Assertions.assertAll(
                 () -> Assertions.assertEquals("1", restaurants.get(0).getId()),
                 () -> Assertions.assertEquals("McDonalds", restaurants.get(0).getName()),
                 () -> Assertions.assertEquals("Rua 123", restaurants.get(0).getAddressCity()),
-                () -> Assertions.assertEquals(50.00d, restaurants.get(0).getLongitude()),
-                () -> Assertions.assertEquals(50.00d, restaurants.get(0).getLatitude()),
+                () -> Assertions.assertEquals(50.00d, restaurants.get(0).getLocation().getX()),
+                () -> Assertions.assertEquals(50.00d, restaurants.get(0).getLocation().getY()),
                 () -> Assertions.assertEquals("Lanches", restaurants.get(0).getDishDescription())
         );
     }
 
     @Test
-    void shouldFindOneRestaurant ()  {
+    void shouldFindOneRestaurant() {
 
         Restaurant restaurant = given()
                 .accept("application/json")
@@ -78,28 +77,28 @@ class RestaurantIntegrationTest {
                 () -> Assertions.assertEquals("1", restaurant.getId()),
                 () -> Assertions.assertEquals("McDonalds", restaurant.getName()),
                 () -> Assertions.assertEquals("Rua 123", restaurant.getAddressCity()),
-                () -> Assertions.assertEquals(50.00d, restaurant.getLongitude()),
-                () -> Assertions.assertEquals(50.00d, restaurant.getLatitude()),
+                () -> Assertions.assertEquals(50.00d, restaurant.getLocation().getX()),
+                () -> Assertions.assertEquals(50.00d, restaurant.getLocation().getY()),
                 () -> Assertions.assertEquals("Lanches", restaurant.getDishDescription())
         );
     }
 
     @Test
-    void shouldReturnExceptionIfFindOneNotFindRestaurant(){
-         given()
+    void shouldReturnExceptionIfFindOneNotFindRestaurant() {
+        given()
                 .accept("application/json")
                 .when()
                 .get("mapfood/restaurants/2")
                 .then()
-                 .statusCode(HttpStatus.BAD_REQUEST.value())
-                 .body("message", equalTo("Nenhum restaurante foi encontrado"));
+                .statusCode(HttpStatus.BAD_REQUEST.value())
+                .body("message", equalTo("Nenhum restaurante foi encontrado"));
     }
 
     @Test
-    void shouldInsertNewRestaurant (){
+    void shouldInsertNewRestaurant() {
         given()
                 .contentType("application/json")
-                .body(new Restaurant("3", "BK", "Rua", 50.00, 50.00, "Sanduba"))
+                .body(new Restaurant("3", "BK", "Rua", new GeoJsonPoint(50.0, 50.0), "Sanduba"))
                 .when()
                 .post("mapfood/restaurants")
                 .then()
@@ -107,11 +106,12 @@ class RestaurantIntegrationTest {
 
         Assertions.assertEquals(2, restaurantRepository.findAll().size());
     }
+
     @Test
-    void shouldNotInsertThatAlreadyExists (){
+    void shouldNotInsertThatAlreadyExists() {
         given()
                 .contentType("application/json")
-                .body(new Restaurant("1", "BK", "Rua", 50.00, 50.00, "Sanduba"))
+                .body(new Restaurant("1", "BK", "Rua", new GeoJsonPoint(50.0, 50.0), "Sanduba"))
                 .when()
                 .post("mapfood/restaurants")
                 .then()
@@ -121,8 +121,8 @@ class RestaurantIntegrationTest {
 
 
     @Test
-    void shouldUpdateRestaurant (){
-        Restaurant restaurantToBeUpdated = new Restaurant("1", "BK", "Rua", 50.00, 50.00, "Sanduba");
+    void shouldUpdateRestaurant() {
+        Restaurant restaurantToBeUpdated = new Restaurant("1", "BK", "Rua", new GeoJsonPoint(50.0, 50.0), "Sanduba");
         given()
                 .contentType("application/json")
                 .body(restaurantToBeUpdated)
@@ -131,11 +131,12 @@ class RestaurantIntegrationTest {
                 .then()
                 .statusCode(HttpStatus.ACCEPTED.value());
 
-        Assertions.assertEquals(restaurantToBeUpdated.toString(), restaurantRepository.findById("1").get().toString() );
+        Assertions.assertEquals(restaurantToBeUpdated.toString(), restaurantRepository.findById("1").get().toString());
     }
+
     @Test
-    void shouldNotUpdateRestaurantThatNotExists (){
-        Restaurant restaurantNotToBeUpdated = new Restaurant("2", "BK", "Rua", 50.00, 50.00, "Sanduba");
+    void shouldNotUpdateRestaurantThatNotExists() {
+        Restaurant restaurantNotToBeUpdated = new Restaurant("2", "BK", "Rua", new GeoJsonPoint(50.0, 50.0), "Sanduba");
         given()
                 .contentType("application/json")
                 .body(restaurantNotToBeUpdated)
@@ -148,7 +149,7 @@ class RestaurantIntegrationTest {
     }
 
     @Test
-    void shouldDeleteRestaurant (){
+    void shouldDeleteRestaurant() {
         given()
                 .accept("application/json")
                 .when()
@@ -158,8 +159,9 @@ class RestaurantIntegrationTest {
 
         Assertions.assertEquals(0, restaurantRepository.findAll().size());
     }
+
     @Test
-    void shouldNotDeleteRestaurantThatNotExist (){
+    void shouldNotDeleteRestaurantThatNotExist() {
         given()
                 .accept("application/json")
                 .when()

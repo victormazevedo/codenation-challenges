@@ -3,6 +3,8 @@ package br.com.movile.order.controller;
 import br.com.movile.order.model.Order;
 import br.com.movile.order.service.OrderService;
 import org.bson.types.ObjectId;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -29,5 +31,10 @@ public class OrderController {
     @DeleteMapping("/{orderId}")
     public void cancel(@PathVariable String orderId) {
         orderService.delete(orderId);
+    }
+
+    @GetMapping
+    public Page<Order> getOrders(Pageable pageable) {
+        return orderService.getOrders(pageable);
     }
 }

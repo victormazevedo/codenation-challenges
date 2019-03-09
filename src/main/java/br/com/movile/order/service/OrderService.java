@@ -7,6 +7,8 @@ import br.com.movile.order.model.Order;
 import br.com.movile.order.repository.OrderRepository;
 import br.com.movile.restaurant.repository.RestaurantRepository;
 import org.bson.types.ObjectId;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +17,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static br.com.movile.order.model.OrderStatus.*;
+import static br.com.movile.order.model.OrderStatus.CANCELLED;
+import static br.com.movile.order.model.OrderStatus.OPENED;
 
 @Service
 public class OrderService {
@@ -84,5 +87,9 @@ public class OrderService {
         order.get().setStatus(CANCELLED);
 
         orderRepository.save(order.get());
+    }
+
+    public Page<Order> getOrders(Pageable pageable) {
+        return orderRepository.findAll(pageable);
     }
 }
