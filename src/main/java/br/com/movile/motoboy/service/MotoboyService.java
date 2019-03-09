@@ -1,24 +1,35 @@
 package br.com.movile.motoboy.service;
 
 
-import br.com.movile.exception.model.ElementAlreadyExistException;
-import br.com.movile.motoboy.model.Motoboy;
-
-import br.com.movile.motoboy.repository.MotoboyRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.NoSuchElementException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.geo.GeoResults;
+import org.springframework.data.geo.Metrics;
+import org.springframework.data.geo.Point;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.NearQuery;
+import org.springframework.stereotype.Service;
+
+import br.com.movile.exception.model.ElementAlreadyExistException;
+import br.com.movile.exception.model.NoMotoboyAvailableException;
+import br.com.movile.motoboy.model.Motoboy;
+import br.com.movile.motoboy.repository.MotoboyRepository;
+import br.com.movile.restaurant.model.Restaurant;
 
 @Service
 public class MotoboyService {
 
 
     private  final MotoboyRepository motoboyRepository;
+    
+	private MongoOperations mongoOperations;
+    
     @Autowired
     public MotoboyService(MotoboyRepository motoboyRepository) {
         this.motoboyRepository = motoboyRepository;
+        this.mongoOperations = mongoOperations;
     }
 
     public Motoboy findById(String id) {
@@ -51,4 +62,22 @@ public class MotoboyService {
                 .orElseThrow(() -> new NoSuchElementException("Motoboy não encontrado para delete"));
         motoboyRepository.deleteById(id);
     }
+    
+    
+    public Motoboy searchBetterMotoboyForDelivery(Restaurant restaurant, Double distance) throws NoMotoboyAvailableException {
+
+		NearQuery maxDistance = generateQueryForSearch(restaurant, distance);
+		GeoResults<Motoboy> geoNear = mongoOperations.geoNear(maxDistance, Motoboy.class);
+		if(geoNear.getContent().isEmpty()) {
+			throw new NoMotoboyAvailableException("No motoboy found nearby!");
+		} else
+			return geoNear.getContent().get(0).getContent();
+	}
+
+	private NearQuery generateQueryForSearch(Restaurant restaurant, Double distance) {
+		Point point = new Point(restaurant.getLocation().getX(), restaurant.getLocation().getY());
+		NearQuery maxDistance = NearQuery.near(point).inKilometers().maxDistance(distance, Metrics.KILOMETERS);
+		return maxDistance;
+	}
+    
 }
