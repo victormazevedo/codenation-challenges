@@ -2,6 +2,7 @@ package br.com.movile.motoboy.model;
 
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Getter;
@@ -11,37 +12,27 @@ import lombok.Getter;
 public class Motoboy {
 
 	@Id
-    @Getter
-    @Setter
+	@Getter
+	@Setter
 	private String id;
 
 	@Getter
-    @Setter
-	private double longitude;
+	@Setter
+	private GeoJsonPoint location;
 
-    @Getter
-    @Setter
-	private double latitude;
+	@Getter
+	@Setter
+	private boolean busy;
 
-    @Getter
-    @Setter
-    private boolean busy;
-
-
-    public Motoboy(String id, double longitude, double latitude, boolean busy) {
+	public Motoboy(String id, GeoJsonPoint location, boolean busy) {
 		this.id = id;
-		this.longitude = longitude;
-		this.latitude = latitude;
+		this.location = location;
 		this.busy = busy;
 	}
-	public Motoboy (){}
 
 	@Override
 	public String toString() {
-		return "Motoboy{" +
-				"id='" + id + '\'' +
-				", longitude=" + longitude +
-				", latitude=" + latitude +
-				'}';
+		return "Motoboy [id=" + id + ", location=" + location + ", busy=" + busy + "]";
 	}
+
 }

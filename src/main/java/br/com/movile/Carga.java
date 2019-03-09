@@ -67,11 +67,10 @@ public class Carga {
 
 				List<String> parseLine = parseLine(x, DEFAULT_SEPARATOR, DEFAULT_QUOTE);
 
-				String id = parseLine.get(0).replaceAll(",", "");
-				double longitude = Double.parseDouble(parseLine.get(1));
-				double latitude = Double.parseDouble(parseLine.get(2));
+				String id = parseLine.get(0).replaceAll(",", "");				
+				GeoJsonPoint localizacao = new GeoJsonPoint(new Point(Double.parseDouble(parseLine.get(1)), Double.parseDouble(parseLine.get(2))));
 
-				motoboy.add(new Motoboy(id, longitude, latitude, false));
+				motoboy.add(new Motoboy(id, localizacao, false));
 			});
 
 		} catch (Exception e1) {
