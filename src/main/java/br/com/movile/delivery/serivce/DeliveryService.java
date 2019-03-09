@@ -1,6 +1,7 @@
 package br.com.movile.delivery.serivce;
 
 import br.com.movile.delivery.model.Delivery;
+import br.com.movile.delivery.model.dto.DeliveryForecast;
 import br.com.movile.delivery.repository.DeliveryRepository;
 import br.com.movile.exception.model.CannotAddMoreOrderException;
 import br.com.movile.order.model.Order;
@@ -40,7 +41,7 @@ public class DeliveryService {
         // dispara alguma coisa para definir o motoboy
     }
 
-    public void addOrderToDelivery(Order order) {
+    public DeliveryForecast addOrderToDelivery(Order order) {
         Delivery delivery = findNearDeliveryInWindowTime(order);
 
         try {
@@ -51,6 +52,8 @@ public class DeliveryService {
         } finally {
             deliveryRepository.save(delivery);
         }
+
+        return new DeliveryForecast();
     }
 
     private Delivery findNearDeliveryInWindowTime(Order order) {
