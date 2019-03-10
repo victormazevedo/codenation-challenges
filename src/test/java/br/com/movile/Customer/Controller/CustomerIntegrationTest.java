@@ -13,6 +13,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import br.com.movile.customer.model.Customer;
@@ -34,7 +35,8 @@ public class CustomerIntegrationTest {
 	void setUp() {
 		RestAssured.port = port;
 		customerRepository.deleteAll();
-		Customer customer = new Customer("1", 1009.0, 1233.0);
+		GeoJsonPoint point = new GeoJsonPoint(1009.0, 1233.0);
+		Customer customer = new Customer("1", point);
 		customerRepository.save(customer);
 	}
 
@@ -47,8 +49,8 @@ public class CustomerIntegrationTest {
 
 		Assertions.assertEquals(1, customers.size());
 		Assertions.assertAll(() -> Assertions.assertEquals("1", customers.get(0).getId()),
-				() -> Assertions.assertEquals(1009.0, customers.get(0).getLongitude()),
-				() -> Assertions.assertEquals(1233.0, customers.get(0).getLatitude()));
+				() -> Assertions.assertEquals(1009.0, customers.get(0).getLocalizacao().getX()),
+				() -> Assertions.assertEquals(1233.0, customers.get(0).getLocalizacao().getY()));
 	}
 
 	@Test
@@ -59,8 +61,8 @@ public class CustomerIntegrationTest {
 
 		Assertions.assertNotNull(customer);
 		Assertions.assertAll(() -> Assertions.assertEquals("1", customer.getId()),
-				() -> Assertions.assertEquals(1009.0, customer.getLongitude()),
-				() -> Assertions.assertEquals(1233.0, customer.getLatitude()));
+				() -> Assertions.assertEquals(1009.0, customer.getLocalizacao().getX()),
+				() -> Assertions.assertEquals(1233.0, customer.getLocalizacao().getY()));
 	}
 
 	@Test
@@ -73,8 +75,9 @@ public class CustomerIntegrationTest {
 
 	@Test
 	void shouldInsertNewCustomer() {
+		GeoJsonPoint point = new GeoJsonPoint(1009.0, 1233.0);
 		given().contentType("application/json")
-			.body(new Customer("2", 1009.0, 1233.0))
+			.body(new Customer("2", point))
 			.when().post("mapfood/customers")
 			.then().statusCode(HttpStatus.SC_CREATED);
 
@@ -83,9 +86,10 @@ public class CustomerIntegrationTest {
 	
 	@Test
     void shouldNotInsertThatAlreadyExists (){
+		GeoJsonPoint point = new GeoJsonPoint(1009.0, 1233.0);
         given()
                 .contentType("application/json")
-                .body(new Customer("1", 1009.0, 1233.0 ))
+                .body(new Customer("1", point ))
                 .when()
                 .post("mapfood/customers")
                 .then()
@@ -95,7 +99,8 @@ public class CustomerIntegrationTest {
 	
 	  @Test
 	    void shouldUpdateCustomer (){
-	        Customer customerToBeUpdated = new Customer("1", 1009.0, 1233.0 );
+		  	GeoJsonPoint point = new GeoJsonPoint(1009.0, 1233.0);
+	        Customer customerToBeUpdated = new Customer("1", point );
 	        given()
 	                .contentType("application/json")
 	                .body(customerToBeUpdated)
@@ -109,7 +114,8 @@ public class CustomerIntegrationTest {
 	  
 	  @Test
 	    void shouldNotUpdateCustomerThatNotExists (){
-	        Customer customerNotToBeUpdated = new  Customer("3", 1009.0, 1233.0 );
+		  	GeoJsonPoint point = new GeoJsonPoint(1009.0, 1233.0);
+	        Customer customerNotToBeUpdated = new  Customer("3", point );
 	        given()
 	                .contentType("application/json")
 	                .body(customerNotToBeUpdated)
