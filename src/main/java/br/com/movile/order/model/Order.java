@@ -1,18 +1,16 @@
 package br.com.movile.order.model;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import br.com.movile.customer.model.Customer;
 import br.com.movile.item.model.Item;
 import br.com.movile.restaurant.model.Restaurant;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Setter;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.Getter;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Document(collection = "order")
 @Getter
@@ -31,6 +29,17 @@ public class Order {
     @Setter
     private OrderStatus status;
 
+    public Order() {
+    }
+
+    public Order(String id, Customer customer, LocalDateTime date, Restaurant restaurant, List<Item> items, OrderStatus status) {
+        this.id = id;
+        this.customer = customer;
+        this.date = date;
+        this.restaurant = restaurant;
+        this.items = items;
+        this.status = status;
+    }
 
     @Override
     public String toString() {

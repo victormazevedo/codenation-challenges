@@ -1,9 +1,13 @@
 package br.com.movile.order.service;
 
 import br.com.movile.customer.repository.CustomerRepository;
+import br.com.movile.delivery.model.dto.DeliveryForecast;
+import br.com.movile.delivery.serivce.DeliveryService;
+import br.com.movile.exception.model.NoMotoboyAvailableException;
 import br.com.movile.item.model.Item;
 import br.com.movile.item.repository.ItemRepository;
 import br.com.movile.order.model.Order;
+import br.com.movile.order.model.OrderStatus;
 import br.com.movile.order.repository.OrderRepository;
 import br.com.movile.restaurant.repository.RestaurantRepository;
 import org.bson.types.ObjectId;
@@ -31,6 +35,12 @@ public class OrderService {
 
     private final ItemRepository itemRepository;
 
+    private DeliveryService deliveryService;
+
+    public void setDeliveryService(DeliveryService deliveryService) {
+        this.deliveryService = deliveryService;
+    }
+
     public OrderService(OrderRepository orderRepository, RestaurantRepository restaurantRepository, CustomerRepository customerRepository, ItemRepository itemRepository) {
         this.orderRepository = orderRepository;
         this.restaurantRepository = restaurantRepository;
@@ -38,7 +48,7 @@ public class OrderService {
         this.itemRepository = itemRepository;
     }
 
-    public Order save(Order order) {
+    public DeliveryForecast save(Order order) throws NoMotoboyAvailableException {
         Optional customer = customerRepository.findById(order.getCustomer().getId());
         Optional restaurant = restaurantRepository.findById(order.getRestaurant().getId());
 
@@ -58,8 +68,9 @@ public class OrderService {
         }
 
         order.setStatus(OPENED);
+        order = orderRepository.save(order);
 
-        return orderRepository.save(order);
+        return deliveryService.addOrderToDelivery(order);
     }
 
     public Order getOrder(String orderId) {
@@ -91,5 +102,12 @@ public class OrderService {
 
     public Page<Order> getOrders(Pageable pageable) {
         return orderRepository.findAll(pageable);
+    }
+
+    public void changeStatus(String orderId, OrderStatus status) throws NoMotoboyAvailableException {
+        Order order = getOrder(orderId);
+        order.setStatus(status);
+
+        save(order);
     }
 }
