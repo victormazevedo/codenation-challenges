@@ -1,5 +1,7 @@
 package br.com.movile.order.controller;
 
+import br.com.movile.delivery.model.dto.DeliveryForecast;
+import br.com.movile.exception.model.NoMotoboyAvailableException;
 import br.com.movile.order.model.Order;
 import br.com.movile.order.service.OrderService;
 import org.bson.types.ObjectId;
@@ -18,8 +20,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public Order save(@RequestBody Order order) {
-        order.setId(ObjectId.get());
+    public DeliveryForecast save(@RequestBody Order order) throws NoMotoboyAvailableException {
         return orderService.save(order);
     }
 
