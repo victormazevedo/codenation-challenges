@@ -6,6 +6,7 @@ import java.util.List;
 import br.com.movile.customer.model.Customer;
 import br.com.movile.item.model.Item;
 import br.com.movile.restaurant.model.Restaurant;
+import lombok.EqualsAndHashCode;
 import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -15,11 +16,13 @@ import lombok.Getter;
 
 @Document(collection = "order")
 @Getter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Order {
 
     @Id
     @Setter
-    private ObjectId id;
+    @EqualsAndHashCode.Include
+    private String id;
 
     private Customer customer;
     private LocalDateTime date;
