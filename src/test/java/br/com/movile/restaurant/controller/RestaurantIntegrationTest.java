@@ -65,22 +65,26 @@ class RestaurantIntegrationTest {
     @Test
     void shouldFindOneRestaurant() {
 
-        Restaurant restaurant = given()
+            given()
                 .accept("application/json")
                 .when()
                 .get("mapfood/restaurants/1")
                 .then()
-                .extract()
-                .as(Restaurant.class);
+                .statusCode(HttpStatus.OK.value())
+                .body("id", equalTo("1"))
+                .body("name", equalTo("McDonalds"))
+                .body("addressCity", equalTo("Rua 123"))
+                .body("dishDescription", equalTo("Lanches"));
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals("1", restaurant.getId()),
-                () -> Assertions.assertEquals("McDonalds", restaurant.getName()),
-                () -> Assertions.assertEquals("Rua 123", restaurant.getAddressCity()),
-                () -> Assertions.assertEquals(50.00d, restaurant.getLocation().getX()),
-                () -> Assertions.assertEquals(50.00d, restaurant.getLocation().getY()),
-                () -> Assertions.assertEquals("Lanches", restaurant.getDishDescription())
-        );
+
+//        Assertions.assertAll(
+//                () -> Assertions.assertEquals("1", restaurant.getId()),
+//                () -> Assertions.assertEquals("McDonalds", restaurant.getName()),
+//                () -> Assertions.assertEquals("Rua 123", restaurant.getAddressCity()),
+//                () -> Assertions.assertEquals(50.00d, restaurant.getLocation().getX()),
+//                () -> Assertions.assertEquals(50.00d, restaurant.getLocation().getY()),
+//                () -> Assertions.assertEquals("Lanches", restaurant.getDishDescription())
+//        );
     }
 
     @Test

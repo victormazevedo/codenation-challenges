@@ -16,5 +16,5 @@ public class Customer {
 
 	@Id
 	private String id;
-	private GeoJsonPoint localizacao;
+	private GeoJsonPoint location;
 }

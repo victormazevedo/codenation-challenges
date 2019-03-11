@@ -17,6 +17,7 @@ public class Restaurant implements Serializable {
 	private static final long serialVersionUID = 9174284964172259833L;
 
 	public Restaurant() {
+	    this.location = new GeoJsonPoint(0,0);
 	};
 
 	@Id

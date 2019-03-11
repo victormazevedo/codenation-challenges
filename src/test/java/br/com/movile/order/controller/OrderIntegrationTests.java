@@ -73,8 +73,8 @@ class OrderIntegrationTests {
         Assertions.assertNotNull(order);
         Assertions.assertAll(() -> Assertions.assertEquals("5c745f50fa88992b9dd5fd19", order.getId()),
                 () -> Assertions.assertEquals("321", order.getCustomer().getId()),
-                () -> Assertions.assertEquals(-51.228496, order.getCustomer().getLocalizacao().getX()),
-                () -> Assertions.assertEquals(-30.03742831, order.getCustomer().getLocalizacao().getY()),
+                () -> Assertions.assertEquals(-51.228496, order.getCustomer().getLocation().getX()),
+                () -> Assertions.assertEquals(-30.03742831, order.getCustomer().getLocation().getY()),
                 () -> Assertions.assertEquals(LocalDateTime.now(), order.getDate()),
                 () -> Assertions.assertEquals("123", order.getRestaurant().getId()),
                 () -> Assertions.assertEquals("McDonalds", order.getRestaurant().getName()),
