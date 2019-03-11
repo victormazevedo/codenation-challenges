@@ -1,11 +1,14 @@
 package br.com.movile.order.controller;
 
 import br.com.movile.customer.model.Customer;
+import br.com.movile.customer.repository.CustomerRepository;
 import br.com.movile.item.model.Item;
+import br.com.movile.item.repository.ItemRepository;
 import br.com.movile.order.model.Order;
 import br.com.movile.order.model.OrderStatus;
 import br.com.movile.order.repository.OrderRepository;
 import br.com.movile.restaurant.model.Restaurant;
+import br.com.movile.restaurant.repository.RestaurantRepository;
 import io.restassured.RestAssured;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
@@ -34,9 +37,31 @@ class OrderIntegrationTests {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private ItemRepository itemRepository;
+
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    @Autowired
+    private RestaurantRepository restaurantRepository;
+
     @BeforeEach
     void setUp() {
         RestAssured.port = port;
+        Item item = new Item("1", "Big Mac", "McDonalds", "123", "Lanches", new BigDecimal(20), "PORTO ALEGRE");
+        itemRepository.deleteAll();
+        itemRepository.save(item);
+
+        customerRepository.deleteAll();
+        GeoJsonPoint point = new GeoJsonPoint(-51.228496, -30.03742831);
+        Customer customer = new Customer("321", point);
+        customerRepository.save(customer);
+
+
+        restaurantRepository.deleteAll();
+        restaurantRepository.save(new Restaurant("123", "McDonalds", "Rua 123", new GeoJsonPoint(50.0, 50.0), "Lanches"));
+
         orderRepository.deleteAll();
         orderRepository.save(
                 new Order("5c745f50fa88992b9dd5fd19",
@@ -60,7 +85,8 @@ class OrderIntegrationTests {
                 .when()
                 .post("mapfood/orders")
                 .then()
-                .statusCode(HttpStatus.SC_CREATED);
+                .log().all()
+                .statusCode(HttpStatus.SC_OK);
 
         Assertions.assertEquals(2, orderRepository.findAll().size());
     }
