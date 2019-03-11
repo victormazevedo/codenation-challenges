@@ -6,7 +6,6 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.movile.exception.model.dto.ElementAlreadyExistException;
 import br.com.movile.item.model.Item;
 import br.com.movile.item.repository.ItemRepository;
 
@@ -44,9 +43,9 @@ public class ItemService {
 				.orElseThrow(() -> new NoSuchElementException("Nenhum Item com o Id: " + id + " foi encontrado"));
 	}
 
-	public Item inset(Item item) throws ElementAlreadyExistException {
+	public Item inset(Item item){
 		if (itemRepository.existsById(item.getId()))
-			throw new ElementAlreadyExistException("Item já existe na base de dados");
+			throw new NoSuchElementException("Item já existe na base de dados");
 		return itemRepository.insert(item);
 	}
 

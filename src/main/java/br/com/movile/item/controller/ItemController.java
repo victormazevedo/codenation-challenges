@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.movile.exception.model.dto.ElementAlreadyExistException;
 import br.com.movile.item.model.Item;
 import br.com.movile.item.service.ItemService;
 
@@ -64,7 +63,7 @@ public class ItemController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Item insert(@Valid @RequestBody Item item) throws ElementAlreadyExistException {
+	public Item insert(@Valid @RequestBody Item item){
 		return itemService.inset(item);
 	}
 
