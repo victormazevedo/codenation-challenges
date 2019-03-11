@@ -71,31 +71,31 @@ public class OrderService {
 		Iterable<Item> findAllById = itemRepository.findAllById(ids);
 
 		if (findAllById == null || StreamSupport.stream(findAllById.spliterator(), false).count() != ids.size()) {
-			throw new NoSuchElementException("Item(s) inválido(s) ou não encontrado(s)!");
+			throw new NoSuchElementException("Item not found or invalid!");
 		}
 
 		if (!customer.isPresent()) {
-			throw new NoSuchElementException("Usuário inválido e/ou não encontrado!");
+			throw new NoSuchElementException("User not found or invalid!");
 		}
 
 		if (!restaurant.isPresent()) {
-			throw new NoSuchElementException("Restaurante inválido e/ou não encontrado!");
+			throw new NoSuchElementException("Restaurant not found or invalid!");
 		}
 
 		order.setStatus(OPENED);
         order = orderRepository.save(order);
 
-		return deliveryForecastService.calculateForecast();
+		return deliveryForecastService.calculateForecast(order);
 	}
 
 	public Order getOrder(String orderId) {
 		try {
 			new ObjectId(orderId);
 		} catch (IllegalArgumentException ile) {
-			throw new IllegalArgumentException("ObjectId fora do padrão!", ile);
+			throw new IllegalArgumentException("Illegal ObjectId!", ile);
 		}
 		return orderRepository.findById(orderId)
-				.orElseThrow(() -> new NoSuchElementException("Pedido não encontrado!"));
+				.orElseThrow(() -> new NoSuchElementException("Order not found!"));
 	}
 
 	public void delete(String orderId) throws NoMotoboyAvailableException {
@@ -103,11 +103,11 @@ public class OrderService {
 		Optional<Order> order = orderRepository.findById(orderId);
 
 		if (!order.isPresent()) {
-			throw new IllegalArgumentException("Pedido não encontrado!");
+			throw new IllegalArgumentException("Order not found!");
 		}
 
 		if (order.get().getStatus() == CANCELLED) {
-			throw new IllegalArgumentException("Pedido já cancelado!");
+			throw new IllegalArgumentException("Order already cancelled!");
 		}
 
 		deliveryService.removeOrder(orderId);
