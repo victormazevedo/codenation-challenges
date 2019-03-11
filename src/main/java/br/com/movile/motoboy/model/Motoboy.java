@@ -34,7 +34,10 @@ public class Motoboy {
 		this.busy = busy;
 	}
 
-	@Override
+    public Motoboy() {
+    }
+
+    @Override
 	public String toString() {
 		return "Motoboy [id=" + id + ", location=" + location + ", busy=" + busy + "]";
 	}

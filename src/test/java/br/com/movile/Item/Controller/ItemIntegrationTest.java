@@ -152,8 +152,6 @@ public class ItemIntegrationTest {
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("message", equalTo("Item já existe na base de dados"));
     }
-
-
     @Test
     void shouldUpdateItem (){
         Item itemToBeUpdated = new Item("1", "Chocolate Branco", "Casa da Tia", "123", "Doces", price, "PROTO ALEGRE");
