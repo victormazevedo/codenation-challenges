@@ -68,7 +68,13 @@ class OrderIntegrationTests {
     @Test
     void shouldFindOneItem() {
 
-        Order order = given().accept("application/json").when().get("mapfood/orders/5c745f50fa88992b9dd5fd19").then().extract().as(Order.class);
+        Order order = given().accept("application/json")
+                .when()
+                .get("mapfood/orders/5c745f50fa88992b9dd5fd19")
+                .then()
+                .statusCode(org.springframework.http.HttpStatus.OK.value())
+                .extract()
+                .as(Order.class);
 
         Assertions.assertNotNull(order);
         Assertions.assertAll(() -> Assertions.assertEquals("5c745f50fa88992b9dd5fd19", order.getId()),

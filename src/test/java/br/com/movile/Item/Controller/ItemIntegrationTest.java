@@ -153,20 +153,6 @@ public class ItemIntegrationTest {
                 .body("message", equalTo("Item já existe na base de dados"));
     }
 
-
-    @Test
-    void shouldUpdateItem (){
-        Item itemToBeUpdated = new Item("1", "Chocolate Branco", "Casa da Tia", "123", "Doces", price, "PROTO ALEGRE");
-        given()
-                .contentType("application/json")
-                .body(itemToBeUpdated)
-                .when()
-                .put("mapfood/items")
-                .then()
-                .statusCode(HttpStatus.SC_ACCEPTED);
-
-        Assertions.assertEquals(itemToBeUpdated.toString(), itemRepository.findById("1").get().toString() );
-    }
     @Test
     void shouldNotUpdateItemThatNotExists (){
         Item itemNotToBeUpdated = new  Item("3", "Chocolate", "Casa da Tia", "123", "Doces", price, "PROTO ALEGRE");
