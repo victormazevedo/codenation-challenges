@@ -45,6 +45,10 @@ public class Delivery {
 		}else{
 			throw new CannotAddMoreOrderException();
 		}
+
+		if(orders.size() == 5){
+			status = DeliveryStatus.CLOSED;
+		}
 	}
 
 	public boolean isComplete(){

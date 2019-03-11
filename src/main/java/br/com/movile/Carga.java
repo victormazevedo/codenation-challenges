@@ -35,7 +35,7 @@ public class Carga {
 	private static final char DEFAULT_QUOTE = '"';
 
 	public void cliente() {
-		caminho = Paths.get(System.getProperty("user.home") + "/codenation/mapfood/clientes.csv");
+		caminho = Paths.get("/home/luan-santos/Documentos/pessoal/codenationMapFood/ambiente/csv/clientes.csv");
 
 		try {
 			allLines = Files.readAllLines(caminho, StandardCharsets.UTF_8);
@@ -59,7 +59,7 @@ public class Carga {
 	}
 
 	public void motoboy() {
-		caminho = Paths.get(System.getProperty("user.home") + "/codenation/mapfood/motoboys.csv");
+		caminho = Paths.get("/home/luan-santos/Documentos/pessoal/codenationMapFood/ambiente/csv/motoboys.csv");
 
 		try {
 			allLines = Files.readAllLines(caminho, StandardCharsets.UTF_8);
@@ -84,7 +84,7 @@ public class Carga {
 	public void estabelecimentoPorMunicipio() {
 
 		caminho = Paths
-				.get(System.getProperty("user.home") + "/codenation/mapfood/estabelecimento-por-municipio.csv");
+				.get("/home/luan-santos/Documentos/pessoal/codenationMapFood/ambiente/csv/estabelecimento-por-municipio.csv");
 
 		estabelecimentos = new ArrayList<>();
 
@@ -128,7 +128,7 @@ public class Carga {
 
 	public void produtosPorEstabelecimento() {
 		caminho = Paths
-				.get(System.getProperty("user.home") + "/codenation/mapfood/produtos-por-estabelecimento.csv");
+				.get("/home/luan-santos/Documentos/pessoal/codenationMapFood/ambiente/csv/produtos-por-estabelecimento.csv");
 
 		try {
 			produtos = new ArrayList<>();

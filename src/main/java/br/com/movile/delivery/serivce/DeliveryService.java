@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class DeliveryService {
@@ -50,15 +51,15 @@ public class DeliveryService {
         List<Delivery> deliveries = deliveryRepository
                 .findAllOpened(DeliveryStatus.OPENED, LocalDateTime.now().minusMinutes(windowDuration));
         for (Delivery delivery : deliveries) {
-            makeDeliveryReady(delivery);
+            closeDeliveryAndAddMotoboy(delivery);
         }
     }
 
-    private void makeDeliveryReady(Delivery delivery) throws NoMotoboyAvailableException {
+    private void closeDeliveryAndAddMotoboy(Delivery delivery) throws NoMotoboyAvailableException {
         Motoboy motoboy = motoboyService
                 .searchBetterMotoboyForDelivery(delivery.getOrders().get(0).getRestaurant(), maxDistance);
 
-        delivery.setStatus(DeliveryStatus.READY);
+        delivery.setStatus(DeliveryStatus.CLOSED);
         delivery.setMotoboy(motoboy);
 
         deliveryRepository.save(delivery);
@@ -71,7 +72,7 @@ public class DeliveryService {
             delivery.addOrder(order);
 
             if (delivery.isComplete()) {
-                makeDeliveryReady(delivery);
+                closeDeliveryAndAddMotoboy(delivery);
             }
         } catch (CannotAddMoreOrderException e) {
             delivery = new Delivery();
@@ -84,11 +85,10 @@ public class DeliveryService {
     }
 
     private Delivery findNearDeliveryInWindowTime(Order order) {
-        /* TODO realizar a busca de Deliveries em que a Order possa entrar
-         * Levar em consideração a distância entre os clientes de cada Order
-         * Se o Status é OPENED, se é o mesmo restaurante e a Janela
-         * */
-        return new Delivery();
+        Optional<Delivery> delivery = deliveryRepository
+                .findBetterDeliveryForOrder(DeliveryStatus.OPENED, order.getRestaurant().getId(),
+                        LocalDateTime.now().minusMinutes(windowDuration));
+        return delivery.orElse(new Delivery());
     }
 
     public void removeOrder(String orderId) throws NoMotoboyAvailableException {
