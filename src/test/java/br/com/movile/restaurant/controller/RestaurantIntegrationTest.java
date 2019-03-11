@@ -42,24 +42,15 @@ class RestaurantIntegrationTest {
     @Test
     void shouldFindAllRestaurants() {
 
-        List<Restaurant> restaurants = given()
+           List<Object> restaurants =  given()
                 .accept("application/json")
                 .when()
                 .get("mapfood/restaurants")
                 .then()
+                .statusCode(HttpStatus.OK.value())
                 .extract()
-                .as(new TypeRef<List<Restaurant>>() {
-                });
-
-        Assertions.assertEquals(1, restaurants.size());
-        Assertions.assertAll(
-                () -> Assertions.assertEquals("1", restaurants.get(0).getId()),
-                () -> Assertions.assertEquals("McDonalds", restaurants.get(0).getName()),
-                () -> Assertions.assertEquals("Rua 123", restaurants.get(0).getAddressCity()),
-                () -> Assertions.assertEquals(50.00d, restaurants.get(0).getLocation().getX()),
-                () -> Assertions.assertEquals(50.00d, restaurants.get(0).getLocation().getY()),
-                () -> Assertions.assertEquals("Lanches", restaurants.get(0).getDishDescription())
-        );
+                .as(new TypeRef<List<Object>>() {});
+           Assertions.assertEquals(1, restaurants.size());
     }
 
     @Test
@@ -75,16 +66,6 @@ class RestaurantIntegrationTest {
                 .body("name", equalTo("McDonalds"))
                 .body("addressCity", equalTo("Rua 123"))
                 .body("dishDescription", equalTo("Lanches"));
-
-
-//        Assertions.assertAll(
-//                () -> Assertions.assertEquals("1", restaurant.getId()),
-//                () -> Assertions.assertEquals("McDonalds", restaurant.getName()),
-//                () -> Assertions.assertEquals("Rua 123", restaurant.getAddressCity()),
-//                () -> Assertions.assertEquals(50.00d, restaurant.getLocation().getX()),
-//                () -> Assertions.assertEquals(50.00d, restaurant.getLocation().getY()),
-//                () -> Assertions.assertEquals("Lanches", restaurant.getDishDescription())
-//        );
     }
 
     @Test
