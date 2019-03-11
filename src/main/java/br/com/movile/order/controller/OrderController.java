@@ -1,5 +1,6 @@
 package br.com.movile.order.controller;
 
+import br.com.movile.delivery.model.dto.DeliveryForecast;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,7 +26,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public Order save(@RequestBody Order order) throws NoMotoboyAvailableException {
+    public DeliveryForecast save(@RequestBody Order order) throws NoMotoboyAvailableException {
         return orderService.save(order);
     }
 

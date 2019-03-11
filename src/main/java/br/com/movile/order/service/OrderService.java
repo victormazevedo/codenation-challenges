@@ -9,6 +9,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import br.com.movile.delivery.model.dto.DeliveryForecast;
+import br.com.movile.delivery.serivce.DeliveryService;
+import br.com.movile.exception.model.NoMotoboyAvailableException;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -41,9 +44,15 @@ public class OrderService {
 	private final MongoOperations mongoOperations;
 
 	private boolean close;
-	
-	public OrderService(OrderRepository orderRepository, RestaurantRepository restaurantRepository,
-			CustomerRepository customerRepository, ItemRepository itemRepository, MongoOperations mongoOperations) {
+
+    private DeliveryService deliveryService;
+
+    public void setDeliveryService(DeliveryService deliveryService) {
+        this.deliveryService = deliveryService;
+    }
+
+    public OrderService(OrderRepository orderRepository, RestaurantRepository restaurantRepository,
+                        CustomerRepository customerRepository, ItemRepository itemRepository, MongoOperations mongoOperations) {
 		this.orderRepository = orderRepository;
 		this.restaurantRepository = restaurantRepository;
 		this.customerRepository = customerRepository;
@@ -51,7 +60,7 @@ public class OrderService {
 		this.mongoOperations = mongoOperations;
 	}
 
-	public Order save(Order order) {
+	public DeliveryForecast save(Order order) throws NoMotoboyAvailableException {
 		Optional customer = customerRepository.findById(order.getCustomer().getId());
 		Optional restaurant = restaurantRepository.findById(order.getRestaurant().getId());
 
@@ -71,8 +80,9 @@ public class OrderService {
 		}
 
 		order.setStatus(OPENED);
+        order = orderRepository.save(order);
 
-		return orderRepository.save(order);
+		return deliveryService.addOrderToDelivery(order);
 	}
 
 	public Order getOrder(String orderId) {
