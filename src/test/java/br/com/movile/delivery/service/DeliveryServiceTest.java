@@ -39,10 +39,10 @@ public class DeliveryServiceTest {
         delivery.setId("id");
         delivery.addOrder(order);
 
-        when(deliveryRepository.findById(any()))
+        when(deliveryRepository.findByOrderId(any()))
                 .thenReturn(Optional.of(delivery));
 
-        deliveryService.removeOrder("id", "orderId");
+        deliveryService.removeOrder( "orderId");
 
         ArgumentCaptor<Delivery> deliveryCaptor = ArgumentCaptor.forClass(Delivery.class);
         verify(deliveryRepository, times(1))
@@ -65,7 +65,7 @@ public class DeliveryServiceTest {
                 .thenReturn(Optional.empty());
 
         Assertions.assertThrows(NoSuchElementException.class, () ->
-                deliveryService.removeOrder("id", "orderId"));
+                deliveryService.removeOrder( "orderId"));
 
     }
 }
