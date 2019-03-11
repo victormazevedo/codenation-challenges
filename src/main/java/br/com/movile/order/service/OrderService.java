@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import br.com.movile.delivery.model.dto.DeliveryForecast;
+import br.com.movile.delivery.serivce.DeliveryForecastService;
 import br.com.movile.delivery.serivce.DeliveryService;
 import br.com.movile.exception.model.NoMotoboyAvailableException;
 import org.bson.types.ObjectId;
@@ -44,6 +45,8 @@ public class OrderService {
 
 	private final MongoOperations mongoOperations;
 
+	private final DeliveryForecastService deliveryForecastService;
+
 	private boolean close;
 
 
@@ -51,12 +54,13 @@ public class OrderService {
     private DeliveryService deliveryService;
 
     public OrderService(OrderRepository orderRepository, RestaurantRepository restaurantRepository,
-                        CustomerRepository customerRepository, ItemRepository itemRepository, MongoOperations mongoOperations) {
+						CustomerRepository customerRepository, ItemRepository itemRepository, MongoOperations mongoOperations, DeliveryForecastService deliveryForecastService) {
 		this.orderRepository = orderRepository;
 		this.restaurantRepository = restaurantRepository;
 		this.customerRepository = customerRepository;
 		this.itemRepository = itemRepository;
 		this.mongoOperations = mongoOperations;
+		this.deliveryForecastService = deliveryForecastService;
 	}
 
 	public DeliveryForecast save(Order order) throws NoMotoboyAvailableException {
@@ -81,7 +85,7 @@ public class OrderService {
 		order.setStatus(OPENED);
         order = orderRepository.save(order);
 
-		return deliveryService.addOrderToDelivery(order);
+		return deliveryForecastService.calculateForecast();
 	}
 
 	public Order getOrder(String orderId) {

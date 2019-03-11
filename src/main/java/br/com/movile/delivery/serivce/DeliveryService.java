@@ -27,7 +27,7 @@ public class DeliveryService {
 
     private final DeliveryRepository deliveryRepository;
     private final MotoboyService motoboyService;
-    private final DeliveryForecastService deliveryForecastService;
+
     @Autowired
     private OrderService orderService;
     private final MongoOperations mongoOperations;
@@ -39,10 +39,9 @@ public class DeliveryService {
     @Autowired
     public DeliveryService(
             DeliveryRepository deliveryRepository,
-            MotoboyService motoboyService, DeliveryForecastService deliveryForecastService, MongoOperations mongoOperations) {
+            MotoboyService motoboyService, MongoOperations mongoOperations) {
         this.deliveryRepository = deliveryRepository;
         this.motoboyService = motoboyService;
-        this.deliveryForecastService = deliveryForecastService;
         this.mongoOperations = mongoOperations;
     }
 
@@ -81,7 +80,7 @@ public class DeliveryService {
             deliveryRepository.save(delivery);
         }
 
-        return deliveryForecastService.calculateForecast(delivery);
+        return null;
     }
 
     private Delivery findNearDeliveryInWindowTime(Order order) {

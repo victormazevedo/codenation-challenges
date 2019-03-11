@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DeliveryForecastService {
 
-    public DeliveryForecast calculateForecast(Delivery delivery){
+    public DeliveryForecast calculateForecast(){
         return new DeliveryForecast();
     }
 }
