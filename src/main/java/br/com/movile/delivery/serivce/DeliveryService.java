@@ -11,8 +11,14 @@ import br.com.movile.motoboy.service.MotoboyService;
 import br.com.movile.order.model.Order;
 import br.com.movile.order.model.OrderStatus;
 import br.com.movile.order.service.OrderService;
+import br.com.movile.restaurant.model.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.geo.GeoResults;
+import org.springframework.data.geo.Metrics;
+import org.springframework.data.geo.Point;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.NearQuery;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +32,9 @@ public class DeliveryService {
     private final DeliveryRepository deliveryRepository;
     private final MotoboyService motoboyService;
     private final DeliveryForecastService deliveryForecastService;
-    private final OrderService orderService;
-
+    @Autowired
+    private OrderService orderService;
+    private final MongoOperations mongoOperations;
     @Value("${delivery.window-duration}")
     private int windowDuration;
     @Value(("${delivery.max-distance}"))
@@ -36,11 +43,11 @@ public class DeliveryService {
     @Autowired
     public DeliveryService(
             DeliveryRepository deliveryRepository,
-            MotoboyService motoboyService, DeliveryForecastService deliveryForecastService, OrderService orderService) {
+            MotoboyService motoboyService, DeliveryForecastService deliveryForecastService, MongoOperations mongoOperations) {
         this.deliveryRepository = deliveryRepository;
         this.motoboyService = motoboyService;
         this.deliveryForecastService = deliveryForecastService;
-        this.orderService = orderService;
+        this.mongoOperations = mongoOperations;
     }
 
     @Scheduled(fixedRate = 30000)
@@ -88,6 +95,23 @@ public class DeliveryService {
         * */
         return new Delivery();
     }
+
+//    public Motoboy findDeliveryWithNearOrder(Order order, Double distance) throws NoMotoboyAvailableException {
+//
+//        NearQuery nearQuery = generateNearQuery(order, distance);
+//        GeoResults<Motoboy> geoNear = mongoOperations.geoNear(maxDistance, C.class);
+//        if(geoNear.getContent().isEmpty()) {
+//            throw new NoMotoboyAvailableException("No motoboy found nearby!");
+//        } else
+//            return geoNear.getContent().get(0).getContent();
+//    }
+//
+//    private NearQuery generateNearQuery(Order order, Double distance) {
+//        Point point = new Point(order.getCustomer().getLocation().getX(), order.getCustomer().getLocation().getY());
+//        NearQuery nearQuery = NearQuery.near(point).inKilometers().maxDistance(distance, Metrics.KILOMETERS);
+//        return nearQuery;
+//    }
+
 
     public void removeOrder(String id, String orderId) throws NoMotoboyAvailableException {
         Delivery delivery = deliveryRepository.findById(id)

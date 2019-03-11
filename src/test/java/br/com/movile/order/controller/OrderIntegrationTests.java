@@ -40,7 +40,7 @@ class OrderIntegrationTests {
         orderRepository.deleteAll();
         orderRepository.save(
                 new Order("5c745f50fa88992b9dd5fd19",
-                        new Customer("321", -51.228496, -30.03742831),
+                        new Customer("321", new GeoJsonPoint(-51.228496, -30.03742831)),
                         LocalDateTime.now(),
                         new Restaurant("123", "McDonalds", "Rua 123", new GeoJsonPoint(50.0, 50.0), "Lanches"),
                         Collections.singletonList(new Item("1", "Big Mac", "McDonalds", "123", "Lanches", new BigDecimal(20), "PORTO ALEGRE")),
@@ -52,7 +52,7 @@ class OrderIntegrationTests {
         given()
                 .contentType("application/json")
                 .body(new Order("2",
-                        new Customer("321", -51.228496, -30.03742831),
+                        new Customer("321", new GeoJsonPoint( -51.228496, -30.03742831)),
                         LocalDateTime.now(),
                         new Restaurant("123", "McDonalds", "Rua 123", new GeoJsonPoint(50.0, 50.0), "Lanches"),
                         Collections.singletonList(new Item("1", "Big Mac", "McDonalds", "123", "Lanches", new BigDecimal(20), "PORTO ALEGRE")),
@@ -73,8 +73,8 @@ class OrderIntegrationTests {
         Assertions.assertNotNull(order);
         Assertions.assertAll(() -> Assertions.assertEquals("5c745f50fa88992b9dd5fd19", order.getId()),
                 () -> Assertions.assertEquals("321", order.getCustomer().getId()),
-                () -> Assertions.assertEquals(-51.228496, order.getCustomer().getLongitude()),
-                () -> Assertions.assertEquals(-30.03742831, order.getCustomer().getLatitude()),
+                () -> Assertions.assertEquals(-51.228496, order.getCustomer().getLocalizacao().getX()),
+                () -> Assertions.assertEquals(-30.03742831, order.getCustomer().getLocalizacao().getY()),
                 () -> Assertions.assertEquals(LocalDateTime.now(), order.getDate()),
                 () -> Assertions.assertEquals("123", order.getRestaurant().getId()),
                 () -> Assertions.assertEquals("McDonalds", order.getRestaurant().getName()),

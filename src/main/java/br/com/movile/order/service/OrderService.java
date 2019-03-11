@@ -13,6 +13,7 @@ import br.com.movile.delivery.model.dto.DeliveryForecast;
 import br.com.movile.delivery.serivce.DeliveryService;
 import br.com.movile.exception.model.NoMotoboyAvailableException;
 import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.geo.GeoResults;
@@ -45,11 +46,9 @@ public class OrderService {
 
 	private boolean close;
 
-    private DeliveryService deliveryService;
 
-    public void setDeliveryService(DeliveryService deliveryService) {
-        this.deliveryService = deliveryService;
-    }
+    @Autowired
+    private DeliveryService deliveryService;
 
     public OrderService(OrderRepository orderRepository, RestaurantRepository restaurantRepository,
                         CustomerRepository customerRepository, ItemRepository itemRepository, MongoOperations mongoOperations) {
@@ -116,9 +115,11 @@ public class OrderService {
 		return orderRepository.findAll(pageable);
 	}
 
-	public void changeStatus(String orderId, OrderStatus cancelled) {
-		// TODO Auto-generated method stub
+	public void changeStatus(String orderId, OrderStatus status) throws NoMotoboyAvailableException {
+		Order order = getOrder(orderId);
+		order.setStatus(status);
 
+		save(order);
 	}
 
 	public boolean closeEnough(Order order1, Order order2, double distanciaMaxima) {
