@@ -8,9 +8,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.com.movile.exception.model.CannotAddMoreOrderException;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import br.com.movile.motoboy.model.Motoboy;
@@ -26,6 +28,7 @@ public class Delivery {
 	@EqualsAndHashCode.Include
 	@Setter
 	private String id;
+	@DBRef
 	private List<Order> orders;
 	@Setter
 	private Motoboy motoboy;
@@ -51,6 +54,7 @@ public class Delivery {
 		}
 	}
 
+	@JsonIgnore
 	public boolean isComplete(){
 		return orders.size() == 5;
 	}

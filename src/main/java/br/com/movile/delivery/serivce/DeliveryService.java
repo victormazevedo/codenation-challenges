@@ -55,8 +55,7 @@ public class DeliveryService {
     }
 
     private void closeDeliveryAndAddMotoboy(Delivery delivery) throws NoMotoboyAvailableException {
-        Motoboy motoboy = motoboyService
-                .searchBetterMotoboyForDelivery(delivery.getOrders().get(0).getRestaurant(), maxDistance);
+        Motoboy motoboy = findMotoboyForDelivery(delivery);
 
         delivery.setStatus(DeliveryStatus.CLOSED);
         delivery.setMotoboy(motoboy);
@@ -64,7 +63,15 @@ public class DeliveryService {
         deliveryRepository.save(delivery);
     }
 
-    public DeliveryForecast addOrderToDelivery(Order order) throws NoMotoboyAvailableException {
+    private Motoboy findMotoboyForDelivery(Delivery delivery) throws NoMotoboyAvailableException {
+        Motoboy motoboy = motoboyService
+                .searchBetterMotoboyForDelivery(delivery.getOrders().get(0).getRestaurant(), maxDistance);
+        motoboy.setBusy(true);
+
+        return motoboy;
+    }
+
+    public void addOrderToDelivery(Order order) throws NoMotoboyAvailableException {
         Delivery delivery = findNearDeliveryInWindowTime(order);
 
         try {
@@ -79,8 +86,6 @@ public class DeliveryService {
         } finally {
             deliveryRepository.save(delivery);
         }
-
-        return null;
     }
 
     private Delivery findNearDeliveryInWindowTime(Order order) {
@@ -98,5 +103,21 @@ public class DeliveryService {
         deliveryRepository.save(delivery);
 
         orderService.changeStatus(orderId, OrderStatus.CANCELLED);
+    }
+
+    public void changeStatus(String id, DeliveryStatus status) {
+        if(!DeliveryStatus.FINISHED.equals(status)){
+            throw new IllegalArgumentException("Só é permitido mudar o status para finalizado");
+        }
+
+        deliveryRepository.findById(id).ifPresent(delivery -> {
+            delivery.setStatus(DeliveryStatus.FINISHED);
+
+            deliveryRepository.save(delivery);
+        });
+    }
+
+    public List<Delivery> findByStatus(DeliveryStatus status) {
+        return deliveryRepository.findByStatus(status);
     }
 }

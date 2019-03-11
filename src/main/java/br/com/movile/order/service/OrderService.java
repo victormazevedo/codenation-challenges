@@ -118,10 +118,16 @@ public class OrderService {
 	}
 
 	public void changeStatus(String orderId, OrderStatus status) throws NoMotoboyAvailableException {
+
+    	if(!OrderStatus.FINISHED.equals(status)){
+    		throw new IllegalArgumentException("Só é permitido mudar o status para finalizado");
+		}
+
 		Order order = getOrder(orderId);
 		order.setStatus(status);
-
 		orderRepository.save(order);
+
+		deliveryService.addOrderToDelivery(order);
 	}
 
 	public boolean closeEnough(Order order1, Order order2, double distanciaMaxima) {

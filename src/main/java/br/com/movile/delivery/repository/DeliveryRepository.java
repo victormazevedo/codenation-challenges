@@ -25,4 +25,7 @@ public interface DeliveryRepository extends MongoRepository<Delivery, String> {
             "   'orders.restaurant._id': ?1," +
             "   'windowBegin' : { $gt: ?2 }}")
     Optional<Delivery> findBetterDeliveryForOrder(DeliveryStatus status, String restaurantId, LocalDateTime deltaWindow);
+
+    @Query("{ 'status': ?0 }")
+    List<Delivery> findByStatus(DeliveryStatus status);
 }
