@@ -49,8 +49,8 @@ public class CustomerIntegrationTest {
 
 		Assertions.assertEquals(1, customers.size());
 		Assertions.assertAll(() -> Assertions.assertEquals("1", customers.get(0).getId()),
-				() -> Assertions.assertEquals(1009.0, customers.get(0).getLocalizacao().getX()),
-				() -> Assertions.assertEquals(1233.0, customers.get(0).getLocalizacao().getY()));
+				() -> Assertions.assertEquals(1009.0, customers.get(0).getLocation().getX()),
+				() -> Assertions.assertEquals(1233.0, customers.get(0).getLocation().getY()));
 	}
 
 	@Test
@@ -61,8 +61,8 @@ public class CustomerIntegrationTest {
 
 		Assertions.assertNotNull(customer);
 		Assertions.assertAll(() -> Assertions.assertEquals("1", customer.getId()),
-				() -> Assertions.assertEquals(1009.0, customer.getLocalizacao().getX()),
-				() -> Assertions.assertEquals(1233.0, customer.getLocalizacao().getY()));
+				() -> Assertions.assertEquals(1009.0, customer.getLocation().getX()),
+				() -> Assertions.assertEquals(1233.0, customer.getLocation().getY()));
 	}
 
 	@Test

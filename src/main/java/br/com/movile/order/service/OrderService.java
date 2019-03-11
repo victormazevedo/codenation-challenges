@@ -124,7 +124,7 @@ public class OrderService {
 
 		close = false;
 
-		Point point1 = new Point(order1.getCustomer().getLocalizacao());
+		Point point1 = new Point(order1.getCustomer().getLocation());
 		NearQuery maxDistance = NearQuery.near(point1).inKilometers().maxDistance(distanciaMaxima);
 
 		GeoResults<Customer> geoNear = mongoOperations.geoNear(maxDistance, Customer.class);
