@@ -36,7 +36,7 @@ public class OrderController {
     }
 
     @DeleteMapping("/{orderId}")
-    public void cancel(@PathVariable String orderId) {
+    public void cancel(@PathVariable String orderId) throws NoMotoboyAvailableException {
         orderService.delete(orderId);
     }
 

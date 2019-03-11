@@ -11,14 +11,9 @@ import br.com.movile.motoboy.service.MotoboyService;
 import br.com.movile.order.model.Order;
 import br.com.movile.order.model.OrderStatus;
 import br.com.movile.order.service.OrderService;
-import br.com.movile.restaurant.model.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.geo.GeoResults;
-import org.springframework.data.geo.Metrics;
-import org.springframework.data.geo.Point;
 import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.query.NearQuery;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -75,7 +70,7 @@ public class DeliveryService {
         try {
             delivery.addOrder(order);
 
-            if(delivery.isComplete()) {
+            if (delivery.isComplete()) {
                 makeDeliveryReady(delivery);
             }
         } catch (CannotAddMoreOrderException e) {
@@ -90,31 +85,14 @@ public class DeliveryService {
 
     private Delivery findNearDeliveryInWindowTime(Order order) {
         /* TODO realizar a busca de Deliveries em que a Order possa entrar
-        * Levar em consideração a distância entre os clientes de cada Order
-        * Se o Status é OPENED, se é o mesmo restaurante e a Janela
-        * */
+         * Levar em consideração a distância entre os clientes de cada Order
+         * Se o Status é OPENED, se é o mesmo restaurante e a Janela
+         * */
         return new Delivery();
     }
 
-//    public Motoboy findDeliveryWithNearOrder(Order order, Double distance) throws NoMotoboyAvailableException {
-//
-//        NearQuery nearQuery = generateNearQuery(order, distance);
-//        GeoResults<Motoboy> geoNear = mongoOperations.geoNear(maxDistance, C.class);
-//        if(geoNear.getContent().isEmpty()) {
-//            throw new NoMotoboyAvailableException("No motoboy found nearby!");
-//        } else
-//            return geoNear.getContent().get(0).getContent();
-//    }
-//
-//    private NearQuery generateNearQuery(Order order, Double distance) {
-//        Point point = new Point(order.getCustomer().getLocation().getX(), order.getCustomer().getLocation().getY());
-//        NearQuery nearQuery = NearQuery.near(point).inKilometers().maxDistance(distance, Metrics.KILOMETERS);
-//        return nearQuery;
-//    }
-
-
-    public void removeOrder(String id, String orderId) throws NoMotoboyAvailableException {
-        Delivery delivery = deliveryRepository.findById(id)
+    public void removeOrder(String orderId) throws NoMotoboyAvailableException {
+        Delivery delivery = deliveryRepository.findByOrderId(orderId)
                 .orElseThrow(() -> new NoSuchElementException("Delivery not found."));
 
         delivery.removeOrderById(orderId);

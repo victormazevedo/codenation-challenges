@@ -94,7 +94,7 @@ public class OrderService {
 				.orElseThrow(() -> new NoSuchElementException("Pedido não encontrado!"));
 	}
 
-	public void delete(String orderId) {
+	public void delete(String orderId) throws NoMotoboyAvailableException {
 
 		Optional<Order> order = orderRepository.findById(orderId);
 
@@ -106,9 +106,7 @@ public class OrderService {
 			throw new IllegalArgumentException("Pedido já cancelado!");
 		}
 
-		order.get().setStatus(CANCELLED);
-
-		orderRepository.save(order.get());
+		deliveryService.removeOrder(orderId);
 	}
 
 	public Page<Order> getOrders(Pageable pageable) {
@@ -119,7 +117,7 @@ public class OrderService {
 		Order order = getOrder(orderId);
 		order.setStatus(status);
 
-		save(order);
+		orderRepository.save(order);
 	}
 
 	public boolean closeEnough(Order order1, Order order2, double distanciaMaxima) {

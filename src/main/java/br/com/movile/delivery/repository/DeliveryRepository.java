@@ -10,10 +10,14 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface DeliveryRepository extends MongoRepository<Delivery, String> {
 
     @Query("{ 'status': ?0, 'windowBegin' : { $lt : ?1 } }")
     List<Delivery> findAllOpened(DeliveryStatus status, LocalDateTime minimalTime);
+
+    @Query("{ 'orders.id': ?0 }")
+    Optional<Delivery> findByOrderId(String orderId);
 }

@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import br.com.movile.exception.model.CannotAddMoreOrderException;
 import lombok.EqualsAndHashCode;
@@ -51,11 +52,14 @@ public class Delivery {
 	}
 
 	public void removeOrderById(String orderId) {
-		orders
+		orders = orders
 				.stream()
-				.filter(order -> order.getId().equals(orderId))
-				.findFirst()
-				.ifPresent((order -> orders.remove(order)));
+				.filter(order -> !order.getId().equals(orderId))
+				.collect(Collectors.toList());
+
+		if(orders.size() == 0){
+			status = DeliveryStatus.FINISHED;
+		}
 	}
 
 	public List<Order> getOrders(){
