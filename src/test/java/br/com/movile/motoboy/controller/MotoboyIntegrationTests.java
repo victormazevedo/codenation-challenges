@@ -1,4 +1,4 @@
-package br.com.movile.motoboy;
+package br.com.movile.motoboy.controller;
 
 
 import static io.restassured.RestAssured.given;
