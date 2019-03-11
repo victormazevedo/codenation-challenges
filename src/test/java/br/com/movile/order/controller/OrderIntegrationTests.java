@@ -24,8 +24,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Collections;
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -93,34 +95,23 @@ class OrderIntegrationTests {
 
     @Test
     void shouldFindOneItem() {
+        Order orderToBeFound  = orderRepository.findById("5c745f50fa88992b9dd5fd19").get();
+        Restaurant restaurantFromOrder = orderToBeFound.getRestaurant();
+        Customer customerFromOrder = orderToBeFound.getCustomer();
+        Item itemFromOrder = orderToBeFound.getItems().get(0);
 
-        Order order = given().accept("application/json")
+        given().accept("application/json")
                 .when()
                 .get("mapfood/orders/5c745f50fa88992b9dd5fd19")
                 .then()
+                .log()
+                .all()
                 .statusCode(org.springframework.http.HttpStatus.OK.value())
-                .extract()
-                .as(Order.class);
+                .body("id", equalTo(orderToBeFound.getId()))
+                .body("restaurant.id" , equalTo(restaurantFromOrder.getId()))
+                .body("customer.id" , equalTo(customerFromOrder.getId()))
+                .body("status" , equalTo(orderToBeFound.getStatus().toString()))
+                .body("items[0].id", equalTo(itemFromOrder.getId()));
 
-        Assertions.assertNotNull(order);
-        Assertions.assertAll(() -> Assertions.assertEquals("5c745f50fa88992b9dd5fd19", order.getId()),
-                () -> Assertions.assertEquals("321", order.getCustomer().getId()),
-                () -> Assertions.assertEquals(-51.228496, order.getCustomer().getLocation().getX()),
-                () -> Assertions.assertEquals(-30.03742831, order.getCustomer().getLocation().getY()),
-                () -> Assertions.assertEquals(LocalDateTime.now(), order.getDate()),
-                () -> Assertions.assertEquals("123", order.getRestaurant().getId()),
-                () -> Assertions.assertEquals("McDonalds", order.getRestaurant().getName()),
-                () -> Assertions.assertEquals("Rua123", order.getRestaurant().getAddressCity()),
-                () -> Assertions.assertEquals(50.0, order.getRestaurant().getLocation().getX()),
-                () -> Assertions.assertEquals(50.0, order.getRestaurant().getLocation().getY()),
-                () -> Assertions.assertEquals("Lanches", order.getRestaurant().getDishDescription()),
-                () -> Assertions.assertEquals("1", order.getItems().get(0).getId()),
-                () -> Assertions.assertEquals("Big Mac", order.getItems().get(0).getDescription()),
-                () -> Assertions.assertEquals("McDonalds", order.getItems().get(0).getRestaurant()),
-                () -> Assertions.assertEquals("123", order.getItems().get(0).getRestaurantId()),
-                () -> Assertions.assertEquals("Lanches", order.getItems().get(0).getClassification()),
-                () -> Assertions.assertEquals(new BigDecimal(20), order.getItems().get(0).getUnitPrice()),
-                () -> Assertions.assertEquals("PORTO ALEGRE", order.getItems().get(0).getAddressCity()),
-                () -> Assertions.assertEquals(OrderStatus.OPENED, order.getStatus()));
     }
 }
