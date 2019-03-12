@@ -1,4 +1,4 @@
-package br.com.movile.feeler;
+package br.com.movile.loader.service;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -18,24 +18,20 @@ import br.com.movile.item.model.Item;
 import br.com.movile.motoboy.model.Motoboy;
 import br.com.movile.restaurant.model.Restaurant;
 
-public class Feeler {
+public class LoaderService {
 
-	public static void main(String[] args) {
-
-	}
-
-	Path path = null;
-	List<String> allLines;
-	List<Customer> customers;
-	List<Motoboy> motoboy;
-	List<Restaurant> restaurants;
-	List<Item> items;
+	private Path path = null;
+	private List<String> allLines;
+	private List<Customer> customers;
+	private List<Motoboy> motoboy;
+	private List<Restaurant> restaurants;
+	private List<Item> items;
 
 	private static final char DEFAULT_SEPARATOR = ',';
 	private static final char DEFAULT_QUOTE = '"';
 
 	private String getFile(String fileName){
-		ClassLoader classLoader = Feeler.class.getClassLoader();
+		ClassLoader classLoader = LoaderService.class.getClassLoader();
 		return Objects.requireNonNull(classLoader.getResource("csv/" + fileName)).getPath();
 	}
 
@@ -249,7 +245,7 @@ public class Feeler {
 		return result;
 	}
 
-	public void generalFeel() {
+	public void load() {
 		customer();
 		motoboy();
 		restaurantsByCity();
