@@ -32,7 +32,9 @@ public class LoaderService {
 
 	private String getFile(String fileName){
 		ClassLoader classLoader = LoaderService.class.getClassLoader();
-		return Objects.requireNonNull(classLoader.getResource("csv/" + fileName)).getPath();
+		String path = Objects.requireNonNull(classLoader.getResource("csv/" + fileName)).getPath();
+
+		return path.replace("/C:", "");
 	}
 
 	public void customer() {
