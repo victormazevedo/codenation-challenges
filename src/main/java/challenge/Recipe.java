@@ -3,6 +3,7 @@ package challenge;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public class Recipe {
     private String id;
     private String title;
     private String description;
-    private List<Long> likes;
+    private List<String> likes;
     private List<String> ingredients;
     private List<RecipeComment> comments;
 
@@ -47,11 +48,11 @@ public class Recipe {
         this.description = description;
     }
 
-    public List<Long> getLikes() {
+    public List<String> getLikes() {
         return likes;
     }
 
-    public void setLikes(List<Long> likes) {
+    public void setLikes(List<String> likes) {
         this.likes = likes;
     }
 
@@ -71,6 +72,21 @@ public class Recipe {
         this.comments = comments;
     }
 
+    public void addLike(String userId){
+        if(likes == null){
+            likes = new ArrayList<>();
+        }
+
+        this.likes.add(userId);
+    }
+
+    public void removeLike(String userId){
+        if(likes == null){
+            likes = new ArrayList<>();
+        }
+
+        this.likes.remove(userId);
+    }
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Recipe{");

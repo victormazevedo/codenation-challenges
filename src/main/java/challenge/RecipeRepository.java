@@ -7,5 +7,9 @@ import java.util.List;
 
 @Repository
 public interface RecipeRepository extends MongoRepository<Recipe, String> {
-    List<Recipe> findAllByIngredients(String ingredient);
+    List<Recipe> findByIngredientsOrderByTitle(String ingredient);
+
+    List<Recipe> findByTitleContainingIgnoreCase(String title);
+
+    List<Recipe> findByDescriptionContainingIgnoreCase(String description);
 }

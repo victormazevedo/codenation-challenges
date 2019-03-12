@@ -2,6 +2,8 @@ package challenge;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -30,8 +32,8 @@ public class RecipeController {
 	}
 
 	@GetMapping("/recipe/{id}")
-	public Recipe get(@PathVariable String id) {
-		return service.get(id);
+	public ResponseEntity<Recipe> get(@PathVariable String id) {
+		return ResponseEntity.ok(service.get(id));
 	}
 
 	@GetMapping("/recipe/ingredient")
@@ -39,20 +41,24 @@ public class RecipeController {
 		return service.listByIngredient(ingredient);
 	}
 
-	public List<Recipe> search() {
-		return service.search(null);
+	@GetMapping("/recipe/search")
+	public List<Recipe> search(@RequestParam String search) {
+		return service.search(search);
 	}
 
-	public void like() {
-		service.like(null, null);
+	@PostMapping("/recipe/{id}/like/{userId}")
+	public void like(@PathVariable String id, @PathVariable String userId) {
+		service.like(id, userId);
 	}
 
-	public void unlike() {
-		service.unlike(null, null);
+	@DeleteMapping("/recipe/{id}/like/{userId}")
+	public void unlike(@PathVariable String id, @PathVariable String userId) {
+		service.unlike(id, userId);
 	}
 
-	public RecipeComment addComment() {
-		return service.addComment(null, null);
+	@PostMapping("/recipe/{id}/comment")
+	public RecipeComment addComment(@PathVariable String id, @RequestBody RecipeComment comment) {
+		return service.addComment(id, comment);
 	}
 
 	public void updateComment() {
