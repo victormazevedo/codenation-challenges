@@ -120,7 +120,7 @@ public class OrderService {
 	public void changeStatus(String orderId, OrderStatus status) throws NoMotoboyAvailableException {
 
     	if(!OrderStatus.FINISHED.equals(status)){
-    		throw new IllegalArgumentException("Só é permitido mudar o status para finalizado");
+    		throw new IllegalArgumentException("Not able to change status. Only FINISHED available.");
 		}
 
 		Order order = getOrder(orderId);

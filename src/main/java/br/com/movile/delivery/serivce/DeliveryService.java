@@ -2,7 +2,6 @@ package br.com.movile.delivery.serivce;
 
 import br.com.movile.delivery.model.Delivery;
 import br.com.movile.delivery.model.DeliveryStatus;
-import br.com.movile.delivery.model.dto.DeliveryForecast;
 import br.com.movile.delivery.repository.DeliveryRepository;
 import br.com.movile.exception.model.CannotAddMoreOrderException;
 import br.com.movile.exception.model.NoMotoboyAvailableException;
@@ -106,7 +105,7 @@ public class DeliveryService {
     }
 
     public void changeStatus(String id, DeliveryStatus status) {
-        if(!DeliveryStatus.FINISHED.equals(status)){
+        if (!DeliveryStatus.FINISHED.equals(status)) {
             throw new IllegalArgumentException("Só é permitido mudar o status para finalizado");
         }
 
