@@ -79,9 +79,9 @@ class OrderIntegrationTests {
         given()
                 .contentType("application/json")
                 .body(new Order("2",
-                        new Customer("321", new GeoJsonPoint( -51.228496, -30.03742831)),
+                        new Customer("321", new GeoJsonPoint(  -51.228496, -30.03742831)),
                         LocalDateTime.now(),
-                        new Restaurant("123", "McDonalds", "Rua 123", new GeoJsonPoint(50.0, 50.0), "Lanches"),
+                        new Restaurant("123", "McDonalds", "Rua 123", new GeoJsonPoint(-51.24717, -30.107482), "Lanches"),
                         Collections.singletonList(new Item("1", "Big Mac", "McDonalds", "123", "Lanches", new BigDecimal(20), "PORTO ALEGRE")),
                         OrderStatus.OPENED))
                 .when()
@@ -93,6 +93,24 @@ class OrderIntegrationTests {
         Assertions.assertEquals(2, orderRepository.findAll().size());
     }
 
+    @Test
+    void shouldThrowExceptionIfDistanceIsTooHigh() {
+        given()
+                .contentType("application/json")
+                .body(new Order("2",
+                        new Customer("321", new GeoJsonPoint( -51.228496, -30.03742831)),
+                        LocalDateTime.now(),
+                        new Restaurant("123", "McDonalds", "Rua 123", new GeoJsonPoint(50.0, 50.0), "Lanches"),
+                        Collections.singletonList(new Item("1", "Big Mac", "McDonalds", "123", "Lanches", new BigDecimal(20), "PORTO ALEGRE")),
+                        OrderStatus.OPENED))
+                .when()
+                .post("mapfood/orders")
+                .then()
+                .log().all()
+                .statusCode(HttpStatus.SC_BAD_REQUEST)
+                .body("message", equalTo("Customer too far!"));
+
+    }
     @Test
     void shouldFindOneItem() {
         Order orderToBeFound  = orderRepository.findById("5c745f50fa88992b9dd5fd19").get();
