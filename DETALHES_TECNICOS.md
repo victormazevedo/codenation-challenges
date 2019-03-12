@@ -12,7 +12,7 @@ docker-compose up
 ```
 Este comando fará com que o MongoDB e a Aplicação MapFood sejam rodados. Em seguida acesse:
 
-[Carga](http://localhost:8080/mapfood/carga)
+[Carga](http://localhost:8080/mapfood/load)
 
 **Testar a aplicação**  
 Em desenvolvimento, rode seguinte comando para testar a a aplicação:
