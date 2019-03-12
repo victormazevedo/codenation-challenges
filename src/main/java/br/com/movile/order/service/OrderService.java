@@ -12,6 +12,7 @@ import java.util.stream.StreamSupport;
 import br.com.movile.delivery.model.dto.DeliveryForecast;
 import br.com.movile.delivery.serivce.DeliveryForecastService;
 import br.com.movile.delivery.serivce.DeliveryService;
+import br.com.movile.exception.model.CustomerTooFarException;
 import br.com.movile.exception.model.NoMotoboyAvailableException;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +64,7 @@ public class OrderService {
 		this.deliveryForecastService = deliveryForecastService;
 	}
 
-	public DeliveryForecast save(Order order) throws NoMotoboyAvailableException {
+	public DeliveryForecast save(Order order) throws NoMotoboyAvailableException, CustomerTooFarException {
 		Optional customer = customerRepository.findById(order.getCustomer().getId());
 		Optional restaurant = restaurantRepository.findById(order.getRestaurant().getId());
 
