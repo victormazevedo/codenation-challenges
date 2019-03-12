@@ -113,6 +113,10 @@ public class DeliveryService {
             delivery.setStatus(DeliveryStatus.FINISHED);
 
             deliveryRepository.save(delivery);
+
+            Motoboy motoboy = delivery.getMotoboy();
+            motoboy.setBusy(false);
+            motoboyService.save(motoboy);
         });
     }
 
