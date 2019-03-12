@@ -1,4 +1,4 @@
-package br.com.movile;
+package br.com.movile.feeler;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.data.geo.Point;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
@@ -17,29 +18,34 @@ import br.com.movile.item.model.Item;
 import br.com.movile.motoboy.model.Motoboy;
 import br.com.movile.restaurant.model.Restaurant;
 
-public class Carga {
+public class Feeler {
 
 	public static void main(String[] args) {
-		Carga carga = new Carga();
-		carga.cargaGeral();
+
 	}
 
-	Path caminho = null;
+	Path path = null;
 	List<String> allLines;
-	List<Customer> clientes;
+	List<Customer> customers;
 	List<Motoboy> motoboy;
-	List<Restaurant> estabelecimentos;
-	List<Item> produtos;
+	List<Restaurant> restaurants;
+	List<Item> items;
 
 	private static final char DEFAULT_SEPARATOR = ',';
 	private static final char DEFAULT_QUOTE = '"';
 
-	public void cliente() {
-		caminho = Paths.get(System.getProperty("user.home") + "\\codenation\\mapfood\\clientes.csv");
+	private String getFile(String fileName){
+		ClassLoader classLoader = Feeler.class.getClassLoader();
+		return Objects.requireNonNull(classLoader.getResource("csv/" + fileName)).getPath();
+	}
+
+	public void customer() {
+
+		path = Paths.get(getFile("clientes.csv"));
 
 		try {
-			allLines = Files.readAllLines(caminho, StandardCharsets.UTF_8);
-			clientes = new ArrayList<>();
+			allLines = Files.readAllLines(path, StandardCharsets.UTF_8);
+			customers = new ArrayList<>();
 			
 			allLines.stream().skip(1).forEach(x -> {
 
@@ -48,9 +54,9 @@ public class Carga {
 				String id = parseLine.get(0).replaceAll(",", "");
 				
 
-				GeoJsonPoint localizacao = new GeoJsonPoint(Double.parseDouble(parseLine.get(1)), Double.parseDouble(parseLine.get(2)));
+				GeoJsonPoint location = new GeoJsonPoint(Double.parseDouble(parseLine.get(1)), Double.parseDouble(parseLine.get(2)));
 				
-				clientes.add(new Customer(id, localizacao));
+				customers.add(new Customer(id, location));
 			});
 
 		} catch (Exception e1) {
@@ -59,19 +65,19 @@ public class Carga {
 	}
 
 	public void motoboy() {
-		caminho = Paths.get(System.getProperty("user.home") + "\\codenation\\mapfood\\motoboys.csv");
+		path = Paths.get(getFile("motoboys.csv"));
 
 		try {
-			allLines = Files.readAllLines(caminho, StandardCharsets.UTF_8);
+			allLines = Files.readAllLines(path, StandardCharsets.UTF_8);
 			motoboy = new ArrayList<>();
 			allLines.stream().skip(1).forEach(x -> {
 
 				List<String> parseLine = parseLine(x, DEFAULT_SEPARATOR, DEFAULT_QUOTE);
 
 				String id = parseLine.get(0).replaceAll(",", "");				
-				GeoJsonPoint localizacao = new GeoJsonPoint(new Point(Double.parseDouble(parseLine.get(1)), Double.parseDouble(parseLine.get(2))));
+				GeoJsonPoint location = new GeoJsonPoint(new Point(Double.parseDouble(parseLine.get(1)), Double.parseDouble(parseLine.get(2))));
 
-				motoboy.add(new Motoboy(id, localizacao, false));
+				motoboy.add(new Motoboy(id, location, false));
 			});
 
 		} catch (Exception e1) {
@@ -81,16 +87,16 @@ public class Carga {
 
 	}
 
-	public void estabelecimentoPorMunicipio() {
+	public void restaurantsByCity() {
 
-		caminho = Paths
-				.get(System.getProperty("user.home") + "\\codenation\\mapfood\\estabelecimento-por-municipio.csv");
+		path = Paths
+				.get(getFile("estabelecimento-por-municipio.csv"));
 
-		estabelecimentos = new ArrayList<>();
+		restaurants = new ArrayList<>();
 
 		try {
 
-			allLines = Files.readAllLines(caminho, StandardCharsets.UTF_8);
+			allLines = Files.readAllLines(path, StandardCharsets.UTF_8);
 
 			allLines.stream().skip(1).forEach(x -> {
 				List<String> parseLine = parseLine(x, DEFAULT_SEPARATOR, DEFAULT_QUOTE);
@@ -108,15 +114,15 @@ public class Carga {
 				}
 
 				String id = parseLine.get(0);
-				String nomeRestaurante = parseLine.get(1);
-				String cidade = parseLine.get(2);
-				GeoJsonPoint localizacao = new GeoJsonPoint(new Point(Double.parseDouble(parseLine.get(3)), Double.parseDouble(parseLine.get(4))));
-				String descricao = parseLine.get(5).replaceAll(";", "");
+				String name = parseLine.get(1);
+				String city = parseLine.get(2);
+				GeoJsonPoint location = new GeoJsonPoint(new Point(Double.parseDouble(parseLine.get(3)), Double.parseDouble(parseLine.get(4))));
+				String description = parseLine.get(5).replaceAll(";", "");
 
-				estabelecimentos.add(new Restaurant(id, nomeRestaurante, cidade, localizacao, descricao));
+				restaurants.add(new Restaurant(id, name, city, location, description));
 			});
 
-			produtosPorEstabelecimento();
+			itemsByRestaurants();
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -126,28 +132,28 @@ public class Carga {
 
 	}
 
-	public void produtosPorEstabelecimento() {
-		caminho = Paths
-				.get(System.getProperty("user.home") + "\\codenation\\mapfood\\produtos-por-estabelecimento.csv");
+	public void itemsByRestaurants() {
+		path = Paths
+				.get(getFile("produtos-por-estabelecimento.csv"));
 
 		try {
-			produtos = new ArrayList<>();
-			allLines = Files.readAllLines(caminho, StandardCharsets.UTF_8);
+			items = new ArrayList<>();
+			allLines = Files.readAllLines(path, StandardCharsets.UTF_8);
 
 			allLines.stream().skip(1).forEach(x -> {
 
 				List<String> parseLine = parseLine(x, DEFAULT_SEPARATOR, DEFAULT_QUOTE);
 
 				String id = parseLine.get(1);
-				String descricao = parseLine.get(0);
-				String restauranteId = parseLine.get(3);
-				String restaurante = parseLine.get(2);
-				String classificacao = parseLine.get(4);
-				BigDecimal precoUnitario = new BigDecimal(parseLine.get(5));
-				String cidade = parseLine.get(6);
+				String description = parseLine.get(0);
+				String restaurantId = parseLine.get(3);
+				String restaurant = parseLine.get(2);
+				String classification = parseLine.get(4);
+				BigDecimal unitPrice = new BigDecimal(parseLine.get(5));
+				String city = parseLine.get(6);
 
-				produtos.add(
-						new Item(id, descricao, restauranteId, restaurante, classificacao, precoUnitario, cidade));
+				items.add(
+						new Item(id, description, restaurantId, restaurant, classification, unitPrice, city));
 			});
 
 		} catch (IOException e) {
@@ -243,42 +249,25 @@ public class Carga {
 		return result;
 	}
 
-	public void cargaGeral() {
-		cliente();
+	public void generalFeel() {
+		customer();
 		motoboy();
-		estabelecimentoPorMunicipio();
-	}
-	
-	public Path getCaminho() {
-		return caminho;
+		restaurantsByCity();
 	}
 
-	public List<String> getAllLines() {
-		return allLines;
-	}
-
-	public List<Customer> getClientes() {
-		return clientes;
+	public List<Customer> getCustomers() {
+		return customers;
 	}
 
 	public List<Motoboy> getMotoboy() {
 		return motoboy;
 	}
 
-	public List<Restaurant> getEstabelecimentos() {
-		return estabelecimentos;
+	public List<Restaurant> getRestaurants() {
+		return restaurants;
 	}
 
-	public List<Item> getProdutos() {
-		return produtos;
+	public List<Item> getItems() {
+		return items;
 	}
-
-	public static char getDefaultSeparator() {
-		return DEFAULT_SEPARATOR;
-	}
-
-	public static char getDefaultQuote() {
-		return DEFAULT_QUOTE;
-	}
-
 }

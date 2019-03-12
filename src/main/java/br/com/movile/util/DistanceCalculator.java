@@ -27,6 +27,8 @@ package br.com.movile.util;
 /*::                                                                         :*/
 /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
+import java.util.Objects;
+
 public class DistanceCalculator {
     public static double distance(double lat1, double lon1, double lat2, double lon2, String unit) {
         if ((lat1 == lat2) && (lon1 == lon2)) {
@@ -37,9 +39,9 @@ public class DistanceCalculator {
             dist = Math.acos(dist);
             dist = Math.toDegrees(dist);
             dist = dist * 60 * 1.1515;
-            if (unit == "K") {
+            if (Objects.equals(unit, "K")) {
                 dist = dist * 1.609344;
-            } else if (unit == "N") {
+            } else if (Objects.equals(unit, "N")) {
                 dist = dist * 0.8684;
             }
             return (dist);
