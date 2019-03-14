@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class challenge.RestaurantValidationTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class challenge.RestaurantValidationTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/challenge.html">challenge</a> &gt; RestaurantValidationTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">1</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">1.548s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox failures" id="successRate">
+<div class="percent">0%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="test"></a>
+<h3 class="failures">test</h3>
+<span class="code">
+<pre>org.junit.ComparisonFailure: expected:&lt;[200]&gt; but was:&lt;[404]&gt;
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at challenge.RestaurantValidationTest.test(RestaurantValidationTest.java:41)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:73)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:83)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy1.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:109)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="failures">test</td>
+<td class="failures">1.548s</td>
+<td class="failures">failed</td>
+</tr>
+</table>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>15:50:49.658 [Test worker] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class challenge.RestaurantValidationTest]
+15:50:49.663 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+15:50:49.667 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+15:50:49.680 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [challenge.RestaurantValidationTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+15:50:49.688 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [challenge.RestaurantValidationTest], using SpringBootContextLoader
+15:50:49.689 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [challenge.RestaurantValidationTest]: class path resource [challenge/RestaurantValidationTest-context.xml] does not exist
+15:50:49.690 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [challenge.RestaurantValidationTest]: class path resource [challenge/RestaurantValidationTestContext.groovy] does not exist
+15:50:49.690 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [challenge.RestaurantValidationTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+15:50:49.690 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [challenge.RestaurantValidationTest]: RestaurantValidationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:50:49.718 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [challenge.RestaurantValidationTest]
+15:50:49.725 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding PropertySource 'systemProperties' with lowest search precedence
+15:50:49.725 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding PropertySource 'systemEnvironment' with lowest search precedence
+15:50:49.726 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [MapPropertySource@337935038 {name='systemProperties', properties={java.runtime.name=OpenJDK Runtime Environment, sun.boot.library.path=/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/amd64, java.vm.version=25.201-b10, java.vm.vendor=Azul Systems, Inc., java.vendor.url=http://www.azulsystems.com/, path.separator=:, java.vm.name=OpenJDK 64-Bit Server VM, file.encoding.pkg=sun.io, sun.java.launcher=SUN_STANDARD, user.country=US, sun.os.patch.level=unknown, java.vm.specification.name=Java Virtual Machine Specification, user.dir=/home/beblue/codenation/java-redis, java.runtime.version=1.8.0_201-b10, java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment, java.endorsed.dirs=/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/endorsed, os.arch=amd64, java.io.tmpdir=/tmp, line.separator=
+, java.vm.specification.vendor=Oracle Corporation, user.variant=, os.name=Linux, sun.jnu.encoding=UTF-8, java.library.path=/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib, java.specification.name=Java Platform API Specification, java.class.version=52.0, org.gradle.native=false, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, os.version=4.20.11-200.fc29.x86_64, user.home=/home/beblue, user.timezone=America/Sao_Paulo, java.awt.printerjob=sun.print.PSPrinterJob, file.encoding=UTF-8, java.specification.version=1.8, java.class.path=/home/beblue/codenation/java-redis/build/classes/java/test:/home/beblue/codenation/java-redis/build/resources/test:/home/beblue/codenation/java-redis/build/classes/java/main:/home/beblue/codenation/java-redis/build/resources/main:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-mongodb/2.0.6.RELEASE/8fc521182921da00cfc6e6aa7bed99993c89194b/spring-boot-starter-data-mongodb-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-redis/2.0.6.RELEASE/3a9617eddbeb6829a1878c561619dd1c674b18fc/spring-boot-starter-data-redis-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-web/2.0.6.RELEASE/e803fc341b450b2ce01734df12e5881b8e78c0a7/spring-boot-starter-web-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-test/2.0.6.RELEASE/f92fd015cfc9a9bd6ae653dca8d4ec5b83d4ba00/spring-boot-starter-test-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-json/2.0.6.RELEASE/1b3912af3eecdbbc6cda497acc7939f2ce21e39d/spring-boot-starter-json-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter/2.0.6.RELEASE/9d904a4387e076343a3478c32198ec7d9d633ff4/spring-boot-starter-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.mongodb/mongodb-driver/3.6.4/4ddaa4520e9b3a9255ae138f782d73432be6787d/mongodb-driver-3.6.4.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-mongodb/2.0.11.RELEASE/8824f5c555f21c2b80e1c277ec2c899ecf6cc31f/spring-data-mongodb-2.0.11.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-redis/2.0.11.RELEASE/8125839e776abd60181dc782892985b3e293aac7/spring-data-redis-2.0.11.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/io.lettuce/lettuce-core/5.0.5.RELEASE/d6263965c5dfa8c440940842e2bbfece0044b7f6/lettuce-core-5.0.5.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-tomcat/2.0.6.RELEASE/64b22bc3d0ba734532e7cbe941354985f2a86242/spring-boot-starter-tomcat-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.hibernate.validator/hibernate-validator/6.0.13.Final/af4232bf90ecd33c71147d67185dbb1cfe8f33df/hibernate-validator-6.0.13.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/5.0.10.RELEASE/88a601321e2b4e3b84eed0909c24b9dd8e453b5f/spring-webmvc-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/5.0.10.RELEASE/fbaaa53ec99f45fd7aaf9125beeb5c3388cce088/spring-web-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-test-autoconfigure/2.0.6.RELEASE/b0eb15474e795850dfa59b01ee6a83d7a39e3645/spring-boot-test-autoconfigure-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-test/2.0.6.RELEASE/33a53ca6d55f35b3a89320c260262a5310ba8afc/spring-boot-test-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.jayway.jsonpath/json-path/2.4.0/765a4401ceb2dc8d40553c2075eb80a8fa35c2ae/json-path-2.4.0.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/2973d150c0dc1fefe998f834810d68f278ea58ec/junit-4.12.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.assertj/assertj-core/3.9.1/c5ce126b15f28d56cd8f960c1a6a058b9c9aea87/assertj-core-3.9.1.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.mockito/mockito-core/2.15.0/b84bfbbc29cd22c9529409627af6ea2897f4fa85/mockito-core-2.15.0.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-library/1.3/4785a3c21320980282f9f33d0d1264a69040538f/hamcrest-library-1.3.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.skyscreamer/jsonassert/1.5.0/6c9d5fe2f59da598d9aefc1cfc6528ff3cf32df3/jsonassert-1.5.0.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/5.0.10.RELEASE/1d2d272073f36c689c693ec3ec94d7ad7e136a2e/spring-test-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/2.0.6.RELEASE/e8c88fd703dbdf79f94178a5018ad67d1ecb1d0d/spring-boot-autoconfigure-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/2.0.6.RELEASE/4d214b08bbc74f03d404e8fc862102334e0f73d1/spring-boot-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-keyvalue/2.0.11.RELEASE/8b8184255b4cb2fcca8aeae956e9bd61668310a4/spring-data-keyvalue-2.0.11.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/5.0.10.RELEASE/55608ae84fde15eb942d675e3b1ee7d30394d4cb/spring-tx-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context-support/5.0.10.RELEASE/61b3159aceaae05118bfe2a7fcd4141921986a78/spring-context-support-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/5.0.10.RELEASE/6f53de0618219fefc2aebf92ba175e6b33e14ce0/spring-context-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-oxm/5.0.10.RELEASE/f6d583cbf03e625b65647ca1fc7929d5fbfe42da/spring-oxm-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/5.0.10.RELEASE/da65874f61aef9c25db794f493e50683346d3056/spring-aop-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-commons/2.0.11.RELEASE/273e5cd5d6e772b5c4208b12771ed48647b2b9bb/spring-data-commons-2.0.11.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/5.0.10.RELEASE/8ec7da928082a123c50d5d70cd4b46382db27e8b/spring-beans-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/5.0.10.RELEASE/eaf8595e3bf18ef1aca1c233d9871552d258e38a/spring-expression-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/5.0.10.RELEASE/cb270a60ceb573961588f511222984de64b4bc96/spring-core-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.xmlunit/xmlunit-core/2.5.1/4ffdb346572a7356f7521cd3119ce5287d2e339d/xmlunit-core-2.5.1.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-logging/2.0.6.RELEASE/a730d62c8eb80cdc95e5089e47570d24731cf5dd/spring-boot-starter-logging-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.3.2/934c04d3cfef185a8008e7bf34331b79730a9d43/javax.annotation-api-1.3.2.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.19/2d998d3d674b172a588e54ab619854d073f555b5/snakeyaml-1.19.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.mongodb/mongodb-driver-core/3.6.4/6e737a5d706036bed528522d445dd2ffc454bd6b/mongodb-driver-core-3.6.4.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.mongodb/bson/3.6.4/da7487f3cba7ddd1e0b0814005960cf543e9d8/bson-3.6.4.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.2.3/7c4f3c474fb2c041d8028740440937705ebb473a/logback-classic-1.2.3.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-to-slf4j/2.10.0/f7e631ccf49cfc0aefa4a2a728da7d374c05bd3c/log4j-to-slf4j-2.10.0.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.slf4j/jul-to-slf4j/1.7.25/af5364cd6679bfffb114f0dec8a157aaa283b76/jul-to-slf4j-1.7.25.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.25/da76ca59f6a57ee3102f8f9bd9cee742973efa8a/slf4j-api-1.7.25.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/io.projectreactor/reactor-core/3.1.10.RELEASE/9c0cff4fcdb1c8680f324a4d7bda64790e60aa19/reactor-core-3.1.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler/4.1.29.Final/1acf1d94799296a2517533ec75ce7e155e9c4ea7/netty-handler-4.1.29.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec/4.1.29.Final/1651bc2e279216773c234cafe402d68d2a5adc90/netty-codec-4.1.29.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport/4.1.29.Final/c190b90f70e2ae8a48c068afad709e8728fcaa39/netty-transport-4.1.29.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/io.netty/netty-buffer/4.1.29.Final/c3809f72e4b535b343b7dfa3c0c8210dad2fa5ea/netty-buffer-4.1.29.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/io.netty/netty-resolver/4.1.29.Final/bbec1dc913732e4773893c14d795b15d6c1e878e/netty-resolver-4.1.29.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.1.29.Final/a5d6a735ed07d8f197daa48db7f097cfc971ee5e/netty-common-4.1.29.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/2.9.7/98d8f190db07f97c64c0ea3af5792f718a6c2cc1/jackson-datatype-jdk8-2.9.7.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/2.9.7/cbd919f1ce67533e07b98dd493247e8dbabc26b2/jackson-datatype-jsr310-2.9.7.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.module/jackson-module-parameter-names/2.9.7/f2bdd7696beffa2dbc5dc62cd24c3906a40ffcff/jackson-module-parameter-names-2.9.7.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.9.7/e6faad47abd3179666e89068485a1b88a195ceb7/jackson-databind-2.9.7.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-websocket/8.5.34/5f86906367c2540b21e6aeecc277d2ce9ec939b0/tomcat-embed-websocket-8.5.34.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/8.5.34/a038040d68a90397f95dd1e11b979fe364a5000f/tomcat-embed-core-8.5.34.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-el/8.5.34/be71a9a5bdd001db7cf97c47429eec0bdd3b7b88/tomcat-embed-el-8.5.34.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/javax.validation/validation-api/2.0.1.Final/cb855558e6271b1b32e716d24cb85c7f583ce09e/validation-api-2.0.1.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.jboss.logging/jboss-logging/3.3.2.Final/3789d00e859632e6c6206adc0c71625559e6e3b0/jboss-logging-3.3.2.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.fasterxml/classmate/1.3.4/3d5f48f10bbe4eb7bd862f10c0583be2e0053c6/classmate-1.3.4.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/net.minidev/json-smart/2.3/7396407491352ce4fa30de92efb158adb76b5b/json-smart-2.3.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy/1.7.11/f02857a4e2c66ccbe7aaad6100a0a6c461bce9b3/byte-buddy-1.7.11.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.7.11/b425a8933ca07edd03c6dbc8bc3b595fba9780de/byte-buddy-agent-1.7.11.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.objenesis/objenesis/2.6/639033469776fd37c08358c6b92a4761feb2af4b/objenesis-2.6.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.vaadin.external.google/android-json/0.0.20131108.vaadin1/fa26d351fe62a6a17f5cda1287c1c6110dec413f/android-json-0.0.20131108.vaadin1.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jcl/5.0.10.RELEASE/8d6a766be91ae5613f2828eb9f77739a47ceb357/spring-jcl-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.reactivestreams/reactive-streams/1.0.2/323964c36556eb0e6209f65c1cef72b53b461ab8/reactive-streams-1.0.2.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.9.0/7c10d545325e3a6e72e06381afe469fd40eb701/jackson-annotations-2.9.0.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.9.7/4b7f0e0dc527fab032e9800ed231080fdc3ac015/jackson-core-2.9.7.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/net.minidev/accessors-smart/1.2/c592b500269bfde36096641b01238a8350f8aa31/accessors-smart-1.2.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.2.3/864344400c3d4d92dfeb0a305dc87d953677c03c/logback-core-1.2.3.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.10.0/fec5797a55b786184a537abd39c3fa1449d752d6/log4j-api-2.10.0.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/5.0.4/da08b8cce7bbf903602a25a3a163ae252435795/asm-5.0.4.jar, user.name=victor, java.vm.specification.version=1.8, sun.java.command=worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 1', java.home=/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre, sun.arch.data.model=64, user.language=en, java.specification.vendor=Oracle Corporation, awt.toolkit=sun.awt.X11.XToolkit, java.vm.info=mixed mode, java.version=1.8.0_201, java.ext.dirs=/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/ext:/usr/java/packages/lib/ext, sun.boot.class.path=/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/resources.jar:/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/rt.jar:/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/sunrsasign.jar:/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/jsse.jar:/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/jce.jar:/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/charsets.jar:/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/jfr.jar:/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/jdkjsse.jar:/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/classes, java.vendor=Azul Systems, Inc., org.gradle.test.worker=1, file.separator=/, java.vendor.url.bug=http://www.azulsystems.com/support/, sun.io.unicode.encoding=UnicodeLittle, sun.cpu.endian=little, sun.cpu.isalist=}}, SystemEnvironmentPropertySource@1005948988 {name='systemEnvironment', properties={PATH=/home/beblue/.local/bin:/home/beblue/bin:/home/beblue/.sdkman/candidates/maven/current/bin:/home/beblue/.sdkman/candidates/java/current/bin:/home/beblue/.sdkman/candidates/gradle/current/bin:/home/beblue/.local/bin:/home/beblue/bin:/usr/share/Modules/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin, XAUTHORITY=/run/user/1000/gdm/Xauthority, LC_MEASUREMENT=pt_BR.UTF-8, SDKMAN_VERSION=5.7.3+337, HISTCONTROL=ignoredups, XMODIFIERS=@im=ibus, GDMSESSION=gnome, XDG_DATA_DIRS=/home/beblue/.local/share/flatpak/exports/share/:/var/lib/flatpak/exports/share/:/usr/local/share/:/usr/share/, LC_TIME=pt_BR.UTF-8, MODULEPATH=/etc/scl/modulefiles:/etc/scl/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles:/usr/share/modulefiles, DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus, XDG_CURRENT_DESKTOP=GNOME, MAVEN_HOME=/home/beblue/.sdkman/candidates/maven/current, MAIL=/var/spool/mail/victor, SSH_AGENT_PID=2268, DESKTOP_AUTOSTART_ID=10708d1b136ea21ebe155239701271500900000022520007, COLORTERM=truecolor, SESSION_MANAGER=local/unix:@/tmp/.ICE-unix/2252,unix/unix:/tmp/.ICE-unix/2252, SDKMAN_DIR=/home/beblue/.sdkman, USERNAME=victor, LC_PAPER=pt_BR.UTF-8, LOGNAME=victor, PWD=/home/beblue/codenation/java-redis, LESSOPEN=||/usr/bin/lesspipe.sh %s, SHELL=/bin/bash, BASH_ENV=/usr/share/Modules/init/bash, SDKMAN_CANDIDATES_API=https://api.sdkman.io/2, OLDPWD=/home/beblue/codenation/java-redis, BASH_FUNC_scl%%=() {  if [ &quot;$1&quot; = &quot;load&quot; -o &quot;$1&quot; = &quot;unload&quot; ]; then
+ eval &quot;module $@&quot;;
+ else
+ /usr/bin/scl &quot;$@&quot;;
+ fi
+}, GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/800128f1_70b4_4287_9074_030001d9617b, MODULEPATH_modshare=/usr/share/modulefiles:1:/usr/share/Modules/modulefiles:1:/etc/modulefiles:1, XDG_SESSION_DESKTOP=gnome, LS_COLORS=rs=0:di=38;5;33:ln=38;5;51:mh=00:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=01;05;37;41:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;40:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.zst=38;5;9:*.tzst=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.wim=38;5;9:*.swm=38;5;9:*.dwm=38;5;9:*.esd=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.mjpg=38;5;13:*.mjpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.m4a=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.oga=38;5;45:*.opus=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:, SHLVL=3, LC_MONETARY=pt_BR.UTF-8, LOADEDMODULES=, QT_IM_MODULE=ibus, HISTSIZE=1000, JAVA_HOME=/home/beblue/.sdkman/candidates/java/current, TERM=xterm-256color, GNOME_TERMINAL_SERVICE=:1.99, ENV=/usr/share/Modules/init/profile.sh, LANG=en_US.UTF-8, XDG_SESSION_TYPE=x11, XDG_SESSION_ID=2, MODULES_RUN_QUARANTINE=LD_LIBRARY_PATH, GRADLE_HOME=/home/beblue/.sdkman/candidates/gradle/current, BASH_FUNC_switchml%%=() {  typeset swfound=1;
+ if [ &quot;${MODULES_USE_COMPAT_VERSION:-0}&quot; = '1' ]; then
+ typeset swname='main';
+ if [ -e /usr/share/Modules/libexec/modulecmd.tcl ]; then
+ typeset swfound=0;
+ unset MODULES_USE_COMPAT_VERSION;
+ fi;
+ else
+ typeset swname='compatibility';
+ if [ -e /usr/share/Modules/libexec/modulecmd-compat ]; then
+ typeset swfound=0;
+ MODULES_USE_COMPAT_VERSION=1;
+ export MODULES_USE_COMPAT_VERSION;
+ fi;
+ fi;
+ if [ $swfound -eq 0 ]; then
+ echo &quot;Switching to Modules $swname version&quot;;
+ source /usr/share/Modules/init/bash;
+ else
+ echo &quot;Cannot switch to Modules $swname version, command not found&quot;;
+ return 1;
+ fi
+}, DISPLAY=:1, BASH_FUNC_module%%=() {  _module_raw &quot;$@&quot; 2&gt;&amp;1
+}, SDKMAN_CANDIDATES_DIR=/home/beblue/.sdkman/candidates, GDM_LANG=en_US.UTF-8, DESKTOP_SESSION=gnome, SDKMAN_PLATFORM=Linux64, USER=victor, XDG_MENU_PREFIX=gnome-, VTE_VERSION=5403, WINDOWPATH=2, LC_NUMERIC=pt_BR.UTF-8, XDG_SEAT=seat0, SSH_AUTH_SOCK=/run/user/1000/keyring/ssh, HOSTNAME=beblue, MODULESHOME=/usr/share/Modules, BASH_FUNC__module_raw%%=() {  unset _mlshdbg;
+ if [ &quot;${MODULES_SILENT_SHELL_DEBUG:-0}&quot; = '1' ]; then
+ case &quot;$-&quot; in 
+ *v*x*)
+ set +vx;
+ _mlshdbg='vx'
+ ;;
+ *v*)
+ set +v;
+ _mlshdbg='v'
+ ;;
+ *x*)
+ set +x;
+ _mlshdbg='x'
+ ;;
+ *)
+ _mlshdbg=''
+ ;;
+ esac;
+ fi;
+ unset _mlre _mlIFS;
+ if [ -n &quot;${IFS+x}&quot; ]; then
+ _mlIFS=$IFS;
+ fi;
+ IFS=' ';
+ for _mlv in ${MODULES_RUN_QUARANTINE:-};
+ do
+ if [ &quot;${_mlv}&quot; = &quot;${_mlv##*[!A-Za-z0-9_]}&quot; -a &quot;${_mlv}&quot; = &quot;${_mlv#[0-9]}&quot; ]; then
+ if [ -n &quot;`eval 'echo ${'$_mlv'+x}'`&quot; ]; then
+ _mlre=&quot;${_mlre:-}${_mlv}_modquar='`eval 'echo ${'$_mlv'}'`' &quot;;
+ fi;
+ _mlrv=&quot;MODULES_RUNENV_${_mlv}&quot;;
+ _mlre=&quot;${_mlre:-}${_mlv}='`eval 'echo ${'$_mlrv':-}'`' &quot;;
+ fi;
+ done;
+ if [ -n &quot;${_mlre:-}&quot; ]; then
+ eval `eval ${_mlre}/usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash '&quot;$@&quot;'`;
+ else
+ eval `/usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash &quot;$@&quot;`;
+ fi;
+ _mlstatus=$?;
+ if [ -n &quot;${_mlIFS+x}&quot; ]; then
+ IFS=$_mlIFS;
+ else
+ unset IFS;
+ fi;
+ unset _mlre _mlv _mlrv _mlIFS;
+ if [ -n &quot;${_mlshdbg:-}&quot; ]; then
+ set -$_mlshdbg;
+ fi;
+ unset _mlshdbg;
+ return $_mlstatus
+}, MODULES_CMD=/usr/share/Modules/libexec/modulecmd.tcl, KDEDIRS=/usr, XDG_RUNTIME_DIR=/run/user/1000, XDG_VTNR=2, HOME=/home/beblue}}]
+15:50:49.737 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Resolved classpath location [challenge/] to resources [URL [file:/home/beblue/codenation/java-redis/build/classes/java/test/challenge/], URL [file:/home/beblue/codenation/java-redis/build/classes/java/main/challenge/]]
+15:50:49.737 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [/home/beblue/codenation/java-redis/build/classes/java/test/challenge]
+15:50:49.737 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Searching directory [/home/beblue/codenation/java-redis/build/classes/java/test/challenge] for files matching pattern [/home/beblue/codenation/java-redis/build/classes/java/test/challenge/*.class]
+15:50:49.739 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [/home/beblue/codenation/java-redis/build/classes/java/main/challenge]
+15:50:49.739 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Searching directory [/home/beblue/codenation/java-redis/build/classes/java/main/challenge] for files matching pattern [/home/beblue/codenation/java-redis/build/classes/java/main/challenge/*.class]
+15:50:49.740 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Resolved location pattern [classpath*:challenge/*.class] to resources [file [/home/beblue/codenation/java-redis/build/classes/java/test/challenge/RestaurantValidationTest.class], file [/home/beblue/codenation/java-redis/build/classes/java/main/challenge/Application.class], file [/home/beblue/codenation/java-redis/build/classes/java/main/challenge/NeighborhoodMongo.class], file [/home/beblue/codenation/java-redis/build/classes/java/main/challenge/NeighborhoodRedis.class], file [/home/beblue/codenation/java-redis/build/classes/java/main/challenge/RestaurantController.class], file [/home/beblue/codenation/java-redis/build/classes/java/main/challenge/RestaurantMongo.class], file [/home/beblue/codenation/java-redis/build/classes/java/main/challenge/RestaurantRedis.class], file [/home/beblue/codenation/java-redis/build/classes/java/main/challenge/RestaurantService.class], file [/home/beblue/codenation/java-redis/build/classes/java/main/challenge/RestaurantServiceImpl.class]]
+15:50:49.771 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/home/beblue/codenation/java-redis/build/classes/java/main/challenge/Application.class]
+15:50:49.774 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration challenge.Application for test class challenge.RestaurantValidationTest
+15:50:49.844 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [challenge.RestaurantValidationTest]: using defaults.
+15:50:49.844 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+15:50:49.858 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@aeafd3b, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@24a9b314, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@377bf025, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4a5b46f2, org.springframework.test.context.support.DirtiesContextTestExecutionListener@170569a7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@7edd4940, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@16cf7466, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@633cc9b, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3a47c5ab, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@2ec40cea, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@43c53110, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5b8a6ae7]
+15:50:49.859 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [challenge.RestaurantValidationTest]
+15:50:49.860 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [challenge.RestaurantValidationTest]
+15:50:49.860 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [challenge.RestaurantValidationTest]
+15:50:49.860 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [challenge.RestaurantValidationTest]
+15:50:49.862 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@4b96eead testClass = RestaurantValidationTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@13fb4d50 testClass = RestaurantValidationTest, locations = '{}', classes = '{class challenge.Application}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{classpath:test.properties}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@10985f08, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@1270975f, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@76ece962, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@3877d761], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; false]], class annotated with @DirtiesContext [false] with mode [null].
+15:50:49.863 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [challenge.RestaurantValidationTest]
+15:50:49.863 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [challenge.RestaurantValidationTest]
+15:50:49.865 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@4b96eead testClass = RestaurantValidationTest, testInstance = challenge.RestaurantValidationTest@3df59b96, testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@13fb4d50 testClass = RestaurantValidationTest, locations = '{}', classes = '{class challenge.Application}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{classpath:test.properties}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@10985f08, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@1270975f, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@76ece962, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@3877d761], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; false]]].
+15:50:49.878 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding PropertySource 'systemProperties' with lowest search precedence
+15:50:49.878 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding PropertySource 'systemEnvironment' with lowest search precedence
+15:50:49.879 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [MapPropertySource@1655975754 {name='systemProperties', properties={java.runtime.name=OpenJDK Runtime Environment, sun.boot.library.path=/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/amd64, java.vm.version=25.201-b10, java.vm.vendor=Azul Systems, Inc., java.vendor.url=http://www.azulsystems.com/, path.separator=:, java.vm.name=OpenJDK 64-Bit Server VM, file.encoding.pkg=sun.io, sun.java.launcher=SUN_STANDARD, user.country=US, sun.os.patch.level=unknown, java.vm.specification.name=Java Virtual Machine Specification, user.dir=/home/beblue/codenation/java-redis, java.runtime.version=1.8.0_201-b10, java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment, java.endorsed.dirs=/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/endorsed, os.arch=amd64, java.io.tmpdir=/tmp, line.separator=
+, java.vm.specification.vendor=Oracle Corporation, user.variant=, os.name=Linux, sun.jnu.encoding=UTF-8, java.library.path=/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib, java.specification.name=Java Platform API Specification, java.class.version=52.0, org.gradle.native=false, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, os.version=4.20.11-200.fc29.x86_64, user.home=/home/beblue, user.timezone=America/Sao_Paulo, java.awt.printerjob=sun.print.PSPrinterJob, file.encoding=UTF-8, java.specification.version=1.8, java.class.path=/home/beblue/codenation/java-redis/build/classes/java/test:/home/beblue/codenation/java-redis/build/resources/test:/home/beblue/codenation/java-redis/build/classes/java/main:/home/beblue/codenation/java-redis/build/resources/main:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-mongodb/2.0.6.RELEASE/8fc521182921da00cfc6e6aa7bed99993c89194b/spring-boot-starter-data-mongodb-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-redis/2.0.6.RELEASE/3a9617eddbeb6829a1878c561619dd1c674b18fc/spring-boot-starter-data-redis-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-web/2.0.6.RELEASE/e803fc341b450b2ce01734df12e5881b8e78c0a7/spring-boot-starter-web-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-test/2.0.6.RELEASE/f92fd015cfc9a9bd6ae653dca8d4ec5b83d4ba00/spring-boot-starter-test-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-json/2.0.6.RELEASE/1b3912af3eecdbbc6cda497acc7939f2ce21e39d/spring-boot-starter-json-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter/2.0.6.RELEASE/9d904a4387e076343a3478c32198ec7d9d633ff4/spring-boot-starter-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.mongodb/mongodb-driver/3.6.4/4ddaa4520e9b3a9255ae138f782d73432be6787d/mongodb-driver-3.6.4.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-mongodb/2.0.11.RELEASE/8824f5c555f21c2b80e1c277ec2c899ecf6cc31f/spring-data-mongodb-2.0.11.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-redis/2.0.11.RELEASE/8125839e776abd60181dc782892985b3e293aac7/spring-data-redis-2.0.11.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/io.lettuce/lettuce-core/5.0.5.RELEASE/d6263965c5dfa8c440940842e2bbfece0044b7f6/lettuce-core-5.0.5.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-tomcat/2.0.6.RELEASE/64b22bc3d0ba734532e7cbe941354985f2a86242/spring-boot-starter-tomcat-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.hibernate.validator/hibernate-validator/6.0.13.Final/af4232bf90ecd33c71147d67185dbb1cfe8f33df/hibernate-validator-6.0.13.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/5.0.10.RELEASE/88a601321e2b4e3b84eed0909c24b9dd8e453b5f/spring-webmvc-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/5.0.10.RELEASE/fbaaa53ec99f45fd7aaf9125beeb5c3388cce088/spring-web-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-test-autoconfigure/2.0.6.RELEASE/b0eb15474e795850dfa59b01ee6a83d7a39e3645/spring-boot-test-autoconfigure-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-test/2.0.6.RELEASE/33a53ca6d55f35b3a89320c260262a5310ba8afc/spring-boot-test-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.jayway.jsonpath/json-path/2.4.0/765a4401ceb2dc8d40553c2075eb80a8fa35c2ae/json-path-2.4.0.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/2973d150c0dc1fefe998f834810d68f278ea58ec/junit-4.12.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.assertj/assertj-core/3.9.1/c5ce126b15f28d56cd8f960c1a6a058b9c9aea87/assertj-core-3.9.1.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.mockito/mockito-core/2.15.0/b84bfbbc29cd22c9529409627af6ea2897f4fa85/mockito-core-2.15.0.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-library/1.3/4785a3c21320980282f9f33d0d1264a69040538f/hamcrest-library-1.3.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.skyscreamer/jsonassert/1.5.0/6c9d5fe2f59da598d9aefc1cfc6528ff3cf32df3/jsonassert-1.5.0.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/5.0.10.RELEASE/1d2d272073f36c689c693ec3ec94d7ad7e136a2e/spring-test-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/2.0.6.RELEASE/e8c88fd703dbdf79f94178a5018ad67d1ecb1d0d/spring-boot-autoconfigure-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/2.0.6.RELEASE/4d214b08bbc74f03d404e8fc862102334e0f73d1/spring-boot-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-keyvalue/2.0.11.RELEASE/8b8184255b4cb2fcca8aeae956e9bd61668310a4/spring-data-keyvalue-2.0.11.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/5.0.10.RELEASE/55608ae84fde15eb942d675e3b1ee7d30394d4cb/spring-tx-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context-support/5.0.10.RELEASE/61b3159aceaae05118bfe2a7fcd4141921986a78/spring-context-support-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/5.0.10.RELEASE/6f53de0618219fefc2aebf92ba175e6b33e14ce0/spring-context-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-oxm/5.0.10.RELEASE/f6d583cbf03e625b65647ca1fc7929d5fbfe42da/spring-oxm-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/5.0.10.RELEASE/da65874f61aef9c25db794f493e50683346d3056/spring-aop-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-commons/2.0.11.RELEASE/273e5cd5d6e772b5c4208b12771ed48647b2b9bb/spring-data-commons-2.0.11.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/5.0.10.RELEASE/8ec7da928082a123c50d5d70cd4b46382db27e8b/spring-beans-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/5.0.10.RELEASE/eaf8595e3bf18ef1aca1c233d9871552d258e38a/spring-expression-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/5.0.10.RELEASE/cb270a60ceb573961588f511222984de64b4bc96/spring-core-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.xmlunit/xmlunit-core/2.5.1/4ffdb346572a7356f7521cd3119ce5287d2e339d/xmlunit-core-2.5.1.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-logging/2.0.6.RELEASE/a730d62c8eb80cdc95e5089e47570d24731cf5dd/spring-boot-starter-logging-2.0.6.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.3.2/934c04d3cfef185a8008e7bf34331b79730a9d43/javax.annotation-api-1.3.2.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.19/2d998d3d674b172a588e54ab619854d073f555b5/snakeyaml-1.19.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.mongodb/mongodb-driver-core/3.6.4/6e737a5d706036bed528522d445dd2ffc454bd6b/mongodb-driver-core-3.6.4.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.mongodb/bson/3.6.4/da7487f3cba7ddd1e0b0814005960cf543e9d8/bson-3.6.4.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.2.3/7c4f3c474fb2c041d8028740440937705ebb473a/logback-classic-1.2.3.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-to-slf4j/2.10.0/f7e631ccf49cfc0aefa4a2a728da7d374c05bd3c/log4j-to-slf4j-2.10.0.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.slf4j/jul-to-slf4j/1.7.25/af5364cd6679bfffb114f0dec8a157aaa283b76/jul-to-slf4j-1.7.25.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.25/da76ca59f6a57ee3102f8f9bd9cee742973efa8a/slf4j-api-1.7.25.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/io.projectreactor/reactor-core/3.1.10.RELEASE/9c0cff4fcdb1c8680f324a4d7bda64790e60aa19/reactor-core-3.1.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler/4.1.29.Final/1acf1d94799296a2517533ec75ce7e155e9c4ea7/netty-handler-4.1.29.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec/4.1.29.Final/1651bc2e279216773c234cafe402d68d2a5adc90/netty-codec-4.1.29.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport/4.1.29.Final/c190b90f70e2ae8a48c068afad709e8728fcaa39/netty-transport-4.1.29.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/io.netty/netty-buffer/4.1.29.Final/c3809f72e4b535b343b7dfa3c0c8210dad2fa5ea/netty-buffer-4.1.29.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/io.netty/netty-resolver/4.1.29.Final/bbec1dc913732e4773893c14d795b15d6c1e878e/netty-resolver-4.1.29.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.1.29.Final/a5d6a735ed07d8f197daa48db7f097cfc971ee5e/netty-common-4.1.29.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/2.9.7/98d8f190db07f97c64c0ea3af5792f718a6c2cc1/jackson-datatype-jdk8-2.9.7.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/2.9.7/cbd919f1ce67533e07b98dd493247e8dbabc26b2/jackson-datatype-jsr310-2.9.7.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.module/jackson-module-parameter-names/2.9.7/f2bdd7696beffa2dbc5dc62cd24c3906a40ffcff/jackson-module-parameter-names-2.9.7.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.9.7/e6faad47abd3179666e89068485a1b88a195ceb7/jackson-databind-2.9.7.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-websocket/8.5.34/5f86906367c2540b21e6aeecc277d2ce9ec939b0/tomcat-embed-websocket-8.5.34.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/8.5.34/a038040d68a90397f95dd1e11b979fe364a5000f/tomcat-embed-core-8.5.34.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-el/8.5.34/be71a9a5bdd001db7cf97c47429eec0bdd3b7b88/tomcat-embed-el-8.5.34.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/javax.validation/validation-api/2.0.1.Final/cb855558e6271b1b32e716d24cb85c7f583ce09e/validation-api-2.0.1.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.jboss.logging/jboss-logging/3.3.2.Final/3789d00e859632e6c6206adc0c71625559e6e3b0/jboss-logging-3.3.2.Final.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.fasterxml/classmate/1.3.4/3d5f48f10bbe4eb7bd862f10c0583be2e0053c6/classmate-1.3.4.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/net.minidev/json-smart/2.3/7396407491352ce4fa30de92efb158adb76b5b/json-smart-2.3.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy/1.7.11/f02857a4e2c66ccbe7aaad6100a0a6c461bce9b3/byte-buddy-1.7.11.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.7.11/b425a8933ca07edd03c6dbc8bc3b595fba9780de/byte-buddy-agent-1.7.11.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.objenesis/objenesis/2.6/639033469776fd37c08358c6b92a4761feb2af4b/objenesis-2.6.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.vaadin.external.google/android-json/0.0.20131108.vaadin1/fa26d351fe62a6a17f5cda1287c1c6110dec413f/android-json-0.0.20131108.vaadin1.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jcl/5.0.10.RELEASE/8d6a766be91ae5613f2828eb9f77739a47ceb357/spring-jcl-5.0.10.RELEASE.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.reactivestreams/reactive-streams/1.0.2/323964c36556eb0e6209f65c1cef72b53b461ab8/reactive-streams-1.0.2.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.9.0/7c10d545325e3a6e72e06381afe469fd40eb701/jackson-annotations-2.9.0.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.9.7/4b7f0e0dc527fab032e9800ed231080fdc3ac015/jackson-core-2.9.7.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/net.minidev/accessors-smart/1.2/c592b500269bfde36096641b01238a8350f8aa31/accessors-smart-1.2.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.2.3/864344400c3d4d92dfeb0a305dc87d953677c03c/logback-core-1.2.3.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.10.0/fec5797a55b786184a537abd39c3fa1449d752d6/log4j-api-2.10.0.jar:/home/beblue/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/5.0.4/da08b8cce7bbf903602a25a3a163ae252435795/asm-5.0.4.jar, user.name=victor, java.vm.specification.version=1.8, sun.java.command=worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 1', java.home=/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre, sun.arch.data.model=64, user.language=en, java.specification.vendor=Oracle Corporation, awt.toolkit=sun.awt.X11.XToolkit, java.vm.info=mixed mode, java.version=1.8.0_201, java.ext.dirs=/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/ext:/usr/java/packages/lib/ext, sun.boot.class.path=/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/resources.jar:/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/rt.jar:/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/sunrsasign.jar:/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/jsse.jar:/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/jce.jar:/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/charsets.jar:/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/jfr.jar:/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/lib/jdkjsse.jar:/home/beblue/.sdkman/candidates/java/8.0.201-zulu/jre/classes, java.vendor=Azul Systems, Inc., org.gradle.test.worker=1, file.separator=/, java.vendor.url.bug=http://www.azulsystems.com/support/, sun.io.unicode.encoding=UnicodeLittle, sun.cpu.endian=little, sun.cpu.isalist=}}, SystemEnvironmentPropertySource@1529858452 {name='systemEnvironment', properties={PATH=/home/beblue/.local/bin:/home/beblue/bin:/home/beblue/.sdkman/candidates/maven/current/bin:/home/beblue/.sdkman/candidates/java/current/bin:/home/beblue/.sdkman/candidates/gradle/current/bin:/home/beblue/.local/bin:/home/beblue/bin:/usr/share/Modules/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin, XAUTHORITY=/run/user/1000/gdm/Xauthority, LC_MEASUREMENT=pt_BR.UTF-8, SDKMAN_VERSION=5.7.3+337, HISTCONTROL=ignoredups, XMODIFIERS=@im=ibus, GDMSESSION=gnome, XDG_DATA_DIRS=/home/beblue/.local/share/flatpak/exports/share/:/var/lib/flatpak/exports/share/:/usr/local/share/:/usr/share/, LC_TIME=pt_BR.UTF-8, MODULEPATH=/etc/scl/modulefiles:/etc/scl/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles:/usr/share/modulefiles, DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus, XDG_CURRENT_DESKTOP=GNOME, MAVEN_HOME=/home/beblue/.sdkman/candidates/maven/current, MAIL=/var/spool/mail/victor, SSH_AGENT_PID=2268, DESKTOP_AUTOSTART_ID=10708d1b136ea21ebe155239701271500900000022520007, COLORTERM=truecolor, SESSION_MANAGER=local/unix:@/tmp/.ICE-unix/2252,unix/unix:/tmp/.ICE-unix/2252, SDKMAN_DIR=/home/beblue/.sdkman, USERNAME=victor, LC_PAPER=pt_BR.UTF-8, LOGNAME=victor, PWD=/home/beblue/codenation/java-redis, LESSOPEN=||/usr/bin/lesspipe.sh %s, SHELL=/bin/bash, BASH_ENV=/usr/share/Modules/init/bash, SDKMAN_CANDIDATES_API=https://api.sdkman.io/2, OLDPWD=/home/beblue/codenation/java-redis, BASH_FUNC_scl%%=() {  if [ &quot;$1&quot; = &quot;load&quot; -o &quot;$1&quot; = &quot;unload&quot; ]; then
+ eval &quot;module $@&quot;;
+ else
+ /usr/bin/scl &quot;$@&quot;;
+ fi
+}, GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/800128f1_70b4_4287_9074_030001d9617b, MODULEPATH_modshare=/usr/share/modulefiles:1:/usr/share/Modules/modulefiles:1:/etc/modulefiles:1, XDG_SESSION_DESKTOP=gnome, LS_COLORS=rs=0:di=38;5;33:ln=38;5;51:mh=00:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=01;05;37;41:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;40:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.zst=38;5;9:*.tzst=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.wim=38;5;9:*.swm=38;5;9:*.dwm=38;5;9:*.esd=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.mjpg=38;5;13:*.mjpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.m4a=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.oga=38;5;45:*.opus=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:, SHLVL=3, LC_MONETARY=pt_BR.UTF-8, LOADEDMODULES=, QT_IM_MODULE=ibus, HISTSIZE=1000, JAVA_HOME=/home/beblue/.sdkman/candidates/java/current, TERM=xterm-256color, GNOME_TERMINAL_SERVICE=:1.99, ENV=/usr/share/Modules/init/profile.sh, LANG=en_US.UTF-8, XDG_SESSION_TYPE=x11, XDG_SESSION_ID=2, MODULES_RUN_QUARANTINE=LD_LIBRARY_PATH, GRADLE_HOME=/home/beblue/.sdkman/candidates/gradle/current, BASH_FUNC_switchml%%=() {  typeset swfound=1;
+ if [ &quot;${MODULES_USE_COMPAT_VERSION:-0}&quot; = '1' ]; then
+ typeset swname='main';
+ if [ -e /usr/share/Modules/libexec/modulecmd.tcl ]; then
+ typeset swfound=0;
+ unset MODULES_USE_COMPAT_VERSION;
+ fi;
+ else
+ typeset swname='compatibility';
+ if [ -e /usr/share/Modules/libexec/modulecmd-compat ]; then
+ typeset swfound=0;
+ MODULES_USE_COMPAT_VERSION=1;
+ export MODULES_USE_COMPAT_VERSION;
+ fi;
+ fi;
+ if [ $swfound -eq 0 ]; then
+ echo &quot;Switching to Modules $swname version&quot;;
+ source /usr/share/Modules/init/bash;
+ else
+ echo &quot;Cannot switch to Modules $swname version, command not found&quot;;
+ return 1;
+ fi
+}, DISPLAY=:1, BASH_FUNC_module%%=() {  _module_raw &quot;$@&quot; 2&gt;&amp;1
+}, SDKMAN_CANDIDATES_DIR=/home/beblue/.sdkman/candidates, GDM_LANG=en_US.UTF-8, DESKTOP_SESSION=gnome, SDKMAN_PLATFORM=Linux64, USER=victor, XDG_MENU_PREFIX=gnome-, VTE_VERSION=5403, WINDOWPATH=2, LC_NUMERIC=pt_BR.UTF-8, XDG_SEAT=seat0, SSH_AUTH_SOCK=/run/user/1000/keyring/ssh, HOSTNAME=beblue, MODULESHOME=/usr/share/Modules, BASH_FUNC__module_raw%%=() {  unset _mlshdbg;
+ if [ &quot;${MODULES_SILENT_SHELL_DEBUG:-0}&quot; = '1' ]; then
+ case &quot;$-&quot; in 
+ *v*x*)
+ set +vx;
+ _mlshdbg='vx'
+ ;;
+ *v*)
+ set +v;
+ _mlshdbg='v'
+ ;;
+ *x*)
+ set +x;
+ _mlshdbg='x'
+ ;;
+ *)
+ _mlshdbg=''
+ ;;
+ esac;
+ fi;
+ unset _mlre _mlIFS;
+ if [ -n &quot;${IFS+x}&quot; ]; then
+ _mlIFS=$IFS;
+ fi;
+ IFS=' ';
+ for _mlv in ${MODULES_RUN_QUARANTINE:-};
+ do
+ if [ &quot;${_mlv}&quot; = &quot;${_mlv##*[!A-Za-z0-9_]}&quot; -a &quot;${_mlv}&quot; = &quot;${_mlv#[0-9]}&quot; ]; then
+ if [ -n &quot;`eval 'echo ${'$_mlv'+x}'`&quot; ]; then
+ _mlre=&quot;${_mlre:-}${_mlv}_modquar='`eval 'echo ${'$_mlv'}'`' &quot;;
+ fi;
+ _mlrv=&quot;MODULES_RUNENV_${_mlv}&quot;;
+ _mlre=&quot;${_mlre:-}${_mlv}='`eval 'echo ${'$_mlrv':-}'`' &quot;;
+ fi;
+ done;
+ if [ -n &quot;${_mlre:-}&quot; ]; then
+ eval `eval ${_mlre}/usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash '&quot;$@&quot;'`;
+ else
+ eval `/usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash &quot;$@&quot;`;
+ fi;
+ _mlstatus=$?;
+ if [ -n &quot;${_mlIFS+x}&quot; ]; then
+ IFS=$_mlIFS;
+ else
+ unset IFS;
+ fi;
+ unset _mlre _mlv _mlrv _mlIFS;
+ if [ -n &quot;${_mlshdbg:-}&quot; ]; then
+ set -$_mlshdbg;
+ fi;
+ unset _mlshdbg;
+ return $_mlstatus
+}, MODULES_CMD=/usr/share/Modules/libexec/modulecmd.tcl, KDEDIRS=/usr, XDG_RUNTIME_DIR=/run/user/1000, XDG_VTNR=2, HOME=/home/beblue}}]
+15:50:49.882 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding PropertySource 'class path resource [test.properties]' with highest search precedence
+15:50:49.882 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}
+15:50:49.883 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding PropertySource 'Inlined Test Properties' with highest search precedence
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.0.6.RELEASE)
+
+2019-03-12 15:50:50.056  INFO 13854 --- [    Test worker] challenge.RestaurantValidationTest       : Starting RestaurantValidationTest on beblue with PID 13854 (started by victor in /home/beblue/codenation/java-redis)
+2019-03-12 15:50:50.057  INFO 13854 --- [    Test worker] challenge.RestaurantValidationTest       : No active profile set, falling back to default profiles: default
+2019-03-12 15:50:50.068  INFO 13854 --- [    Test worker] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@384196a: startup date [Tue Mar 12 15:50:50 BRT 2019]; root of context hierarchy
+2019-03-12 15:50:50.406  INFO 13854 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-03-12 15:50:50.420  INFO 13854 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-03-12 15:50:50.926  INFO 13854 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2019-03-12 15:50:50.974  INFO 13854 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-12 15:50:50.974  INFO 13854 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2019-03-12 15:50:50.980  INFO 13854 --- [ost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-12 15:50:51.048  INFO 13854 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-12 15:50:51.048  INFO 13854 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 981 ms
+2019-03-12 15:50:51.079  INFO 13854 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-03-12 15:50:51.081  INFO 13854 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-03-12 15:50:51.082  INFO 13854 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-03-12 15:50:51.082  INFO 13854 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-03-12 15:50:51.082  INFO 13854 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-03-12 15:50:51.150  INFO 13854 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-12 15:50:51.354  INFO 13854 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@384196a: startup date [Tue Mar 12 15:50:50 BRT 2019]; root of context hierarchy
+2019-03-12 15:50:51.399  INFO 13854 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error],produces=[text/html]}&quot; onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-03-12 15:50:51.399  INFO 13854 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.String, java.lang.Object&gt;&gt; org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-03-12 15:50:51.418  INFO 13854 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-12 15:50:51.418  INFO 13854 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-12 15:50:51.721  INFO 13854 --- [    Test worker] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-12 15:50:51.777  INFO 13854 --- [localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:41}] to localhost:27017
+2019-03-12 15:50:51.778  INFO 13854 --- [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[2, 6, 11]}, minWireVersion=0, maxWireVersion=2, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=null, roundTripTimeNanos=800181}
+2019-03-12 15:50:51.990  INFO 13854 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 43665 (http) with context path ''
+2019-03-12 15:50:51.993  INFO 13854 --- [    Test worker] challenge.RestaurantValidationTest       : Started RestaurantValidationTest in 2.108 seconds (JVM running for 2.712)
+2019-03-12 15:50:52.055  INFO 13854 --- [    Test worker] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:42}] to localhost:27017
+2019-03-12 15:50:53.448  INFO 13854 --- [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-03-12 15:50:53.449  INFO 13854 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-03-12 15:50:53.456  INFO 13854 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 7 ms
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 4.8.1</a> at Mar 12, 2019 3:50:53 PM</p>
+</div>
+</div>
+</body>
+</html>
