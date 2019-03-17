@@ -1,6 +1,8 @@
 package challenge;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 
-public interface NeighborhoodMongoRepository extends MongoRepository<NeighborhoodMongo, String> {
+public interface NeighborhoodMongoRepository{
+
+    NeighborhoodMongo findByGeometryIntersects(GeoJsonPoint point);
 }

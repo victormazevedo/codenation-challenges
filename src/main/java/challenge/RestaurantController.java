@@ -10,11 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/restaurants")
 public class RestaurantController {
 
+	private final RestaurantService service;
+
 	@Autowired
-	private RestaurantService service;
+	public RestaurantController(RestaurantService service) {
+		this.service = service;
+	}
 
 	@GetMapping("findInNeighborhood")
-	public NeighborhoodRedis findInNeighborhood(@RequestParam double x, @RequestParam double y) {
+	public NeighborhoodRedis findInNeighborhood(@RequestParam("x") double x, @RequestParam("y") double y) {
 		return service.findInNeighborhood(x, y);
 	}
 

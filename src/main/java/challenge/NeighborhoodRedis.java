@@ -1,7 +1,6 @@
 package challenge;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
 
 import java.util.List;
 
@@ -9,7 +8,6 @@ import java.util.List;
  * Classe para mapear o bairro no Redis
  *
  */
-@RedisHash("neighborhood")
 public class NeighborhoodRedis {
 
     @Id
@@ -41,5 +39,13 @@ public class NeighborhoodRedis {
 
     public void setRestaurants(List<RestaurantRedis> restaurants) {
         this.restaurants = restaurants;
+    }
+
+    public static NeighborhoodRedis from(NeighborhoodMongo neighborhoodMongo) {
+        final NeighborhoodRedis neighborhoodRedis = new NeighborhoodRedis();
+        neighborhoodRedis.setId(neighborhoodMongo.getId());
+        neighborhoodRedis.setName(neighborhoodMongo.getName());
+
+        return neighborhoodRedis;
     }
 }
