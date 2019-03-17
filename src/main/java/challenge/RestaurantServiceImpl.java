@@ -34,7 +34,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 		if (neighborhoodRedis == null) {
 
-			neighborhoodRedis = NeighborhoodRedis.from(neighborhoodMongo);
+			neighborhoodRedis = NeighborhoodRedis.neighborhoodMongoToNeighborhoodRedis(neighborhoodMongo);
 
 			neighborhoodRedis.setRestaurants(getRestaurantsInNeighborhood(neighborhoodMongo));
 

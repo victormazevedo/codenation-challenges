@@ -41,7 +41,7 @@ public class NeighborhoodRedis {
         this.restaurants = restaurants;
     }
 
-    public static NeighborhoodRedis from(NeighborhoodMongo neighborhoodMongo) {
+    public static NeighborhoodRedis neighborhoodMongoToNeighborhoodRedis(NeighborhoodMongo neighborhoodMongo) {
         final NeighborhoodRedis neighborhoodRedis = new NeighborhoodRedis();
         neighborhoodRedis.setId(neighborhoodMongo.getId());
         neighborhoodRedis.setName(neighborhoodMongo.getName());
