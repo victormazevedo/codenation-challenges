@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0ec6b926-735b-4f45-8ae0-d6ea9c53d785" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/challenge/NeighborhoodRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/challenge/NeighborhoodRedis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/challenge/RestaurantServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/challenge/RestaurantServiceImpl.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -53,11 +51,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/challenge/RestaurantServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="38" column="74" lean-forward="true" selection-start-line="38" selection-start-column="74" selection-end-line="38" selection-end-column="74" />
+            <state relative-caret-position="649">
+              <caret line="56" column="47" lean-forward="true" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/challenge/NeighborhoodRedis.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="561">
-              <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
+              <caret line="45" column="59" lean-forward="true" selection-start-line="45" selection-start-column="59" selection-end-line="45" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -80,8 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/challenge/RestaurantRedis.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+            <state relative-caret-position="921">
+              <caret line="55" column="33" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
               <folding>
                 <element signature="e#286#287#0" expanded="true" />
                 <element signature="e#311#312#0" expanded="true" />
@@ -119,19 +117,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/challenge/RestaurantValidationTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/challenge/NeighborhoodMongoRepositoryImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            <state relative-caret-position="204">
+              <caret line="19" column="75" lean-forward="true" selection-start-line="19" selection-start-column="75" selection-end-line="19" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -282,7 +271,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552789757344" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552790102406" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -378,7 +367,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1552588332148</updated>
-      <workItem from="1552588334662" duration="43284000" />
+      <workItem from="1552588334662" duration="43542000" />
     </task>
     <task id="LOCAL-00001" summary="implementação dos repositories">
       <created>1552663655419</created>
@@ -394,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552789236661</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="alteração do método from para neighborhoodMongoToNeighborhoodRedis">
+      <created>1552789784131</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1552789784131</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -412,7 +408,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43284000" />
+    <option name="totallyTimeSpent" value="43542000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
@@ -463,7 +459,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="implementação dos repositories" />
     <MESSAGE value="100% do desafio" />
-    <option name="LAST_COMMIT_MESSAGE" value="100% do desafio" />
+    <MESSAGE value="alteração do método from para neighborhoodMongoToNeighborhoodRedis" />
+    <option name="LAST_COMMIT_MESSAGE" value="alteração do método from para neighborhoodMongoToNeighborhoodRedis" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -655,13 +652,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/challenge/NeighborhoodMongoRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="67" selection-start-line="6" selection-start-column="67" selection-end-line="6" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -688,20 +678,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/challenge/NeighborhoodMongoRepositoryImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/challenge/RestaurantValidationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/out/test/classes/challenge/RestaurantValidationTest.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1392">
@@ -713,6 +689,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build/reports/tests/test/index.html">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/challenge/NeighborhoodMongoRepositoryImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="19" column="75" lean-forward="true" selection-start-line="19" selection-start-column="75" selection-end-line="19" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/challenge/RestaurantValidationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/challenge/RedisConfig.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -726,10 +716,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/challenge/NeighborhoodMongoRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/challenge/NeighborhoodRedis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="45" column="59" lean-forward="true" selection-start-line="45" selection-start-column="59" selection-end-line="45" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/challenge/RestaurantRedis.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        <state relative-caret-position="921">
+          <caret line="55" column="33" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
           <folding>
             <element signature="e#286#287#0" expanded="true" />
             <element signature="e#311#312#0" expanded="true" />
@@ -753,18 +760,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/challenge/RestaurantServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="38" column="74" lean-forward="true" selection-start-line="38" selection-start-column="74" selection-end-line="38" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/challenge/NeighborhoodRedis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
+        <state relative-caret-position="649">
+          <caret line="56" column="47" lean-forward="true" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

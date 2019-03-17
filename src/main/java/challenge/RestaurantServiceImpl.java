@@ -54,7 +54,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 				.findAllByLocationIsWithinOrderByNameAsc(neighborhoodMongo.getGeometry())
 				.stream()
 				.sequential()
-				.map(RestaurantRedis::getInstance)
+				.map(RestaurantRedis::restaurantMongoToRestaurantRedis)
 				.collect(Collectors.toList());
 	}
 

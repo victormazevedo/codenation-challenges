@@ -49,8 +49,7 @@ public class RestaurantRedis {
         this.y = y;
     }
 
-    public static RestaurantRedis getInstance(RestaurantMongo restaurantMongo) {
-
+    public static RestaurantRedis restaurantMongoToRestaurantRedis(RestaurantMongo restaurantMongo) {
         final RestaurantRedis restaurantRedis = new RestaurantRedis();
         restaurantRedis.setId(restaurantMongo.getId());
         restaurantRedis.setName(restaurantMongo.getName());
