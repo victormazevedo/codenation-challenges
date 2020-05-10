@@ -1,0 +1,30 @@
+version: '3.7'
+networks:
+  producao-local:
+    driver: bridge
+services:
+    mongodb:
+      build: 
+        dockerfile: ./mongo.dockerfile
+        context: .
+      image: italopb/mongo
+      container_name: mongodb
+      networks:
+        - producao-local
+      ports:
+        - 27017:27017
+      
+
+    
+    mapfood:
+        build:
+          dockerfile: ./tomcat.dockerfile
+          context: .
+        image: italopb/tomcat
+        container_name: mapfood
+        networks:
+          - producao-local
+        ports:
+          - "8080:8080"
+        depends_on: 
+          - "mongodb"
